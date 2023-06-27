@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/nav.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        header{
+            background: #fff !important;
+
+            margin-bottom:400px;
+        }
+     
+
+    </style>
+    <div class="container">
+        <header class="b">
+            <nav>
+                <input type="checkbox" onclick="setTheme()" name="theme" id="theme">
+                <div class="navigation-bar-wrapper">
+                    <input type="checkbox"  name="openandclose" id="openandclose">
+                    <div class="portfolio-logo logo">
+                        <h1>STUDYALLIES</h1>
+                    </div>
+                    <ul class="navigation-bar-links">
+                        <a href="">Logout<i class='bx bx-log-out'></i></a>
+                    </ul>
+                    
+                    
+                        <label id="open" for="openandclose" class="p-l-10" >
+                            <div class="">
+                                <div class="menu"></div>
+                                <div class="menu mid"></div>
+                                <div class="menu"></div>
+                            </div>
+                        </label>
+
+                       
+                    
+                </div>
+            </nav>
+        </header>  
+    </div>
+    <div class="p-40 b-b"></div>
+
+    <div class="page-div w-p-100 m-a b-b">
+        <div class=" m-a " >
+            <div class="display-flex-normal fwm">
+                <div class="col-2  prr dn">
+                    <div class=" prr side display-flex-normal column b-b b-r w-p-100">
+                        <a href="/account/student/ask/question" class="activeSide prr display-flex-normal ">
+                            <i class='bx bx-plus-circle p-l-20'></i>
+                            <p class="p-l-20">Ask a Question</p>
+                        </a>
+                        <a href="/account/student/my/questions" class=" prr display-flex-normal ">
+                            <i class='bx bxs-folder-open p-l-20'></i> 
+                            <p class="p-l-20">My Questions</p>
+                        </a>
+                        <a href="/account/student/balance" class=" prr display-flex-normal ">
+                            <i class='bx bx-money p-l-20'></i>
+                            <p class="p-l-20">Balance</p>
+                        </a>
+                        <a href="/account/support" class=" prr display-flex-normal ">
+                            <i class="fa p-l-20 fa-comments"></i> 
+                            <p class="p-l-20">
+                                Support
+                            </p>
+                        </a>
+                        <a href="/account/student/profile" class="prr display-flex-normal ">
+                            <i class='bx bx-cog p-l-20'></i> <p class="p-l-20">
+                                Profile
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-8 m-a" style="min-height: 80vh;">
+                   <form action="/account/student/create/tasks" method="POST" id="askQuestionForm" enctype="multipart/form-data">
+                        <div class=" b-r">
+                            <div class="p-20 col-10 m-a">
+                                    <div class="text-center p-30-0">
+                                        <h2>Ask your question here</h2>
+                                    </div>
+                            <!-- AskQuestion form begin -->
+                            <!-- <form action="" method="get" id="questionForm"> -->
+                                    <div class="p-t-10 p-b-20 b-b">
+                                        <p>Place your question here</p>
+                                    </div>
+                                <div class="p-20-0">
+                                    <textarea style="overflow: hidden;" id="editor" name="content_data"></textarea>
+                                </div>
+            
+                                <div class="p-10-0">
+                                    <input type="file" name="files" multiple id="file" hidden>
+                                    <label for="file" class="cursor-pointer default-color">
+                                        <i class="bx bx-plus"></i>Attach files
+                                    </label>
+                                    <input type="text" id="subjectChosen" name="subject" hidden>
+                                    <!-- <input type="text" id="studentQuestion" hidden> -->
+                                </div>
+            
+                                <div class="p-20-0">
+                                    <p>Select subject: (so we can find the right Expert for you)</p>
+                                </div>
+            
+                                <div class="display-flex-normal fw default-color radio">
+                                        <div class="col-3">
+                                            <div class="p-10-0">
+                                                <p class="p-5-0">
+                                                    <label for="accounting-id" class="p-5-0 cursor-pointer topic-btn" id="accounting">Accounting</label>
+                                                    <input type="radio" name="topics"  required hidden id="accounting-id" value="accounting">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="algebra-id" class="p-5-0 cursor-pointer topic-btn" id="algebra">Algebra</label>
+                                                    <input type="radio" name="topics"  required hidden id="algebra-id" value="algebra">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="applied-sciences-id" class="p-5-0 cursor-pointer topic-btn" id="applied-sciences">Applied Sciences</label>
+                                                    <input type="radio" name="topics"  required hidden id="applied-sciences-id" value="applied-sciences">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="architecture-and-design-id" class="p-5-0 cursor-pointer topic-btn" id="architecture-and-design">Architecture and Design</label>
+                                                    <input type="radio" name="topics"  required hidden id="architecture-and-design-id" value="architecture-and-design">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="art-and-design-id" class="p-5-0 cursor-pointer topic-btn" id="art-and-design">Art & Design</label>
+                                                    <input type="radio" name="topics"  required hidden id="art-and-design-id" value="art-and-design">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="biology-id" class="p-5-0 cursor-pointer topic-btn" id="biology">Biology</label>
+                                                    <input type="radio" name="topics"  required hidden id="biology-id" value="biology">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="business-and-finance-id" class="p-5-0 cursor-pointer topic-btn" id="business-and-finance">Business & Finance</label>
+                                                    <input type="radio" name="topics"  required hidden id="business-and-finance-id" value="business-and-finance">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="calculus-id" class="p-5-0 cursor-pointer topic-btn" id="calculus">Calculus</label>
+                                                    <input type="radio" name="topics"  required hidden id="calculus-id" value="calculus">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="chemistry-id" class="p-5-0 cursor-pointer topic-btn" id="chemistry">Chemistry</label>
+                                                    <input type="radio" name="topics"  required hidden id="chemistry-id" value="chemistry">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="communications-id" class="p-5-0 cursor-pointer topic-btn" id="communications">Communications</label>
+                                                    <input type="radio" name="topics"  required hidden id="communications-id" value="communications">
+                                                </p>
+                                                                                    
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="p-10-0">
+                                                <p class="p-5-0">
+                                                    <label for="computer-science-id" class="p-5-0 cursor-pointer topic-btn" id="computer-science">Computer Science</label>
+                                                    <input type="radio" name="topics"  required hidden id="computer-science-id" value="computer-science">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="economics-id" class="p-5-0 cursor-pointer topic-btn" id="economics">Economics</label>
+                                                    <input type="radio" name="topics"  required hidden id="economics-id" value="economics">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="engineering-id" class="p-5-0 cursor-pointer topic-btn" id="engineering">Engineering</label>
+                                                    <input type="radio" name="topics"  required hidden id="engineering-id" value="engineering">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="english-id" class="p-5-0 cursor-pointer topic-btn" id="english">English</label>
+                                                    <input type="radio" name="topics"  required hidden id="english-id" value="english">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="environmental-science-id" class="p-5-0 cursor-pointer topic-btn" id="environmental-science">Environmental Science</label>
+                                                    <input type="radio" name="topics"  required hidden id="environmental-science-id" value="environmental-science">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="article-writing-id" class="p-5-0 cursor-pointer topic-btn" id="article-writing">Article Writing</label>
+                                                    <input type="radio" name="topics"  required hidden id="article-writing-id" value="article-writing">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="film-id" class="p-5-0 cursor-pointer topic-btn" id="film">Film</label>
+                                                    <input type="radio" name="topics"  required hidden id="film-id" value="film">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="foreign-languages-id" class="p-5-0 cursor-pointer topic-btn" id="foreign-languages">Foreign Languages</label>
+                                                    <input type="radio" name="topics"  required hidden id="foreign-languages-id" value="foreign-languages">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="geography-id" class="p-5-0 cursor-pointer topic-btn" id="geography">Geography</label>
+                                                    <input type="radio" name="topics"  required hidden id="geography-id" value="geography">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="geology-id" class="p-5-0 cursor-pointer topic-btn" id="geology">Geology</label>
+                                                    <input type="radio" name="topics"  required hidden id="geology-id" value="geology">
+                                                </p>
+                                                                        
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="p-10-0">
+                                                <p class="p-5-0">
+                                                    <label for="geometry-id" class="p-5-0 cursor-pointer topic-btn" id="geometry">Geometry</label>
+                                                    <input type="radio" name="topics"  required hidden id="geometry-id" value="geometry">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="health-and-medical-id" class="p-5-0 cursor-pointer topic-btn" id="health-and-medical">Health & Medical</label>
+                                                    <input type="radio" name="topics"  required hidden id="health-and-medical-id" value="health-and-medical">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="history-id" class="p-5-0 cursor-pointer topic-btn" id="history">History</label>
+                                                    <input type="radio" name="topics"  required hidden id="history-id" value="history">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="hr-management-id" class="p-5-0 cursor-pointer topic-btn" id="hr-management">HR Management</label>
+                                                    <input type="radio" name="topics"  required hidden id="hr-management-id" value="hr-management">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="information-systems-id" class="p-5-0 cursor-pointer topic-btn" id="information-systems">Information Systems</label>
+                                                    <input type="radio" name="topics"  required hidden id="information-systems-id" value="information-systems">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="law-id" class="p-5-0 cursor-pointer topic-btn" id="law">Law</label>
+                                                    <input type="radio" name="topics"  required hidden id="law-id" value="law">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="literature-id" class="p-5-0 cursor-pointer topic-btn" id="literature">Literature</label>
+                                                    <input type="radio" name="topics"  required hidden id="literature-id" value="literature">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="management-id" class="p-5-0 cursor-pointer topic-btn" id="management">Management</label>
+                                                    <input type="radio" name="topics"  required hidden id="management-id" value="management">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="marketing-id" class="p-5-0 cursor-pointer topic-btn" id="marketing">Marketing</label>
+                                                    <input type="radio" name="topics"  required hidden id="marketing-id" value="marketing">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="math-id" class="p-5-0 cursor-pointer topic-btn" id="math">Math</label>
+                                                    <input type="radio" name="topics"  required hidden id="math-id" value="math">
+                                                </p>
+                                                                                
+            
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="p-10">
+                                                <p class="p-5-0">
+                                                    <label for="numerical-analysis-id" class="p-5-0 cursor-pointer topic-btn" id="numerical-analysis">Numerical Analysis</label>
+                                                    <input type="radio" name="topics"  required hidden id="numerical-analysis-id" value="numerical-analysis">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="philosophy-id" class="p-5-0 cursor-pointer topic-btn" id="philosophy">Philosophy</label>
+                                                    <input type="radio" name="topics"  required hidden id="philosophy-id" value="philosophy">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="physics-id" class="p-5-0 cursor-pointer topic-btn" id="physics">Physics</label>
+                                                    <input type="radio" name="topics"  required hidden id="physics-id" value="physics">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="precalculus-id" class="p-5-0 cursor-pointer topic-btn" id="precalculus">Precalculus</label>
+                                                    <input type="radio" name="topics"  required hidden id="precalculus-id" value="precalculus">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="political-science-id" class="p-5-0 cursor-pointer topic-btn" id="political-science">Political Science</label>
+                                                    <input type="radio" name="topics"  required hidden id="political-science-id" value="political-science">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="psychology-id" class="p-5-0 cursor-pointer topic-btn" id="psychology">Psychology</label>
+                                                    <input type="radio" name="topics"  required hidden id="psychology-id" value="psychology">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="programming-id" class="p-5-0 cursor-pointer topic-btn" id="programming">Programming</label>
+                                                    <input type="radio" name="topics"  required hidden id="programming-id" value="programming">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="science-id" class="p-5-0 cursor-pointer topic-btn" id="science">Science</label>
+                                                    <input type="radio" name="topics"  required hidden id="science-id" value="science">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="social-science-id" class="p-5-0 cursor-pointer topic-btn" id="social-science">Social Science</label>
+                                                    <input type="radio" name="topics"  required  hidden id="social-science-id" value="social-science">
+                                                </p>
+                                                
+                                                <p class="p-5-0">
+                                                    <label for="statistics-id" class="p-5-0 cursor-pointer topic-btn" id="statistics">Statistics</label>
+                                                    <input type="radio" name="topics"  required hidden id="statistics-id" value="statistics">
+                                                </p>
+                                                                                    
+                                            </div>
+                                        </div>
+            
+                                </div>
+
+                                <div class="p-20-0">
+                                    <div class="">
+                                        <div class="display-flex-normal fade" style="flex-wrap: wrap;">
+                                            <div class="col-3 ">
+                                                <div class="">
+                                                    <div class="p-10">
+                                                        <p class="p-5-0">Deadline</p>
+                                                        <div class="b-one display-flex-normal p-5">
+                                                            
+                                                            <input class="b-n p-l-10" type="datetime-local" name="timeline" id="timeline">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="">
+                                                    <div class="p-10">
+                                                        <p class="p-5-0">I'm willing to pay</p>
+                                                        <div class="b-one display-flex-normal p-5">
+                                                            $
+                                                            <input class="b-n p-l-10" min="10" type="number" name="amount" id="">
+                                                        </div>
+                                                        <p>minimum $10.00</p>
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <div class="p-10-15">
+                                                        <p class="fade f-s-17">Please specify how much you expect to pay or wait for tutor to propose their own price</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div style="display: grid;" class="">
+                                        <input type="checkbox" name="notification" id="answer-notification">
+                                        <label for="answer-notification">I would like to receive email nofication when users post answers to my question</label>
+                                    </div>
+                                </div>
+                                <div class="next-btn m-20-0 siteButton float-right">
+                                        <button id="nextbtn" class="p-10-20 b-one" type="submit">POST A QUESTION</button>
+                                </div>
+                            <!-- </form> -->
+                            <!-- AskQuestion form end -->
+                            
+                                
+                            </div>
+        
+                        </div>
+                   </form>
+                </div>
+                <div class="col-2  dn">
+                    <div class="b-l b-b">
+                        <div class="prr">
+                            <div class="accountacc">
+                                <div class="container-p">
+                                    <input type="checkbox"  id="in">
+                                    <span class="checkmark-p"></span>
+                                </div>
+                            </div>
+                            <div class="p-t-20 p-l-30">
+                                <p>STEP 1</p>
+                                
+                                <label for="in" class="accordiontab cursor-pointer p-10-0 default-color">Ask a question</label>
+
+                                <div class="accordion-panel p-r-20">
+                                  <p class="fade p-10-0">
+                                    Type your question details, attach additional files, set up a deadline, and enter the amount you’re willing to pay for an answer.
+                                  </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="prr ">
+                            <div class="accountacc ">
+                                <div class="container-p">
+                                    <input type="checkbox"  id="step2">
+                                    <span class="checkmark-p"></span>
+                                </div>
+                            </div>
+                            <div class="p-t-20 p-l-30">
+                                <p>STEP 2</p>
+                                <label for="step2" class="accordiontab cursor-pointer p-10-0 default-color">Choose a tutor</label>
+                                <div class="accordion-panel p-r-20">
+                                  <p class="fade p-10-0">
+                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
+                                  </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="prr ">
+                            <div class="accountacc">
+                                <div class="container-p">
+                                    <input type="checkbox" id="step3">
+                                    <span class="checkmark-p"></span>
+                                </div>
+                            </div>
+                            <div class="p-t-20 p-l-30">
+                                <p>STEP 3</p>
+                                <label for="step3" class="accordiontab cursor-pointer p-10-0 default-color">Reserve money</label>
+                                <div class="accordion-panel p-r-20">
+                                  <p class="fade p-10-0">
+                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
+                                  </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="prr ">
+                            <div class="accountacc ">
+                                <div class="container-p">
+                                    <input type="checkbox"  id="step4">
+                                    <span class="checkmark-p"></span>
+                                </div>
+                            </div>
+                            <div class="p-t-20 p-l-30">
+                                <p>STEP 4</p>
+                                <label for="step4" class="accordiontab cursor-pointer p-10-0 default-color">Get your answer</label>
+                                <div class="accordion-panel p-r-20">
+                                  <p class="fade p-10-0">
+                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
+                                  </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="prr ">
+                            <div class="accountacc">
+                                <div class="container-p">
+                                    <input type="checkbox"  id="step5">
+                                    <span class="checkmark-p"></span>
+                                </div>
+                            </div>
+                            <div class="p-t-20 p-l-30">
+                                <p>STEP 5</p>
+                                <label for="step5" class="accordiontab cursor-pointer p-10-0 default-color">Give feedback</label>
+                                <div class="accordion-panel p-r-20">
+                                  <p class="fade p-10-0">
+                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
+                                  </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="">
+        <div class="">
+            <div class="">
+                <div id="footer" class="footer  f-s-12 footer_type_my js-footer" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+                    <div class="" style="display: flex; flex-direction:column">
+                        <div class="col-10 m-a">
+                            <ul class=" p-20 footer__links ul-reset display-flex-normal space-between fwm">
+                                    <li class="footer__link p-0-20 wp50"><a href="./homeworks-answers.html" title="Homework Answers">Homework Answers</a></li>
+                                    <li class="footer__link  p-0-20 wp50"><a href="/ask-a-question" title="Ask a Question" rel="nofollow">Ask a Question</a></li>                    
+                                    <li class="footer__link p-0-20 wp50"><a href="/faq" title="FAQ" itemprop="url">FAQ</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./write.html" title="Contact Us" itemprop="url">Contact Us</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./privacy-policy.html" title="Privacy Policy" itemprop="url">Privacy Policy</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/dmca-notice" title="DMCA" itemprop="url">DMCA</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/terms-of-use" title="Terms of Use" itemprop="url">Terms of Use</a></li>
+                                </ul>        </div>
+                        <div class="display-flex ">
+                            Copyright © 2023&nbsp;<a  href="./index.html">Freelance</a></div>
+                            <div class="copyright copyright_company display-flex text-center p-10" style="line-height: 20px;">
+                                        Worbert Limited -  All right reserved.<br>
+                            20 Christou Tsiarta Elma 2, 22, 1077, Nicosia, Cyprus
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script src="/static/js/jQuery.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script src="/static/js/freelance.js"></script>
+    <script>
+        function toogleSearch(){
+            $( ".search" ).toggleClass( "searchtransition" )
+            $( ".search-mobile" ).toggleClass( "searchtransition" ) 
+        }
+    </script>
+    <style>
+        .currentradio
+        {
+        color: var(--background);
+        }
+        .currentradio::before{
+            content:' \203A';
+            padding-right:6px;
+        
+        }
+            </style>
+    <script>
+
+        setInterval(()=>{
+            if(screen.width > 888){
+                $(".mobile").addClass("hide-m")
+            }
+            else{
+                $(".mobile").removeClass("hide-m")
+
+            }
+          }, 10)
+        $(document).ready(()=>{
+            let subjectChosen = $("#subjectChosen");
+            var radios = $(".radio input")
+            for(i = 0; i<radios.length; i++){
+                radios[i].addEventListener("click", (e)=>{
+                var label = e.currentTarget.parentElement.children[0];
+                var all = $(".radio label");
+                for(var y = 0; y<all.length; y++){
+                    all[y].classList.remove("currentradio")
+                }
+                label.classList.add("currentradio")
+                subjectChosen.value = label.innerHTML
+                })
+            }
+        });
+      </script>
+    <script>
+        let studentQuestion = document.querySelector("#studentQuestion");
+        let editor;
+        // Initialize CKEditor
+        ClassicEditor
+        .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        document.getElementById("askQuestionForm").addEventListener("submit", (e) => {
+            let askQuestionV = document.querySelector(".currentradio + input[type='radio']");
+            let subjectChosen = document.querySelector("#subjectChosen");
+            subjectChosen.value = askQuestionV.value
+            console.log(subjectChosen.value)
+            return true
+        })
+    </script>
+    
+</body>
+</html>

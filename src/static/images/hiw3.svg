@@ -1,0 +1,17 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="35" viewBox="0 0 58 35">
+<defs>
+<linearGradient id="gradient1" gradientUnits="userSpaceOnUse" x1="103.887%" y1="110.290%" x2="-15.916%" y2="-39.710%" >
+<stop offset="0%" stop-color="#A6FFCB" />
+<stop offset="45%" stop-color="#0FC1FF" />
+<stop offset="100%" stop-color="#5533FF" />
+</linearGradient>
+<filter id="hiw3-fx" filterUnits="userSpaceOnUse">
+<feFlood flood-color="#22A011" />
+<feComposite operator="in" in2="SourceAlpha" result="sourceFill" />
+<feBlend mode="normal" in="SourceGraphic" in2="sourceFill" result="gradientFill" />
+</filter>
+</defs>
+<g id="hiw3">
+<path id="hiw3" d="M49.419,20.670 L49.419,28.989 L45.854,28.989 L45.854,20.670 L37.441,20.670 L37.441,16.915 L45.854,16.915 L45.854,8.597 L49.419,8.597 L49.419,16.915 L57.785,16.915 L57.785,20.670 L49.419,20.670 zM26.555,26.707 L9.776,26.707 L6.592,34.217 L0.745,34.217 L15.433,0.944 L21.184,0.944 L35.729,34.217 L29.740,34.217 L26.555,26.707 zM18.142,6.933 L11.868,21.716 L24.416,21.716 L18.142,6.933 z" fill="url(#gradient1)" filter="url(#hiw3-fx)" />
+</g>
+</svg>

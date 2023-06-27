@@ -1,0 +1,17 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="43" viewBox="0 0 25 43">
+<defs>
+<linearGradient id="gradient1" gradientUnits="userSpaceOnUse" x1="118.986%" y1="68.236%" x2="-31.014%" y2="2.345%" >
+<stop offset="0%" stop-color="#A6FFCB" />
+<stop offset="45%" stop-color="#0FC1FF" />
+<stop offset="100%" stop-color="#5533FF" />
+</linearGradient>
+<filter id="hiw1-fx" filterUnits="userSpaceOnUse">
+<feFlood flood-color="#22A011" />
+<feComposite operator="in" in2="SourceAlpha" result="sourceFill" />
+<feBlend mode="normal" in="SourceGraphic" in2="sourceFill" result="gradientFill" />
+</filter>
+</defs>
+<g id="hiw1">
+<path id="hiw1" d="M5.397,12.114 C5.577,8.034 7.917,5.994 11.817,5.994 C15.537,5.994 17.997,7.674 17.997,11.154 C17.997,18.414 9.657,18.474 9.657,28.133 C9.657,28.133 14.937,28.133 14.937,28.133 C14.937,20.034 24.417,19.614 24.417,10.134 C24.417,3.594 19.617,0.114 12.417,0.114 C4.977,0.114 0.238,4.434 -0.002,12.054 C-0.002,12.054 5.397,12.114 5.397,12.114 zM12.237,34.433 C10.077,34.433 8.457,36.053 8.457,38.333 C8.457,40.673 10.077,42.353 12.237,42.353 C14.397,42.353 16.017,40.673 16.017,38.333 C16.017,36.053 14.397,34.433 12.237,34.433 z" fill="url(#gradient1)" filter="url(#hiw1-fx)" />
+</g>
+</svg>

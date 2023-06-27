@@ -1,0 +1,387 @@
+*{
+    margin: 0;
+    padding: 0;   
+    font-family: johnwaithira;
+}
+:root{
+    --baseColor:#000;
+    --defaultColor:white;
+}
+
+nav input[type="checkbox"]
+{
+    display:none;
+}
+nav{
+    width: 100%;
+    position:relative;
+
+
+}
+
+.navigation-bar-wrapper{
+    /* background: var(--defaultColor);
+    */
+    height:100%;
+    display: flex;
+    position:relative;
+    /* overflow:hidden; */
+    /* line-height:100px; */
+    /* padding:30px 0; */
+
+    align-items:center;
+    justify-content: space-around;
+}
+.search-mobile, 
+.search
+{
+    position:absolute;
+    right:0;
+    top:50%;
+    
+    overflow:hidden;
+    z-index:20000;
+}
+.search-mobile
+,.search
+{
+   
+    
+    transform:translate(155%, -50%);
+    
+    display:flex;
+    background:var(--white) !important;
+    min-width:230px;
+    border:1px solid #999;
+    align-items:center;
+    transition:all 0.5s;
+    
+    overflow:hidden;
+
+    
+}
+.searchtransition{
+    transform:translate(-5%, -50%);
+
+
+}
+.mobile
+{
+    position:relative;
+    padding:0 10px;
+    flex:0.5;
+    justify-content:end;
+    /* overflow:hidden; */
+
+
+    
+}
+.paypal-load{
+    margin:auto;
+}
+.mobile i
+{
+    font-size:20px;
+}
+.search input::placeholder
+{
+    font-size:18px;
+}
+
+.bx-search
+{
+    font-size:20px !important;
+    cursor:pointer;
+}
+.second-nav
+{
+    display:none;
+}
+.search  input, .search-mobile input{
+    font-size:18px;
+    outline:none;
+    border:0px;
+    padding:12px 10px;
+
+}
+.navigation-bar-links
+{
+    position:relative;
+    /* background:red; */
+    /* overflow:hidden; */
+    height:100%;
+    padding:25px 0;
+    items-align:center;
+}
+.cursor-pointer
+{
+    cursor:pointer;
+}
+.navigation-bar-links li{
+    display: inline-block;
+    padding: 0 15px;
+}
+.navigation-bar-links li a{
+    text-decoration: none;
+    font-weight: 700;
+    color: inherit;
+}
+nav label{
+    cursor: pointer;
+}
+.fa-cog{
+    cursor: pointer;
+}
+.menu:first-child{
+    width:25px;
+
+}
+.menu{
+    width:35px;
+    border-radius:30px ;
+    height: 5px;
+    overflow:hidden;
+    background: var(--background);
+}
+.mid {
+    margin: 8px 0;
+    width:30px;
+}
+
+.navigation-bar-links button{
+    border: none;
+}
+
+#openandclose, #open{
+    display: none;
+}
+
+
+.hide-m{
+    display:none !important;
+
+}
+.learn{
+    min-height:50vh;
+}
+.learn img{
+     position:absolute;
+    
+     
+     right:px;
+     height:400px
+    overflow:hidden;
+}
+.mm{
+    margin-top:20px;
+}
+.siteButton11{
+    position:absolute;
+    left:470px;
+    top:125px;
+    margin:30px 0;
+}
+/* .bbb
+{
+    display:flex;
+    flex-direction:column;
+} */
+@media (max-width:992px){
+    .navigation-bar-wrapper{
+       
+        padding:10px 0;
+    
+        
+    }
+    .menu{
+        height:3px;
+    }
+    .homeworks {
+        color:black !important;
+    }
+    .wp50{
+        width:50%;
+    }
+    .profile-bottom{
+        
+    }
+    .learn img{
+        position:none;
+       
+        display:none;
+        right:px;
+        height:0px
+       overflow:hidden;
+   }
+   .siteButton11{
+       position:relative;
+       left:0px;
+       top:0px;
+   }
+    .centered{
+        justify-content:center;
+        align-items:center;
+    }
+    .how-to-box .arr
+    {
+        background:red;
+    }
+    .navigation-bar-links
+    {
+        padding:0;
+    }
+    .fwm{
+        flex-wrap:wrap;
+    }
+    .pbox{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        flex-direction:row-reverse;
+        font-size:14px;
+    
+    }
+    .stylish a{
+        top:80px;
+        left:0px;
+        position:relative !important;
+        background:;
+    }
+    .learnmore{
+        display:none;
+    }
+    .question-div
+{
+    
+    flex-direction:column-reverse;
+}
+
+    .dn,
+    .mob{
+        display:none;
+    }
+    .footer .p-0-20
+    {
+        padding:0 5px;
+    }
+    .dont
+    {
+        display:none;
+    }
+    .update
+    {
+        display:none;
+    }
+    .homeworks
+    {
+       
+    padding-top: 10px !important;
+    height: 100% !important;
+    margin-bottom: 0px !important;
+    margin-top: 0 !important;
+    background: none !important;
+
+}
+.how-it-works{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.how-it-works .after-left
+{
+    margin:auto;
+    
+}
+
+.how-to-box
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    /* position:normal !important; */
+    text-align:center;
+    margin-bottom:150px;
+    flex-direction:column;
+
+}
+.how-to-box .rr
+{
+    background: url("./images/hiw_arrow.svg") no-repeat;
+    width: 47px;
+    height: 33px;
+    position: absolute;
+    left: 0px;
+    transform:rotate(90deg);
+    top:350px !important;
+}
+.last-child
+{
+    display:none !important;
+}
+.homeworks .p-t-100
+{
+    padding-top: 10px !important;
+}
+.online-tutorial .ccc
+{
+    margin:  auto 0 auto !important;
+
+    background:white;
+
+}
+    #open{
+        display: block;
+    }
+    #openandclose:checked ~ .navigation-bar-links{
+        top:46px;
+    }
+    .search
+    {
+        display: none !important;
+        
+    }
+    .mmm
+    {
+        margin-bottom:0px !important;
+        margin-top:0px !important;
+        
+    }
+    .second-nav
+    {
+        display:block;
+    }
+    .navigation-bar-links{
+        display: flex;
+        width: 100%;
+        /* background:red !important; */
+        transition: 0.3s;
+        left: 0;
+        z-index: 10000;
+        position: absolute;
+        /* top:46px; */
+        top:-100vh;
+        /* justify-content: space-around; */
+        /* align-items: center; */
+        height: 86vh;
+        flex-direction: column;
+        background: var(--defaultColor);
+        padding: 20px 15px;
+    }
+    .navigation-bar-links li{
+        color: black;
+        padding: 10px 0 10px 0;
+    }
+    .p-44, .p-47, .p-40
+    {
+        padding:26px !important;
+    }
+    #signupmodal p{
+        padding:none !important;
+        
+    }
+    .p-s20{
+        padding:20px 40px;
+    }
+}

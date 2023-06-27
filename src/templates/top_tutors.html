@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/nav.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        header{
+            background: #fff !important;
+
+            margin-bottom:400px;
+        }
+        .pagination{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-start-end{
+           
+            border-radius:50% 50% 50% 0;
+        }
+
+        .pagination a{
+        color: rgb(0, 0, 0);
+
+
+        }
+        .pager,.page-start-end{
+            cursor: pointer;
+            margin: 0px 2px;
+            line-height: 24px;
+            width: 28px;
+
+            border: 1px solid rgb(109, 107, 107);
+
+        }
+
+        .pager
+        {
+            
+            border-radius:50%;
+        }
+        .current
+        {
+            background: var(--background);
+        }
+        .current 
+    {
+        color: white;
+
+    }
+        
+    </style>
+    <div class="mo-signup"></div>    
+
+    <div class="container">
+        <header class="b">
+            <nav>
+                <input type="checkbox" onclick="setTheme()" name="theme" id="theme">
+                <div class="navigation-bar-wrapper">
+                    <input type="checkbox"  name="openandclose" id="openandclose">
+                    <div class="portfolio-logo logo">
+                        <a href="/">
+                            <h1>STUDYALLIES</h1>
+                        </a>
+                    </div>
+                    <ul class="navigation-bar-links">
+                        <li><a href="/how/it/works">How it Works</a></li>
+                        <li><a href="/homework/answers">Homework Answers</a></li>
+                        <li><a href="/ask/a/question">Ask a Question</a></li>
+                        <li><a href="/top/tutors">Top Tutors</a></li>
+                        <li><a href="/faqs">FAQ</a></li>
+                        <li id="signupmodal" onclick="openM()" class="cursor-pointer p-10-20">
+                            <p>Sign In</p>
+                        </li>
+                        <li><i   onclick="toogleSearch()" class="bx bx-search mob"></i></li>
+
+                        <div class="search b-r-10">
+                            <input class="p-l-10" type="text" placeholder="Search...">
+                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                        </div>
+                    </ul>
+                    
+                    
+                    <div class="mobile" style="display: flex;gap:10px;">
+                        <li class="s-icon"><i onclick="toogleSearch()" class="bx bx-search"></i></li>
+                        <label id="open" for="openandclose" class="p-l-10" >
+                            <div class="">
+                                <div class="menu"></div>
+                                <div class="menu mid"></div>
+                                <div class="menu"></div>
+                            </div>
+                        </label>
+
+                        <div class="search-mobile b-r-10 ">
+                            <input class="p-l-10" type="text" placeholder="Search...">
+                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                        </div>
+                    </div>
+                    
+                </div>
+            </nav>
+        </header>  
+    </div>
+    <div class="p-44"></div>
+
+    
+    <div id="page-div" class="bg-inner prr">
+        <div class="page-div  w-p-96 m-a ">
+            <div class="bs col-11 bgwhite m-a p-t-20">
+                <div class="display-flex-normal">
+                    <div class="col-9 b-r">
+                        <div class="p-20 ">
+                            <div class="b-b p-b-20">
+                               <div class="top-tutor fwm">
+                              <h2>TOP TUTORS</h2>
+                              <form action="" class="fwm">
+                                <div class="b-one w-250px p-0-10 b-r-5">
+                                  <input type="text" name="" class="p-10-0 b-n">
+                                </div>
+                                <div class="button m-r-10 siteButton1">
+                                  <button class="b-n p-10-20 b-one b-r-5"><i class="bx bx-search"></i> SEARCH</button>
+                                </div>  
+                              </form>
+                            </div>
+                            </div>
+                           
+                            <div class="list-tutor p-20-0">
+                              <div class="tutor-profile b-b  ">
+                                  <div class="m-20">
+                                    <div class="top_p p-0" >
+                                        <div class="">
+                                          <div class="display-flex-normal row fwm">
+                                            <div class=" m-r-5 ">
+                                                  <!-- <div class="w-100  l-h-100 bs b-t-r-r-20  b-t-l-r-20 b-b-r-r-20">
+      
+                                                    <img  class="" src="./images/119_119_2b995k5fkrwy9czn.jpg" alt="">
+                                                  </div> -->
+                                                  <div class="card-image b-one">
+                                                    <img src="/static/c/images/profile2.jpg" class="card-img" alt="">
+                                                </div>
+            
+                                               
+                                            </div>
+                                            <div class="w-p-100 p-10-20">
+                                              <div class="profile-top relative display-flex-normal space-between fw">
+                                                  <div class="">
+                                                    <div class="p-5-0">
+                                                      <a href="">
+                                                        <h3>BobAnalysisSchool</h3>
+                                                      </a>
+      
+                                                    </div>
+                                                    <div class="p-5-0">
+                                                      <p class="fade">
+                                                          <i class="fa fa-clock-o" aria-hidden="true"></i>   533 Orders Completed
+                                                      </p>
+      
+                                                      <p class="fade p-5-0">
+                                                          <i class="fa fa-quote-left"></i> 51 reviews
+                                                      </p>
+                                                      
+      
+                                                    </div>
+                                                  </div>
+      
+                                                  <div class="relative" >
+                                                    <div class="display-flex-normal " style="float: right !important;">
+                                                      <span class="p-r-10 float-right">4.5</span>
+                                                      <div class="stars ">
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                                                                        </div>
+                                                    </div>
+                                                    <div class="p-30-0">
+                                                      <p class="fade" >
+                                                        Member since: January, 2015
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                              </div>
+      
+                                              <div class="">
+                                                  <div class="profile-bottom w-p-100">
+                                                      <div class="">
+                                                        <div class="display-flex-normal fwm">
+                                                          <strong> <span>Areas&nbsp;of&nbsp;expertise&nbsp;: </span> </strong>
+                                                          <div class="p-l-10 areas display-flex-normal">
+                                                            <li>Accounting</li>
+                                                            <li>Communications</li>
+                                                            <li>Computer Science</li>
+                                                            <li>Economics</li>
+                                                            <li>Programming</li>
+                                                            <li>Psychology</li>
+                  
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+      
+                                    
+                                    <div class="about-tutor">
+                                      <div class="p-20">
+                                          <h4>About me:</h4>
+                                          <div class="p-10-0">
+                                            <p class="fade">
+                                              I am a graduate in Bachelor of Economics. I have been an academic writer for three years now. During these years, I have been specializing in various fields: Accounting, Economics, and Programming. Besides my major fields, I can fully handle assignments in Psychology and Communication. I am familiar with all major formatting styles like APA, MLA, Chicago, Turabian, IEEE, and always provide plagiarism free paper.</p>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                              
+
+                              <div class="tutor-profile b-b  ">
+                                <div class="m-20">
+                                  <div class="top_p p-0" >
+                                      <div class="">
+                                        <div class="display-flex-normal row fwm">
+                                          <div class=" m-r-5 ">
+                                                <!-- <div class="w-100  l-h-100 bs b-t-r-r-20  b-t-l-r-20 b-b-r-r-20">
+    
+                                                  <img  class="" src="./images/119_119_2b995k5fkrwy9czn.jpg" alt="">
+                                                </div> -->
+                                                <div class="card-image b-one">
+                                                  <img src="/static/c/images/profile1.jpg" class="card-img" alt="">
+                                              </div>
+          
+                                             
+                                          </div>
+                                          <div class="w-p-100 p-10-20">
+                                            <div class="profile-top relative display-flex-normal space-between fw">
+                                                <div class="">
+                                                  <div class="p-5-0">
+                                                    <a href="">
+                                                      <h3>BobAnalysisSchool</h3>
+                                                    </a>
+    
+                                                  </div>
+                                                  <div class="p-5-0">
+                                                    <p class="fade">
+                                                        <i class="fa fa-clock-o" aria-hidden="true"></i>   533 Orders Completed
+                                                    </p>
+    
+                                                    <p class="fade p-5-0">
+                                                        <i class="fa fa-quote-left"></i> 51 reviews
+                                                    </p>
+                                                    
+    
+                                                  </div>
+                                                </div>
+    
+                                                <div class="relative" >
+                                                  <div class="display-flex-normal " style="float: right !important;">
+                                                    <span class="p-r-10 float-right">4.5</span>
+                                                    <div class="stars ">
+                                                      <span class="fa fa-star checked"></span>
+                                                      <span class="fa fa-star checked"></span>
+                                                      <span class="fa fa-star checked"></span>
+                                                      <span class="fa fa-star"></span>
+                                                      <span class="fa fa-star"></span>
+                                                                                                      </div>
+                                                  </div>
+                                                  <div class="p-30-0">
+                                                    <p class="fade" >
+                                                      Member since: January, 2015
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="">
+                                                <div class="profile-bottom w-p-100">
+                                                    <div class="">
+                                                      <div class="display-flex-normal fwm">
+                                                        <strong> <span>Areas&nbsp;of&nbsp;expertise&nbsp;: </span> </strong>
+                                                        <div class="p-l-10 areas display-flex-normal">
+                                                          <li>Accounting</li>
+                                                          <li>Communications</li>
+                                                          <li>Computer Science</li>
+                                                          <li>Economics</li>
+                                                          <li>Programming</li>
+                                                          <li>Psychology</li>
+                
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                              </div>
+                                            
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+    
+                                  
+                                  <div class="about-tutor">
+                                    <div class="p-20">
+                                        <h4>About me:</h4>
+                                        <div class="p-10-0">
+                                          <p class="fade">
+                                            I am a graduate in Bachelor of Economics. I have been an academic writer for three years now. During these years, I have been specializing in various fields: Accounting, Economics, and Programming. Besides my major fields, I can fully handle assignments in Psychology and Communication. I am familiar with all major formatting styles like APA, MLA, Chicago, Turabian, IEEE, and always provide plagiarism free paper.</p>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="col-3 dn">
+                        
+                      <div class="p-10-25 b-l">
+                          <div class="p-20-0">
+                            <h3>FAQ</h3>
+                          </div>
+                            <li class="accordiontab cursor-pointer p-10-0 default-color">Who are STUDYALLIES tutors?</li>
+                            <div class="accordion-panel">
+                              <p class="fade p-10-0">
+                                Our tutors are all professionals who have chosen to specialize in academic writing. To become a StudyDaddy tutor, applicants must pass our verification process and provide proof of their education and identity.
+                              </p>
+                            </div>
+    
+                            <li class="accordiontab cursor-pointer p-10-0 default-color">What does tutor rating mean?</li>
+                            <div class="accordion-panel">
+                              <p class="fade p-10-0">
+                                The rating of every writer is calculated automatically based on the votes of every customer who worked with this writer in the past and rated this writer's level of cooperation towards an order's completion.
+                              </p>
+                            </div>
+    
+                            <li class="accordiontab cursor-pointer p-10-0 default-color">How to get tutor help?</li>
+                            <div class="accordion-panel">
+                              <p class="fade p-10-0">
+                                Start from posting your order <a href="" class="link">here</a> and invite the tutor to complete your assignment.
+    
+                              </p>
+                            </div>
+    
+                            <li class="accordiontab cursor-pointer default-color">                              How much does it cost to ask a question?
+                            </li>
+                            <div class="accordion-panel">
+                              <p class="fade p-10-0">
+    It's entirely up to you! When asking a question simply type how much you are willing to pay.
+                              </p>
+                            </div>
+                           
+                      </div>
+    
+                     
+    
+                  </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="p-20-0">
+            <div class="text-center">
+                <div class="">
+                  <style>
+                   
+                    .paging-div-dev
+                    {
+                        position: relative;
+                        border: 1px solid blue;
+                        width: 30px;
+                        line-height: 30px;
+                        overflow: hidden;
+                        height: 30px;
+                        cursor: pointer;
+                        border-radius: 50%;
+            
+                    }
+                    .paging-div
+                    {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 30px;
+                        height: 30px;
+                    }
+                    .activepage
+                    {
+                        background: var(--background);
+                        color: white !important;
+
+            
+                    }
+                    .activepage ~ .link-div
+                    {
+                      color: #fff;
+                      font-weight: 600;
+                    }
+                    .link-div
+                    {
+                        position: absolute;
+                        width: 30px;
+                        top: 0;
+                        left: 0;
+                        text-decoration: none;
+                        text-align: center;
+                    }
+                    .pagination-div
+                    {
+                        display: flex;
+                        gap: 10px;
+                        justify-content: center;
+                    }
+                    .page-control{
+                      border-radius: 50% 50% 50% 0;
+                    }
+
+                    .mybutton
+                    {
+                      width: 30px;
+                      height: 30px;
+                    }
+                </style>
+                <div class="">
+                    <div class="">
+                        <div class="pagination-div">
+                          <div class="page-control paging-div-dev">
+                              <button class="mybutton bg-inherit b-n" id="back"><i class="fa fa-chevron-left"></i></button>
+                          </div>
+                            <div class="paging-div-dev">
+                                <div class="paging-div"></div>
+                                <a href="?page=1"class="link-div">1</a>
+                            </div>
+            
+                            <div class="paging-div-dev">
+                                <div class="paging-div"></div>
+                                <a href="?page=2"class="link-div">2</a>
+                            </div>
+            
+                            <div class="paging-div-dev">
+                                <div class="paging-div"></div>
+                                <a href="?page=3"class="link-div">3</a>
+                            </div>
+
+                            <div class="page-control paging-div-dev">
+                              <button class="mybutton bg-inherit b-n" id="forward"><i class="fa fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+                </div>
+            </div>
+        </div>
+    
+        
+
+        <div class="bgback">
+            <div class="prr page-lower">
+                <div class="col-10 m-a display-flex-normal bg-manner" style="min-height: 50vh; background: url(./images/bg-body-1.png); align-items:center; justify-content: center;">
+                    <div class="">
+                        <div class="">
+                            <div class="col-11 m-a text-center">
+                                <div class="p-20-0">
+                                    <h1 class="">LEARN MORE EFFECTIVELY AND GET BETTER GRADES!</h1>
+                                </div>
+                                <div class="p-20">
+                                    <div class="button siteButton1">
+                                        <a href="./ask-question.html">
+                                            <button class="p-14-30">ASK A QUESTION</button>
+                                        </a>
+                                    </div>
+                                </div>
+    
+                                <div class="dn" style=" position: absolute; right:25%; bottom:0;;">
+                                    <img class="w-180" src="/static/images/girl-3.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+    <div class="">
+        <div class="">
+            <div class="">
+                <div id="footer" class="footer  f-s-12 footer_type_my js-footer" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+                    <div class="" style="display: flex; flex-direction:column">
+                        <div class="col-10 m-a">
+                            <ul class=" p-20 footer__links ul-reset display-flex-normal space-between fwm" style="">
+                                    <li class="footer__link p-0-20 wp50"><a href="./homeworks-answers.html" title="Homework Answers">Homework Answers</a></li>
+                                    <li class="footer__link  p-0-20 wp50"><a href="/ask-a-question" title="Ask a Question" rel="nofollow">Ask a Question</a></li>                    
+                                    <li class="footer__link p-0-20 wp50"><a href="/faq" title="FAQ" itemprop="url">FAQ</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./write.html" title="Contact Us" itemprop="url">Contact Us</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./privacy-policy.html" title="Privacy Policy" itemprop="url">Privacy Policy</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/dmca-notice" title="DMCA" itemprop="url">DMCA</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/terms-of-use" title="Terms of Use" itemprop="url">Terms of Use</a></li>
+                                </ul>        </div>
+                        <div class="display-flex ">
+                            Copyright © 2023&nbsp;<a  href="./index.html">Freelance</a></div>
+                            <div class="copyright copyright_company display-flex text-center p-10" style="line-height: 20px;">
+                                        Worbert Limited -  All right reserved.<br>
+                            20 Christou Tsiarta Elma 2, 22, 1077, Nicosia, Cyprus
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        #page-div{
+            background:#e8e0e031;
+
+        }
+        .bgback{
+
+            background: url(./images/bg-homework-v-2.png);
+        }
+        .bg-manner{
+
+            background: url(./images/bg-inner.png);
+            background-size: cover;
+        }
+        .page-lower{
+
+            background: url(./images/bg-inner.png);
+        }
+    </style>
+
+
+    
+
+    <script src="/static/js/jQuery.js"></script>
+    <script src="/static/js/freelance.js"></script>
+    <script>
+      var back = document.querySelector("#back");
+      const url = window.location.href
+
+      back.addEventListener("click", ()=>{
+
+          const parsedUrl = new URL(url)
+          const searchParams = parsedUrl.searchParams 
+          const currentPage = searchParams.get("page")
+          if(isNaN(currentPage) ||currentPage === null)
+          {
+            alert(0)
+          }
+          else
+          {
+            if(currentPage>1)
+            {
+                var newPage = currentPage -1 
+                searchParams.set("page", newPage)
+                parsedUrl.search = searchParams.toString()
+                const newUrl = parsedUrl.toString()
+                
+                window.location.assign(newUrl)
+            }
+          }
+      })
+
+
+
+      $(document).ready(()=>{
+        var pager= window.location.search.indexOf("page=");
+        console.log(pager)
+        var all = document.querySelectorAll(".pagination-div a")
+        
+
+        if(pager == -1)
+        {
+
+            console.log(pager)
+        }
+        else
+        {
+            for(var i=0; i<all.length; i++)
+            {
+                //console.log(window.location.search)
+
+                if(all[i].getAttribute("href") == window.location.search)
+                {
+                    console.log(all[i].parentElement.children[0].classList.add("activepage"))
+                    
+                }
+                else
+                {
+                console.log(1)
+
+                }
+
+
+            }
+
+        }
+
+        
+    });
+
+    </script>
+    <script>
+        
+        function toogleSearch()
+        {
+            $( ".search" ).toggleClass( "searchtransition" )
+            $( ".search-mobile" ).toggleClass( "searchtransition" )
+
+            
+        }
+
+
+
+          
+
+          setInterval(()=>{
+            if(screen.width > 888)
+            {
+                $(".mobile").addClass("hide-m")
+            }
+            else
+            {
+                $(".mobile").removeClass("hide-m")
+
+            }
+          }, 10);
+          
+    </script>
+
+</body>
+</html>

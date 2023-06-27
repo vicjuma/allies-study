@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/nav.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        header{
+            background: #fff !important;
+
+            margin-bottom:400px;
+        }
+        
+    </style>
+    <div class="container">
+        <header class="b">
+          <nav>
+            <input type="checkbox" onclick="setTheme()" name="theme" id="theme">
+            <div class="navigation-bar-wrapper">
+                <input type="checkbox"  name="openandclose" id="openandclose">
+                <div class="portfolio-logo logo">
+                    <a href="/">
+                        <h1>STUDYALLIES</h1>
+                    </a>
+                </div>
+                <ul class="navigation-bar-links">
+                    <li><a href="/how/it/works">How it Works</a></li>
+                    <li><a href="/homework/answers">Homework Answers</a></li>
+                    <li><a href="/ask/a/question">Ask a Question</a></li>
+                    <li><a href="/top/tutors">Top Tutors</a></li>
+                    <li><a href="/faqs">FAQ</a></li>
+                    <li id="signupmodal" onclick="openM()" class="cursor-pointer p-10-20">
+                        <p>Sign In</p>
+                    </li>
+                    <li><i   onclick="toogleSearch()" class="bx bx-search mob"></i></li>
+
+                    <div class="search b-r-10">
+                        <input class="p-l-10" type="text" placeholder="Search...">
+                        <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                    </div>
+                </ul>
+                
+                
+                <div class="mobile" style="display: flex;gap:10px;">
+                    <li class="s-icon"><i onclick="toogleSearch()" class="bx bx-search"></i></li>
+                    <label id="open" for="openandclose" class="p-l-10" >
+                        <div class="">
+                            <div class="menu"></div>
+                            <div class="menu mid"></div>
+                            <div class="menu"></div>
+                        </div>
+                    </label>
+
+                    <div class="search-mobile b-r-10 ">
+                        <input class="p-l-10" type="text" placeholder="Search...">
+                        <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+        </header>  
+    </div>
+    <div class="p-47"></div>
+    <div class="mo-signup"></div>    
+
+    <div class="page-div w-p-96 m-a">
+        <div class="bs col-11 m-a p-t-20">
+            <div class="display-flex-normal fwm">
+                <div class="col-3 col-m-8 col-s-8 b-r">
+                    
+                    <div class="p-10-25 b-b">
+                        <h3>For Students</h3>
+                        <div class="buttons">
+                            <p class="cursor-pointer p-10-0 faqs-btn" id="how-it-works-btn" onclick="tab(event, 'how-does-it-work', 'faqs-btn', 'faqAccor', 'FAQLocal')">How does it work?</p>
+                            <p class="cursor-pointer p-10-0 faqs-btn" id="payments-btn"  onclick="tab(event, 'payments', 'faqs-btn', 'faqAccor', 'FAQLocal')">Payments</p>
+
+                            <p class="cursor-pointer p-10-0 faqs-btn" id="rules-btn"  onclick="tab(event, 'rules', 'faqs-btn', 'faqAccor', 'FAQLocal')">Rules</p>
+
+                        </div>
+                    </div>
+
+                    <div class="p-20-25 b-b">
+                        <h3>For Tutors</h3>
+                        <div class="buttons">
+                            <p class="cursor-pointer p-10-0 faqs-btn" id="tutor-how-it-works-btn" onclick="tab(event, 't-how-does-it-work', 'faqs-btn', 'faqAccor', 'FAQLocal')">How does it work?</p>
+
+                            <p class="cursor-pointer p-10-0 faqs-btn" id="t-rules-btn"  onclick="tab(event, 't-rules', 'faqs-btn', 'faqAccor', 'FAQLocal')">Rules and Regulations</p>
+                        </div>
+                    </div>
+
+                    <div class="p-20-25 ">
+                        <div class="buttons">
+                            <p class="cursor-pointer p-10-0 faqs-btn" id="emails-chats-btn"  onclick="tab(event, 'emails-chats', 'faqs-btn', 'faqAccor', 'FAQLocal')">Emails and Chats</p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-9">
+                    <div class="">
+                        <div class="">
+                            <div id="how-does-it-work" class="faqAccor">
+                                <div class="p-15-0">
+                                    <h1> HOW DOES IT WORK?</h1>
+                                </div>
+                                <div class="p-10-0">
+                                   <p class="fade">
+                                    Here is the new step-by-step process:
+                                   </p>
+                                </div>
+                                  <div class="listing">
+                                    <div >
+                                        <p class="faqIco fade">Post your question without advance payment – simply complete a form and let the tutors know about your assignments.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="faqIco fade">You will receive proposals from tutors to complete your assignment. Chat with the tutors who applied for your order, discuss their educational background, professional experience, and writing style.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="faqIco fade">Choose the tutor you prefer and reserve the money on your StudyDaddy account. You're not paying the tutor directly.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="faqIco fade">Communicate with your tutor as work progresses and check the answer when it's posted. You can ask the tutor for revisions once the answer is posted.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="faqIco fade">Once you are satisfied with the answer, complete your order and rate your tutor to share your positive experience with other students.</p>
+                                      </div>
+                                  </div>
+                                  <div class="p-10-0">
+                                    <p class="fade">If you're out of time, you can also buy the answer posted by the tutor without previous proposals and chats. You cannot communicate with the tutor on such order and ask for a paper revision, so please check the preview of the answer carefully.</p>
+                                  </div>
+                            </div>
+                            <div id="t-how-does-it-work" class="faqAccor">
+                                <div class="p-15-0">
+                                    <h1> HOW DOES IT WORK?</h1>
+                                </div>
+                                <div class="p-20-0">
+                                    <h3>
+                                        I WOULD LIKE TO BECOME A TEACHER AT STUDYDADDY.COM. WHAT SHOULD I DO?
+                                    </h3>
+                                </div>
+                                <div class="p-b-15">
+                                    <p class="fade">
+                                        We are happy to see you in our team! Please complete the registration process and answer our questions. The key to being successful at our platform and maintaining a solid reputation is gaining good reviews and rankings. More tips can be found below.
+Several tips to increase your salary
+
+
+                                    </p>
+                                </div>
+                                <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">Make communication your routine. We offer convenient private messaging for that. We recommend reaching out to a student after he/she has posted a question. The most popular time for posting new questions is US daytime, so make sure you are online to get the best offers. Even if you are new to the platform, this practice will help you get a competitive edge to kick-start your career at StudyDaddy.com.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Cherish long-term relationships with your students. As long as you exceed their expectations with your service, you have loyal customers who will come back to you. It’s common practice for students to cooperate with authors who helped them previously.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Train your reaction. It is essential to be fast in order to send a proposal to a student who has just posted a new assignment. Hence, you will have more chances to close the deal. You can use homework notifications in order to stay updated about new orders.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Don’t be afraid of complicated tasks. Such questions are sold more often and at a higher price than ordinary ones.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Do not go for the lowest price.If you provide a top quality answer, your student will be happy to reward your effort with a few extra dollars.</p>
+                                      </div>
+                                      
+                                </div>
+                                <div class="p-20-0">
+                                    <h3>HOMEWORK NOTIFICATIONS</h3>
+                                </div>
+                                <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">There is an option of getting homework notifications based on your field of study and the minimal rate you can accept. Please set up your notifications by going to "Subscribe" at your Account page.</p>
+                                      </div>
+                                </div>
+
+                                <div class="p-20-0">
+                                    <h3>                                HOW DO I NEED TO FILL IN MY PROFILE?
+                                    </h3>
+                                </div>
+                                <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">You need to fill in your profile and tell the students about you. Describe your knowledge, skills and tutoring experience in order to attract student to choose working with you. Add the study disciplines you can help with.</p>
+                                      </div>
+
+                                      <div>
+                                        <p class="fade faqIco">Add your profile picture to make it more attractive and remarkable.</p>
+                                      </div>
+                                </div>
+
+                                <div class="p-20-0">
+                                    <h3>HOW DO I GET RATINGS AND LABELS?</h3>
+                                </div>
+                                <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">You will be rated by the student for each completed order, so do your best to get 5-star feedback and score better ratings.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">You'll get the label for each completed action.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Email verified - is granted to newly registered tutor with email verification.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Payment method verified - is granted once you verify your PayPal email.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Diploma verified is granted to a tutor who completes his profile with valid credentials. Please note, that loaded documents are private and not visible to any other StudyDaddy user.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Phone number verified is granted when a tutor proofs valid phone number.</p>
+                                      </div>
+                                      
+                                </div>
+                                <div class="p-20-0">
+                                    <h3>HOW TO INCREASE SALES OF MY TUTORIALS?</h3>
+                                </div>
+                                <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">Add explained title to your tutorials with the course and university name.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Add full description to your tutorials and describe the task in details.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Add the text to your answer, not only attach the files. The student would see the encrypted text that cannot be used without purchase but becomes interested in the preview.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Please, do not add the answer in the description, it is visible to all users without purchase.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Note, that you don't need to encode your answer. Users can only access the full answer after the purchase.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Do not repost your posted answers as tutorials. The answers are available to another student to buy without copying your answer as tutorial.</p>
+                                      </div>
+                                      
+                                </div>
+                            </div>
+
+                            <div id="t-rules" class="faqAccor">
+                               <div class="p-20-0">
+                                <h1>RULES AND REGULATIONS</h1>
+                               </div>
+                               <div class="p-b-13">
+                                <p class="fade">
+                                    <strong>Do not share your personal contacts</strong>. This includes your first and last name, email address, Skype ID, phone number, social network usernames, etc.
+                                </p>
+                               </div>
+                               <div class="p-20-0">
+                                    <h3>DO NOT ASK THE STUDENT FOR LOGIN DETAILS TO UNIVERSITY WEBSITES.</h3>
+                               </div>
+                               <div class="p-15-0">
+                                <p class="fade">
+                                    The following is forbidden everywhere
+                                </p>
+                               </div>
+                               <div class="listing">
+                                <div>
+                                    <p class="fade faqIco">Advertising of any external homework assistance services.</p>
+                                  </div>
+                                  <div>
+                                    <p class="fade faqIco">Using rudeness and inappropriate language in your interactions.</p>
+                                  </div>
+                                  <div>
+                                    <p class="fade faqIco">Engaging in spamming activities of any kind.</p>
+                                  </div>
+                                  <div>
+                                    <p class="fade faqIco">Creating multiple accounts, as it is against the platform's rules.</p>
+                                  </div>
+                                  <div>
+                                    <p class="fade faqIco">Boosting your profile with fake reviews, which is strictly prohibited.</p>
+                                  </div>
+                                  <div>
+                                    <p class="fade p-15-0">Do not apply to the question if you are unable to provide the quality answer in time. Your StudyDaddy account can be blocked due to a large amount of refunds                                    .</p>
+                                    <p class="fade ">Due to the infraction of regulations your account would be suspended and your earned amount will be deducted.</p>
+                                  </div>
+                               </div>
+                            </div>
+
+                            <div id="emails-chats" class="faqAccor">
+                                <div class="p-20-0">
+                                    <h1>EMAILS AND CHATS</h1>
+                                </div>
+
+                                <div class="p-10-0">
+                                    <h3>EMAILS</h3>
+                                </div>
+                                <div class="p-15-0">
+                                    <p class="fade">
+
+                                        To ensure effective communication between learners and teachers, we have introduced a specific massage system. Once registered at our platform, you get access to your page. So all the messages sent to your StudyDaddy.com’s account are automatically redirected to the email you provided during registration. It facilitates communication so that you can stay in touch with our team whenever you need it.
+                                    </p>
+                                </div>
+                                <div class="p-15-0">
+                                    <h3>
+                                        CHAT</h3>
+                                </div>
+
+                                <p class="fade">
+                                    The following is forbidden everywhere
+                                </p>
+
+                                <div class="listing p-15-0">
+                                    <div>
+                                        <p class="fade faqIco">Advertising of any external homework assistance services.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Using rudeness and inappropriate language.</p>
+                                      </div>
+                                </div>
+                                <div class="p-15-0">
+                                    <p class="fade">
+                                        On our public chat is forbidden
+                                    </p>
+                                </div>
+                                <div class="listing">
+                                    <div class="fade faqIco">
+                                    <p>Spam of any kind</p>
+                                    </div>
+
+                                    <div class="fade faqIco">
+                                    <p>Communicating in any other language than English</p>
+                                    </div>
+
+                                    <div class="fade faqIco">
+                                    <p>Discrediting and fighting with other chat participants</p>
+                                    </div>
+                                </div>
+
+                                <div class="p-15-0">
+                                    <p class="fade">
+                                        If you see other users disrespecting the rules, please contact our chat admin to ban them
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="payments" class="faqAccor">
+                                <div class="p-15-0">
+                                    <h1> Payments</h1>
+
+                                </div>
+                                <div class="p-10-0">
+                                   <h3>HOW MUCH DOES IT COST?</h3>
+                                </div>
+                                  <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">We don't charge a penny for registration.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">You can post homework for free.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Teachers/authors set prices for the answers you need. Choosing the best author/price is solely up to you.</p>
+                                      </div>
+                                      
+                                  </div>
+                                  <div class="p-20-0">
+                                    <h3>HOW CAN I PAY FOR YOUR SERVICE IF I DON’T HAVE A PAYPAL ACCOUNT?</h3>
+                                  </div>
+
+                                  <div class="p-b-10">
+                                    <p class="fade">
+                                        It is possible to pay with a debit/credit card using PayPal system. However, having an account or registering for it is not necessary.
+
+                                    </p>
+                                  </div>
+
+                                  <div class="p-b-10">
+                                    <p class="fade">
+                                        Here is how you can do this:
+
+
+                                    </p>
+                                  </div>
+                                  <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">After selecting an answer you are willing to buy, click "Pay", which will redirect you to the PayPal website.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Choose an option of paying with a credit or a debit card.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Continue by adding all the necessary information, agree with terms and conditions, and finalize your payment.</p>
+                                      </div>
+                                      
+                                  </div>
+                                  <div class="p-20-0">
+                                    <h3>WHAT IF YOUR HOMEWORK ASSISTANCE DIDN’T MEET MY EXPECTATIONS?</h3>
+                                  </div>
+                                  <div class="p-10-0">
+                                    <p class="fade">If you're out of time, you can also buy the answer posted by the tutor without previous proposals and chats. You cannot communicate with the tutor on such order and ask for a paper revision, so please check the preview of the answer carefully.</p>
+                                  </div>
+
+                                  <div class="p-20-0">
+                                    <h3>OUR PROMISE TO GIVE YOUR MONEY BACK</h3>
+                                  </div>
+                                  <div class="p-10-0">
+                                    <p class="fade">
+
+                                        You can get a full reimbursement in case the answer is not correct/full. However, you will have to tell us what part of the answer is wrong by opening a dispute within two days after receiving it. When buying answers to your specific question, you may not be eligible for monetary reimbursement.</p>
+                                  </div>
+
+                                  <div class="p-20-0">
+                                    <h3>
+                                        
+                                        OFF-SITE PAYMENTS</h3>
+                                  </div>
+                                  <div class="p-10-0">
+                                    <p class="fade">In case a teacher is trying to convince you to make an off-site payment, stay alert. Such transactions are insecure since they are held without any protection/supervision from the platform. In such a way, you may become a victim of a fraud, so please do not make any off-site payments.</p>
+                                  </div>
+
+                            </div>
+
+                            <div id="rules" class="faqAccor">
+                                <div class="p-15-0">
+                                    <h1>Rules</h1>
+
+                                </div>
+
+                                <div class="listing">
+                                    <div>
+                                        <p class="fade faqIco">Academic Integrity</p>
+                                        <p class="fade m-l-40">We emphasize that the answers you get from our teachers can be used only as study guides and references for exams. Such materials are very effective when preparing for important tests. Please note that submitting our answers as your own is not allowed, as it will be considered a violation of academic integrity, which in turn may lead to serious consequences.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Copyright</p>
+                                        <p class="fade m-l-40">StudyDaddy.com works in accordance with DMCA 512C. It means that sharing, uploading, or using copyrighted content without authors' permission is forbidden. Whenever you have doubts, it is better to play safe: identify the names of authors, carefully re-write titles, and use exact IDs of your assignment.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Don't Violate the Law</p>
+                                        <p class="fade m-l-40">Please do not use this service in case this action is proclaimed illegal by a law or statute in the jurisdiction of your area.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Exchange of Personal Details</p>
+                                        <p class="fade m-l-40">Please remember that providing your personal data is forbidden on StudyDaddy; it may undermine your privacy. Therefore, we encourage you to use only established means of communication and do not provide your individual contact details to anyone. Due to the infraction of regulations, your account would be suspended, and you will not be covered by the refund policy.</p>
+                                      </div>
+                                      
+                                      <div>
+                                        <p class="fade faqIco">Questions with Required Information</p>
+                                        <p class="fade m-l-40">If your order is late because you did not provide some required information or materials on time, then you cannot claim a refund based on lateness. Please be advised that it is very important to provide requirements at the time you place your order.</p>
+                                      </div>
+                                      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+
+    
+
+    <script src="/static/js/jQuery.js"></script>
+    <script src="/static/js/freelance.js"></script>
+    <script>
+        function toogleSearch()
+        {
+            $( ".search" ).toggleClass( "searchtransition" )
+            $( ".search-mobile" ).toggleClass( "searchtransition" )
+
+            
+        }
+
+        window.onscroll = ()=>{
+
+            
+            if(document.body.scrollTop > 40 || document.documentElement.scrollTop > 40)
+            {
+                $("header").addClass("headerBg")
+            }
+
+            else
+            {
+                $("header").removeClass("headerBg")
+
+            }
+          }
+          if(screen.width > 888)
+          {
+              $(".mobile").addClass("hide-m")
+          }
+          else
+          {
+              $(".mobile").removeClass("hide-m")
+
+          }
+
+          setInterval(()=>{
+            if(screen.width > 888)
+            {
+                $(".mobile").addClass("hide-m")
+            }
+            else
+            {
+                $(".mobile").removeClass("hide-m")
+
+            }
+          }, 1000);
+    </script>
+</body>
+</html>

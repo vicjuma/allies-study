@@ -1,0 +1,247 @@
+.my-page__nav-link {
+    color: purple;
+}
+
+.my-page__nav-notification {
+    font-size: 80%;
+    font-weight: 600;
+}
+
+.my-page__nav-notification_type_link .fa {
+    font-size: 14px;
+}
+
+.account-item__price div:nth-child(1) {
+    display: block;
+    font-size: 18px;
+    color: #333333;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.accounting-item__price-caption {
+    font-size: 12px;
+    color: #777d86;
+    line-height: 16px;
+}
+
+.accounting-item__label {
+    display: inline-block;
+    vertical-align: baseline;
+    border-radius: 12px 12px 12px 12px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 1px 10px 0;
+    line-height: 1.5;
+    margin: 3px 0;
+}
+
+.accounting-item__label_color_blue {
+    background-color: purple;
+}
+
+.form__footer a {
+    font-size: 14px;
+}
+
+.transactions_faq {
+    padding: 20px 0 60px;
+}
+
+.card .body .btns.btns_custom {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.card .body .btns.btns_custom span:nth-child(1) {
+    margin-right: 20px;
+}
+
+.btn.btn-green.button_long_slim {
+    line-height: 1 !important;
+}
+
+.all-stud__tabs-content-item {
+    margin-bottom: 35px;
+}
+
+.js-a-passport, .js-a-docks {
+    font-size: 14px;
+}
+
+.account__info-block_type_inline {
+    font-size: 16px;
+}
+
+#tutor-reviews .no-reviews {
+    text-align: center;
+    padding: 110px 0;
+    color: #999999;
+    font-size: 20px;
+}
+
+.transactions_block .my-page__table tbody td:nth-child(4) a,
+.tutorials_block .my-page__table tbody td:nth-child(4) a,
+.support_block .my-page__table tbody td:nth-child(3) a
+{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.finished-page__files a {
+    line-height: 1.5;
+}
+
+@media (max-width: 1199px) {
+    #tutor-reviews .no-reviews {
+        padding: 0;
+    }
+}
+
+@media (max-width: 1100px) {
+    .my-page__nav-link {
+        color: #717171;
+    }
+}
+
+@media (max-width: 1024px) {
+    .card .card_proposal_item {
+        width: 100%;
+    }
+
+    .card .body .answer {
+        margin-bottom: 10px;
+    }
+
+    .card .body .btns.btns_custom span:nth-child(1) {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 840px) {
+    input.accounting-form__control:not(.js-search-input) {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 767px) {
+    .account-item__price div:nth-child(1) {
+        position: relative;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    input.accounting-form__control {
+        max-width: 100%;
+    }
+    .accounting-form-child {width:100%;max-width:100%!important;}
+
+    .accounting-item__price-caption {
+        font-size: 14px;
+        margin: 3px 0 0;
+        font-weight: 600;
+    }
+
+    .accounting-item__label {
+        display: none;
+    }
+
+    .account-item__price {
+        padding: 4px 10px;
+        float: right;
+        width: 90px;
+    }
+
+    .accounting-item {
+        padding: 25px 100px 25px 10px;
+    }
+
+    #pagination-per-page-w2 select {
+        margin-top: 10px;
+    }
+
+    .my-page__list .empty {
+        font-size: 16px;
+    }
+
+    .account__page-heading {
+        margin-bottom: 20px;
+    }
+}
+
+#proposal-all-grid .my-page__table tbody td:nth-child(3) a {
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #2293ce;
+}
+
+.header {
+    background: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 1px solid #d0d4da;
+}
+
+.my-page__tabs-wrapper {
+    border-color: purple;
+}
+
+.autocompleter {
+    position: absolute;
+    background: #fff;
+    color: #222;
+    z-index: 1;
+    max-width:100%;
+}
+ul.autocompleter-list {
+    list-style: none;
+    padding: 0;
+}
+ul.autocompleter-list > li{
+    max-width:380px;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 16px;
+    position: relative;
+    margin: 0;
+    padding: 5px 1em 5px .4em;
+    cursor: pointer;
+    min-height: 0;
+    border-right: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    border-bottom:1px solid #f0f0f0;
+    transition: 0.05s all;
+    white-space: nowrap;
+
+}
+ul.autocompleter-list > li:hover {
+    color: purple;
+    border-bottom: 1px solid #d7eff9;
+}
+ul.autocompleter-list > li:nth-child(1){
+    border-top: 1px solid #aaa;
+    border-radius: 3px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+ul.autocompleter-list > li:nth-last-child(1), ul.autocompleter-list > li:nth-last-child(1):hover{
+    border-bottom: 1px solid #aaa;
+    border-radius: 3px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+input.accounting-form__control.js-search-input {max-width:100%}
+@media (max-width:767px) {
+    .homework-form .accounting-form .accounting-form-child {
+        padding:0;
+    }
+    .find-question__form {
+        position: relative;}
+    .autocompleter {max-width:100%;z-index:5;}
+    ul.autocompleter-list > li {white-space:normal; margin-right:0;
+        max-width: 100%;}
+}
+.accounting-form-child { width: 100%; max-width: 380px; display: inline-block; }

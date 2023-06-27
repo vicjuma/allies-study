@@ -1,0 +1,13 @@
+/* fallback */
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./g.woff2) format('woff2');
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+

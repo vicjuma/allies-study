@@ -1,0 +1,157 @@
+.bg{
+    background: url('../media/blackdoctors.jpg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.admin-bg{
+    background: url('../media/admin.jpg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.manager-bg{
+    background: url('../media/manager.jpg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.reset-bg{
+    background: url('../media/undraw_Forgot_password_re_hxwm.png');
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.h-100vh{
+    height:80vh;
+}
+.login-btn{
+    background: #181717;
+    color: #fff;
+}
+
+.link-url{
+    color: blue !important; 
+    padding: 0 3px 0;
+    border-right: 1px solid gray;
+}
+table{
+    border-radius: 20px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+.table-head{
+    background: #0665c4be;
+    color: #fff;
+}
+th{
+    padding: 15px 0;
+}
+th, td{
+    padding: 10px 0px;
+    text-align: center;
+}
+td{
+    font-weight: 300;
+    color: #979494;
+    font-size: 14px;
+}
+tr:nth-child(even) {
+    background-color: #f7f2f2;
+  }
+
+  .tab{
+    display: none;
+}
+.activeclass{
+    background: #0665c4be;
+    color: rgb(243, 243, 243);
+    font-size: 14px;
+}
+.btns{
+    transition: 0.2s all;
+}
+
+.action{
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+.action img{
+    width: 20px;
+    height: 20px;
+}
+
+.activeclassView{
+    border: 1px 1px 0 1px solid gray;
+    background: #000;
+}
+
+input{
+    width: 100%;
+}
+
+.Prescription input{
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+
+}
+
+.Prescription .b-one{
+    padding: 15px 20px;
+}
+.Prescription .l{
+    margin-left: 3px;
+}
+
+.Prescription .l:last-child{
+    margin-right: 3px;
+}
+
+.Prescription .div{
+    margin: 5px 3px;
+}
+
+select{
+    outline: none;
+}
+.links{
+    position: relative;
+    cursor: pointer;
+}
+.accordiontab{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+    position: relative;
+}
+
+.active-accordion{
+    color:black !important;
+}
+.accordion-panel{
+    background: #fff;
+    max-height: 0px;
+    
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+ .activeclassView{
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    border-bottom: none !important;
+}
+
+.display-none{
+    display: none;
+}
+
+.bg-btn{
+    background: blue !important;
+    color: #fff !important;
+}

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/nav.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        header{
+            background: #fff !important;
+
+            margin-bottom:400px;
+        }
+        
+    </style>
+    <div class="mo-signup"></div>    
+
+    <div class="container">
+        <header class="b">
+            <nav>
+                <input type="checkbox" onclick="setTheme()" name="theme" id="theme">
+                <div class="navigation-bar-wrapper">
+                    <input type="checkbox"  name="openandclose" id="openandclose">
+                    <div class="portfolio-logo logo">
+                        <a href="/">
+                            <h1>STUDYALLIES</h1>
+                        </a>
+                    </div>
+                    <ul class="navigation-bar-links">
+                        <li><a href="/how/it/works">How it Works</a></li>
+                        <li><a href="/homework/answers">Homework Answers</a></li>
+                        <li><a href="/ask/a/question">Ask a Question</a></li>
+                        <li><a href="/top/tutors">Top Tutors</a></li>
+                        <li><a href="/faqs">FAQ</a></li>
+                        <li id="signupmodal" onclick="openM()" class="cursor-pointer p-10-20">
+                            <p>Sign In</p>
+                        </li>
+                        <li><i   onclick="toogleSearch()" class="bx bx-search mob"></i></li>
+
+                        <div class="search b-r-10">
+                            <input class="p-l-10" type="text" placeholder="Search...">
+                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                        </div>
+                    </ul>
+                    
+                    
+                    <div class="mobile" style="display: flex;gap:10px;">
+                        <li class="s-icon"><i onclick="toogleSearch()" class="bx bx-search"></i></li>
+                        <label id="open" for="openandclose" class="p-l-10" >
+                            <div class="">
+                                <div class="menu"></div>
+                                <div class="menu mid"></div>
+                                <div class="menu"></div>
+                            </div>
+                        </label>
+
+                        <div class="search-mobile b-r-10 ">
+                            <input class="p-l-10" type="text" placeholder="Search...">
+                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                        </div>
+                    </div>
+                    
+                </div>
+            </nav>
+        </header>  
+    </div>
+    <div class="p-47"></div>
+
+    <div style="z-index: 1000 !important; margin-bottom:-490px;" class="prr mmm page-div  w-p-96 m-a">
+        <div class="bs p-b-40 col-11 bgwhite m-a p-t-20">
+            <div class="display-flex-normal">
+                <div class="col-9 b-r">
+                    <div class="p-20 ">
+                        <div class="p-b-20 p-l-20">
+                            <h2>TOP TUTORS</h2>
+                        </div>
+                        <div class="p-b-20 ">
+                           <div class="top-tutor ">
+
+                                <form action="" class="display-flex-normal fwm">
+                                    <div class="display-flex-normal fwm gap-10" style="flex: auto;">
+                                        <div class="b-one w-p-100  p-0-10 b-r-5">
+                                            <input type="text" placeholder="Question" name="search-question" class="p-10-0 b-n">
+                                            </div>
+                                            <div class="b-one w-p-100   p-0-10 b-r-5">
+                                                <select class="w-p-100 p-12 bg-inherit b-n" name="category">
+                                                    <option class="m-0-0" value="all-categories">All categories</option>
+                                                    <option value="accounting-homework-help">Accounting</option>
+                                                    <option value="algebra-homework-help">Algebra</option>
+                                                    <option value="applied-sciences-homework-help">Applied Sciences</option>
+                                                    <option value="architecture-and-design-homework-help">Architecture and Design</option>
+                                                    <option value="art-design-homework-help">Art &amp; Design</option>
+                                                    <option value="biology-homework-help">Biology</option>
+                                                    <option value="business-finance-homework-help">Business &amp; Finance</option>
+                                                    <option value="calculus-homework-help">Calculus</option>
+                                                    <option value="chemistry-homework-help">Chemistry</option>
+                                                    <option value="communications-homework-help">Communications</option>
+                                                    <option value="computer-science-homework-help">Computer Science</option>
+                                                    <option value="economics-homework-help">Economics</option>
+                                                    <option value="engineering-homework-help">Engineering</option>
+                                                    <option value="english-homework-help">English</option>
+                                                    <option value="environmental-science-homework-help">Environmental Science</option>
+                                                    <option value="article-writing-homework-help">Article Writing</option>
+                                                    <option value="film-homework-help">Film</option>
+                                                    <option value="foreign-languages-homework-help">Foreign Languages</option>
+                                                    <option value="geography-homework-help">Geography</option>
+                                                    <option value="geology-homework-help">Geology</option>
+                                                    <option value="geometry-homework-help">Geometry</option>
+                                                    <option value="health-medical-homework-help">Health &amp; Medical</option>
+                                                    <option value="history-homework-help">History</option>
+                                                    <option value="human-resource-management-homework-help">HR Management</option>
+                                                    <option value="information-systems-homework-help">Information Systems</option>
+                                                    <option value="law-homework-help">Law</option>
+                                                    <option value="literature-homework-help">Literature</option>
+                                                    <option value="management-homework-help">Management</option>
+                                                    <option value="marketing-homework-help">Marketing</option>
+                                                    <option value="math-homework-help">Math</option>
+                                                    <option value="numerical-analysis-homework-help">Numerical Analysis</option>
+                                                    <option value="philosophy-homework-help">Philosophy</option>
+                                                    <option value="physics-homework-help">Physics</option>
+                                                    <option value="precalculus-homework-help">Precalculus</option>
+                                                    <option value="political-science-homework-help">Political Science</option>
+                                                    <option value="psychology-homework-help">Psychology</option>
+                                                    <option value="programming-homework-help">Programming</option>
+                                                    <option value="science-homework-help">Science</option>
+                                                    <option value="social-science-homework-help">Social Science</option>
+                                                    <option value="statistics-homework-help">Statistics</option>
+                                                    </select>
+                                            </div>
+                                    </div>
+                                    <div class="button m-r-10 siteButton1">
+                                    <button class="b-n p-10-20 b-one b-r-5"><i class="bx bx-search"></i> SEARCH</button>
+                                    </div>  
+                                </form>
+                            </div>
+                        </div>
+                        <div class="b-b p-10-0">
+                            <div class="display-flex-normal space-between">
+                                <p>What we could find:</p>
+                                <span>556369 results</span>
+                            </div>
+                        </div>
+                        <div class="list-tutor m-b-30 p-20-0">
+                          <div class="question-div b-b p-t-20 p-b-30">
+                            <div class="qustion col-10">
+                                <p>
+                                    <a class="cutstom-link" href="./question.html">
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ipsum quasi ipsam, magni commodi nesciunt aperiam adipisci cumque, ipsa error quibusdam recusandae? Eveniet facere commodi dolores non labore maxime expedita!
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="pricing col-2 col-s-12">
+                                <div class=" pbox text-center">
+                                    <h3 class="f-w-600">$10.00</h3>
+                                    <p class="p-7-0 fade">English</p>
+                                    <span class="dn f-button">
+                                        Waiting for answer
+                                    </span>
+                                </div>
+                            </div>
+                          </div>
+
+
+                          <div class="question-div b-b p-t-20 p-b-30">
+                            <div class="qustion col-10">
+                                <p><a class="cutstom-link" href="./answeredquestion.html">
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ipsum quasi ipsam, magni commodi nesciunt aperiam adipisci cumque, ipsa error quibusdam recusandae? Eveniet facere commodi dolores non labore maxime expedita!
+                                </a></p>
+                            </div>
+                            <div class="pricing col-2 col-s-12">
+                                <div class=" pbox text-center">
+                                    <h3 class="f-w-600">$15.00</h3>
+                                    <p class="p-7-0 fade">Accounting</p>
+                                    <span class="dn f-button answered">
+                                        Answered
+                                    </span>
+                                </div>
+                            </div>
+                          </div>
+
+                          
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-3 dn">
+                    
+                    <div class="p-5-25 b-l">
+                         <div class="w-p-100" style="max-width: 100%; box-sizing: border-box !important;">
+                            <div class="p-0">
+                                <p class="f-w-500 p-b-15">HAVE A SIMILAR QUESTION?</p>
+                            </div>
+                            <div class="w-p-100" style="max-width: 100%; box-sizing: border-box;">
+                                <textarea name="" placeholder="type your question here to get some help now!" id="" class="p-10 b-n b-one b-r-4" style="width: 91% !important;" rows="10"></textarea>
+                            </div>
+                            <div class="siteButton p-t-20">
+                                <button class="w-p-100 " style="padding: 12px !important; font-size:20px !important;">Continue to post <span class="arrow-forward-normal"></span> </button>
+                            </div>
+                            <div class="text-center p-15-0 b-b ">
+                                <small class="fade">Continue to edit or attach image(s).</small>
+                            </div>
+
+                            <div class="p-0 ">
+                                <div class="pr">
+                                    <div class=" p-l-22 m-l-10 ">
+                                        <div class="p-10-0">
+                                            <p class="f-w-600">
+                                                FAST AND CONVENIENT
+        
+                                            </p>
+                                        </div>
+                                        <div class="image-banner">
+                                            <img src="/static/images/sb_icon1.svg" alt="">
+                                        </div>
+                                        <div class="myb">
+                                            <p class="fade">
+                                                Simply post your question and get it answered by professional tutor within 30 minutes. It's as simple as that!
+        
+                                            </p>
+                                        </div>
+        
+        
+                                    </div>
+                                </div>
+        
+                                <div class="pr">
+                                    <div class=" p-l-20 m-l-10">
+                                        <div class="p-10-0">
+                                            <p class="f-w-600 f-s-15">
+                                                ANY TOPIC, ANY DIFFICULTY
+        
+                                            </p>
+                                        </div>
+                                        <div class="image-banner">
+                                            <img src="/static/images/sb_icon2.svg" alt="">
+                                        </div>
+                                        <div class="myb">
+                                            <p class="fade">
+                                                We've got thousands of tutors in different areas of study who are willing to help you with any kind of academic assignment, be it a math homework or an article.
+        
+                                            </p>
+                                        </div>
+        
+        
+                                    </div>
+                                </div>
+        
+                                <div class="pr">
+                                    <div class=" p-l-22 m-l-10">
+                                        <div class="p-10-0">
+                                            <p class="f-w-600 f-s-15">
+                                                
+        100% SATISFIED STUDENTS
+        
+                                            </p>
+                                        </div>
+                                        <div class="image-banner">
+                                            <img src="/static/images/sb_icon3.svg" alt="">
+                                        </div>
+                                        <div class="myb">
+                                            <p class="fade">
+        
+        
+        Join 3,4 million+ members who are already getting homework help from StudyDaddy!
+        
+                                            </p>
+                                        </div>
+        
+        
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         
+
+                          
+                         
+                    </div>
+
+                   
+
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="p-20-0 display-flex">
+            <div class="pagination">
+                <div class="pageing display-flex">
+                    <div class="controles m-0-2">
+                        <div class=" b-b-r-r-20 b-t-r-r-20 b-t-l-r-20 page-icon">
+                            1
+                        </div>
+                    </div>
+                    <div class="controles m-0-2">
+                        <div class=" b-b-l-r-20 b-b-r-r-20 b-t-r-r-20 b-t-l-r-20 page-icon">
+                            1
+                        </div>
+                    </div>
+
+                    <div class="controles m-0-2">
+                        <div class=" b-b-l-r-20 b-b-r-r-20 b-t-r-r-20 b-t-l-r-20 page-icon">
+                            2
+                        </div>
+                    </div>
+
+                    <div class="controles m-0-2">
+                        <div class="b-b-l-r-20 b-b-r-r-20 b-t-r-r-20 b-t-l-r-20 page-icon">
+                            3
+                        </div>
+                    </div>
+                    <div class="controles m-0-2">
+                        <div class=" b-b-r-r-20 b-t-r-r-20 b-t-l-r-20 page-icon">
+                            1
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .homeworks
+        {
+            padding-top: 470px;
+            
+            margin-bottom: -700px;
+            background: url(./images/bg-homework-v-2.png) no-repeat center;
+            background-size:cover;
+
+        }
+
+    </style>
+  
+
+    <div class="homeworks ">
+        <div class="display-flex-normal p-t-100  column w-p-92 m-a">
+            <div class="after-center">
+                <h2 class="text-center">HOMEWORK CATEGORIES
+                </h2>
+            </div>
+
+            <div class="display-flex col-9 m-a">
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>A</h2>
+                                <li><a href="#">Accounting</a></li>
+                                <li><a href="#">Algebra</a></li>
+                                <li><a href="#">Applied Sciences</a></li>
+                                <li><a href="#">Architecture and Design</a></li>
+                                <li><a href="#">Art &amp; Design</a></li>
+                                <li><a href="#">Article Writing</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>B</h2>
+                                <li><a href="#">Biology</a></li>
+                                <li><a href="#">Business</a></li>
+
+
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>C</h2>
+                                <li><a href="#">Finance</a></li>
+                                <li><a href="#">Calculus</a></li>
+                                <li><a href="#">Chemistry</a></li>
+                                <li><a href="#">Communications</a></li>
+                                <li><a href="#">Computer Science</a></li>
+                            </ul>
+
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>E</h2>
+                                <li><a href="#">Economics</a></li>
+                                <li><a href="#">Engineering</a></li>
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Environmental Science</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>F</h2>
+                                <li><a href="#">Film</a></li>
+                                <li><a href="#">Foreign Languages</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>G</h2>
+                                <li><a href="#">Geography</a></li>
+                                <li><a href="#">Geology</a></li>
+                                <li><a href="#">Geometry</a></li>
+                            </ul>
+
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>H</h2>
+                                <li><a href="#">Health &amp; Medical</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">HR Management</a></li>  
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>I</h2>
+                                <li><a href="#">Information Systems</a></li>
+                                
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>L</h2>
+                                <li><a href="#">Law</a></li>
+                                <li><a href="#">Literature</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>M</h2>
+                                <li><a href="#">Management</a></li>
+                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">Math</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>N</h2>
+                                <li><a href="#">Numerical Analysis</a></li>
+
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>P</h2>
+                                <li><a href="#">Philosophy</a></li>
+                                <li><a href="#">Physics</a></li>
+                                <li><a href="#">Political Science</a></li>
+                                <li><a href="#">Precalculus</a></li>
+                                <li><a href="#">Programming</a></li>
+                                <li><a href="#">Psychology</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>S</h2>
+                               
+                                <li><a href="#">Science</a></li>
+                                <li><a href="#">Social Science</a></li>
+                                <li><a href="#">Statistics</a></li>
+                            </ul>
+
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+
+    <div class=" m-20 mmm" style="margin-top: 470px;">
+        <div class="col-9 bgwhite m-a bs b-t-r-r-30  b-t-l-r-30 b-b-r-r-30">
+            <div class="p-t-30">
+                <div class="after-center">
+                    <h2 class="text-center p-0-20">GET QUALIFIED ANSWER TO YOUR QUESTION ON STUDYDADDY
+                    </h2>
+                </div>
+            </div>
+            <div class="textess p-20-40">
+                <div>
+                    <p class="fade">Homework can become quite a tricky assignment, as you can be trapped in completing one simple task only because your don’t know how to answer a certain question properly. You can be the best student in the class but it doesn’t mean that you will never face tricky questions, which will make you look for answers days and nights, without making even a slightest step forward.</p>
+                  </div>
+                  <div>
+                    <p class="fade">You may look for necessary information online or ask your friends for help, but the best option to find answers on any subject is to contact a professional service, which knows exactly how a perfect homework should look like!</p>
+                  </div>
+                  <div>
+                    <p class="fade">StudyDaddy is a place that will help you find answers for homework regardless of the topic and its complexity. You can contact us to solve problems in math, history, psychology, and all other subjects without any inconveniences and delays. Every answer will be provided in a clear manner, and you will be able to get back to your assignment at once.</p>
+                  </div>
+                  <div>
+                    <p class="fade">You will probably be surprised that it is a free service, and after obtaining answers, they are posted on our website for other students to have direct access to them. In such a way, every scholar, regardless of their academic level, will be able to obtain all necessary homework answers without any charges and boundaries. There is also a private or confidential option when you get access to the best tutors, and they help you solve your questions individually. All of the answers they provide are original, fresh, and credible. Moreover, they always complete the task before the indicated deadline and without any flaws, which guarantees that your task will be as perfect as possible!</p>
+                  </div>
+                  <div>
+                    <p class="fade">Our main goal is to help students from all corners of the world find answers to any homework questions they may have! Our experienced tutors, outstanding editors, and friendly managers will always be here to assist you and provide support and a homework answer regardless of the time of day!</p>
+                  </div>
+                  <div>
+                    <p class="fade">You won’t find a more credible and reliable service, as we are ready to provide you with all guarantees, including safety and protection of data, additional materials, and much more! Just contact us to get more details, and you will never have to worry about finding homework answers again!</p>
+                  </div>
+                  <div class="text-center">
+                    <h1>Homework Answers Website</h1>
+                  </div>
+                  
+                  <div class="text-center">
+                    <h1>How to Find answers to homework?</h1>
+                  </div>
+                  
+                  <div class="text-center">
+                    <h1>For StudyDaddy There Are No Hard Questions</h1>
+                  </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="cta-3 col-10 m-a display-flex-normal " style="min-height: 70vh; align-items:center; justify-content: center;">
+        <div class="">
+            <div class="">
+                <div class="col-11 m-a text-center">
+                    <div class="p-20-0">
+                        <h1 class="">LEARN MORE EFFECTIVELY AND GET BETTER GRADES!</h1>
+                    </div>
+                    <div class="p-20">
+                        <div class="button siteButton1">
+                            <a href="./ask-question.html">
+                                <button class="p-14-30">ASK A QUESTION</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-t-0">
+        <div class="">
+            <div class="">
+                <div id="footer" class="footer  f-s-12 footer_type_my js-footer" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+                    <div class="" style="display: flex; flex-direction:column">
+                        <div class="col-10 m-a">
+                            <ul class=" p-20 footer__links ul-reset display-flex-normal space-between fwm" style="">
+                                    <li class="footer__link p-0-20 wp50"><a href="./homeworks-answers.html" title="Homework Answers">Homework Answers</a></li>
+                                    <li class="footer__link  p-0-20 wp50"><a href="/ask-a-question" title="Ask a Question" rel="nofollow">Ask a Question</a></li>                    
+                                    <li class="footer__link p-0-20 wp50"><a href="/faq" title="FAQ" itemprop="url">FAQ</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./write.html" title="Contact Us" itemprop="url">Contact Us</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./privacy-policy.html" title="Privacy Policy" itemprop="url">Privacy Policy</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/dmca-notice" title="DMCA" itemprop="url">DMCA</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/terms-of-use" title="Terms of Use" itemprop="url">Terms of Use</a></li>
+                                </ul>        </div>
+                        <div class="display-flex ">
+                            Copyright © 2023&nbsp;<a  href="./index.html">Freelance</a></div>
+                            <div class="copyright copyright_company display-flex text-center p-10" style="line-height: 20px;">
+                                        Worbert Limited -  All right reserved.<br>
+                            20 Christou Tsiarta Elma 2, 22, 1077, Nicosia, Cyprus
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="/static/js/jQuery.js"></script>
+    <script src="/static/js/freelance.js"></script>
+    <script>
+        function toogleSearch()
+        {
+            $( ".search" ).toggleClass( "searchtransition" )
+            $( ".search-mobile" ).toggleClass( "searchtransition" )
+
+            
+        }
+
+        window.onscroll = ()=>{
+
+            
+            if(document.body.scrollTop > 40 || document.documentElement.scrollTop > 40)
+            {
+                $("header").addClass("headerBg")
+            }
+
+            else
+            {
+                $("header").removeClass("headerBg")
+
+            }
+          }
+          
+
+          setInterval(()=>{
+            if(screen.width > 888)
+            {
+                $(".mobile").addClass("hide-m")
+            }
+            else
+            {
+                $(".mobile").removeClass("hide-m")
+
+            }
+          }, 10);
+          
+    </script>
+</body>
+</html>
