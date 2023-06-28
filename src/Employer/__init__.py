@@ -63,6 +63,10 @@ class StudentsRouter:
     def home(self, request: Request, user=Depends(manager.optional)):
         return templates.TemplateResponse('index.html', {"request": request, "user": user})
     
+    @students_endpoint.get("/auth/login", status_code=status.HTTP_200_OK)
+    def authLogin(self, request: Request, user=Depends(manager.optional)):
+        return templates.TemplateResponse('auth_login.html', {"request": request, "user": user})
+    
     @students_endpoint.post("/", status_code=status.HTTP_200_OK)
     async def post_home(self, request: Request, payload: LoginSchema):
         return self.student_handler.loginStudent(payload.dict())
@@ -90,20 +94,20 @@ class StudentsRouter:
         user_name = self.employerHandler.filterDb(username=username).first()
         print(payload)
         
-        if user_email:
+        if user_name and user_email:
             raise HTTPException(
                         status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Email already exists"
+                        detail="Username and Email already exist"
                     )
         elif user_name:
             raise HTTPException(
                         status_code=status.HTTP_400_BAD_REQUEST,
                         detail="Username already exists"
                     )
-        elif user_name and user_email:
+        elif user_email:
             raise HTTPException(
                         status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Username and Email already exist"
+                        detail="Email already exists"
                     )
         else:
             # Genereate user id

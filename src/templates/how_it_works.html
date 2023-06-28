@@ -100,50 +100,7 @@
     <body>
         <div class="mo-signup"></div>    
         <div class="container">
-            <header class="b">
-            <nav>
-                <input type="checkbox" onclick="setTheme()" name="theme" id="theme">
-                <div class="navigation-bar-wrapper">
-                    <input type="checkbox"  name="openandclose" id="openandclose">
-                    <div class="portfolio-logo logo">
-                        <a href="/">
-                            <h1>STUDYALLIES</h1>
-                        </a>
-                    </div>
-                    <ul class="navigation-bar-links">
-                        <li><a href="/how/it/works">How it Works</a></li>
-                        <li><a href="/homework/answers">Homework Answers</a></li>
-                        <li><a href="/ask/a/question">Ask a Question</a></li>
-                        <li><a href="/top/tutors">Top Tutors</a></li>
-                        <li><a href="/faqs">FAQ</a></li>
-                        <li id="signupmodal" onclick="openM()" class="cursor-pointer p-10-20">
-                            <p>Sign In</p>
-                        </li>
-                        <li><i   onclick="toogleSearch()" class="bx bx-search mob"></i></li>
-                        <div class="search b-r-10">
-                            <input class="p-l-10" type="text" placeholder="Search...">
-                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
-                        </div>
-                    </ul>
-                    <div class="mobile" style="display: flex;gap:10px;">
-                        <li class="s-icon"><i onclick="toogleSearch()" class="bx bx-search"></i></li>
-                        <label id="open" for="openandclose" class="p-l-10" >
-                            <div class="">
-                                <div class="menu"></div>
-                                <div class="menu mid"></div>
-                                <div class="menu"></div>
-                            </div>
-                        </label>
-
-                        <div class="search-mobile b-r-10 ">
-                            <input class="p-l-10" type="text" placeholder="Search...">
-                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
-                        </div>
-                    </div>
-                    
-                </div>
-            </nav>
-            </header>  
+            {% include 'partials/main_header.html' %} 
         </div>
         <div class="p-47"></div>
 

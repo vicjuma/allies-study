@@ -17,7 +17,9 @@
 
             margin-bottom:400px;
         }
-       
+        h2{
+            font-size: 14px;
+        }
     </style>
     <div class="container">
         <header class="b">
@@ -88,8 +90,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-8" style="">
-                    <div class="col-9 m-a">
+                <div class="col-10">
+                    <div class="col-12 m-a">
                         <div class="p-b-20 m-b-20">
                             <div class="p-40-20">
                                 
@@ -138,9 +140,9 @@
                                                     <div id="all" class="quizAccor">
                                                         {% for task in tasks %}
                                                         <tr>
-                                                            <td style="margin-right: 1rem;">{{ task.id[:5] }}</td>
+                                                            <td>{{ task.id[:5] }}</td>
                                                             <td>{{ task.progress_status}}</td>
-                                                            <td>{{ task.content[3:10] }}</td>
+                                                            <td>{{ task.content[:29]|safe }}</td>
                                                             <td class="dn">{{ task.topics }}</td>
                                                             <td>{{ task.timeline }}</td>
                                                             <td class="dn">{{ task.amount  }}</td>
@@ -175,105 +177,6 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <div class="col-2  dn">
-                    <div class="b-l b-b">
-                        <div class="prr">
-                            <div class="accountacc">
-                                <div class="container-p">
-                                    <input type="checkbox"  id="in">
-                                    <span class="checkmark-p"></span>
-                                </div>
-                            </div>
-                            <div class="p-t-20 p-l-30">
-                                <p>STEP 1</p>
-                                
-                                <label for="in" class="accordiontab cursor-pointer p-10-0 default-color">Ask a question</label>
-
-                                <div class="accordion-panel p-r-20">
-                                  <p class="fade p-10-0">
-                                    Type your question details, attach additional files, set up a deadline, and enter the amount you’re willing to pay for an answer.
-                                  </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="prr ">
-                            <div class="accountacc ">
-                                <div class="container-p">
-                                    <input type="checkbox"  id="step2">
-                                    <span class="checkmark-p"></span>
-                                </div>
-                            </div>
-                            <div class="p-t-20 p-l-30">
-                                <p>STEP 2</p>
-                                <label for="step2" class="accordiontab cursor-pointer p-10-0 default-color">Choose a tutor</label>
-                                <div class="accordion-panel p-r-20">
-                                  <p class="fade p-10-0">
-                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
-                                  </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="prr ">
-                            <div class="accountacc">
-                                <div class="container-p">
-                                    <input type="checkbox" id="step3">
-                                    <span class="checkmark-p"></span>
-                                </div>
-                            </div>
-                            <div class="p-t-20 p-l-30">
-                                <p>STEP 3</p>
-                                <label for="step3" class="accordiontab cursor-pointer p-10-0 default-color">Reserve money</label>
-                                <div class="accordion-panel p-r-20">
-                                  <p class="fade p-10-0">
-                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
-                                  </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="prr ">
-                            <div class="accountacc ">
-                                <div class="container-p">
-                                    <input type="checkbox"  id="step4">
-                                    <span class="checkmark-p"></span>
-                                </div>
-                            </div>
-                            <div class="p-t-20 p-l-30">
-                                <p>STEP 4</p>
-                                <label for="step4" class="accordiontab cursor-pointer p-10-0 default-color">Get your answer</label>
-                                <div class="accordion-panel p-r-20">
-                                  <p class="fade p-10-0">
-                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
-                                  </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="prr ">
-                            <div class="accountacc">
-                                <div class="container-p">
-                                    <input type="checkbox"  id="step5">
-                                    <span class="checkmark-p"></span>
-                                </div>
-                            </div>
-                            <div class="p-t-20 p-l-30">
-                                <p>STEP 5</p>
-                                <label for="step5" class="accordiontab cursor-pointer p-10-0 default-color">Give feedback</label>
-                                <div class="accordion-panel p-r-20">
-                                  <p class="fade p-10-0">
-                                    Tutors will send their proposals. Choose the one that meets your requirements in terms of time and money.
-                                  </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    
                 </div>
             </div>
         </div>
@@ -284,7 +187,7 @@
                 <div id="footer" class="footer  f-s-12 footer_type_my js-footer" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                     <div class="" style="display: flex; flex-direction:column">
                         <div class="col-10 m-a">
-                            <ul class=" p-20 footer__links ul-reset display-flex-normal space-between fwm" style="">
+                            <ul class=" p-20 footer__links ul-reset display-flex-normal space-between fwm">
                                     <li class="footer__link p-0-20 wp50"><a href="./homeworks-answers.html" title="Homework Answers">Homework Answers</a></li>
                                     <li class="footer__link  p-0-20 wp50"><a href="/ask-a-question" title="Ask a Question" rel="nofollow">Ask a Question</a></li>                    
                                     <li class="footer__link p-0-20 wp50"><a href="/faq" title="FAQ" itemprop="url">FAQ</a></li>

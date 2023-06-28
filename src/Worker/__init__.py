@@ -1,5 +1,6 @@
 from fastapi_restful.inferring_router import InferringRouter
 from fastapi_restful.cbv import cbv
+from fastapi.responses import RedirectResponse
 from src.Worker.utils import (
         TutorHandler,
     )
@@ -90,10 +91,11 @@ class TutorRouter:
         user_name = self.TutorHandler.filterDb(username=username).first()
         
         if user_email:
-            raise HTTPException(
-                        status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Email already exists"
-                    )
+            # raise HTTPException(
+            #             status_code=status.HTTP_400_BAD_REQUEST,
+            #             detail="Email already exists"
+            #         )
+            return RedirectResponse(url="/email/exists", status_code=status.HTTP_302_FOUND)
         elif user_name:
             raise HTTPException(
                         status_code=status.HTTP_400_BAD_REQUEST,
@@ -251,3 +253,7 @@ class TutorRouter:
         tutors = self.tutor_handle.getTutors()
         print(tutors)
         return templates.TemplateResponse('tutor_review.html', {"request": request})
+    
+    @tutor_endpoint.get("/tutor/support/write")
+    def requestSupport(self, request: Request):
+        return templates.TemplateResponse('contact_support.html', {"request": request})

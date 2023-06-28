@@ -158,12 +158,12 @@ class StudentsRouter:
         return resp
     
     @shared_endpoint.get("/how/it/works")
-    def getPrivateendpoint(self, request: Request):
+    def howItWorks(self, request: Request):
         return templates.TemplateResponse('how_it_works.html', {"request": request})
     
     @shared_endpoint.get("/ask/a/question")
-    def askAQuestion(self, request: Request):
-        return templates.TemplateResponse('ask_a_question.html', {"request": request})
+    def askAQuestion(self, request: Request, user=Depends(manager.optional)):
+        return templates.TemplateResponse('ask_a_question.html', {"request": request, "user": user})
     
     @shared_endpoint.get("/faqs")
     def FAQs(self, request: Request):
@@ -172,3 +172,7 @@ class StudentsRouter:
     @shared_endpoint.get("/permission/denied")
     def permission_denied(self, request: Request):
         return templates.TemplateResponse('403.html', {"request": request})
+    
+    @shared_endpoint.get("/email/exists")
+    def emailExists(self, request: Request):
+        return templates.TemplateResponse('auth.html', {"request": request})

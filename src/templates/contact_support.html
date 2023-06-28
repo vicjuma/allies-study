@@ -30,7 +30,7 @@
         <li class="my-page__nav-item ">
             <a class="my-page__nav-link" href="/account/balance"><span class="my-page__nav-title"><i class="fa fa-money	"></i>Balance</span><span class="my-page__nav-notification my-page__nav-notification_type_link balance_amount">$0.00</span></a>        </li>
 
-                <li class="my-page__nav-item active">
+                <li class="my-page__nav-item ">
             <a class="my-page__nav-link" href="/support"><span class="my-page__nav-title"><i class="fa fa-comments-o"></i>Support</span><span class="my-page__nav-notification "></span></a>        </li>
 
         <li class="my-page__nav-item ">
@@ -38,45 +38,63 @@
     </ul>
 </div>
 
-        <!-- page -->
         <section class="my-page">
             <iframe class="frame_for_sidebar_sizes" name="sidebar_frame" width=100% height=100%></iframe>
-            <div class="inner">
-                <div class="my-page__big-inner support_block">
+            <div class="form">
+                <h1 class="my-page__title text-center">Contact With Support Team</h1>
+                <form id="support-form" class="form support-page__form my-page__little-inner" action="" method="post">
+<input type="hidden" name="_csrf" value="b09uNVdtZEcaHChXDjUyCFwIKlgCCzEJLSMqciEgLggwKDhYbhgOMw==">
+                    <div class="form__row field-supportform-type required">
+<p class="form__label">Type:</p>
+<div class="custom-select support-page__type-select"><select id="supportform-type" class="js-subtype" name="SupportForm[type]">
+<option value="1">General question</option>
+<option value="2">Financial question</option>
+<option value="3">Technical question</option>
+</select></div>
 
-                    <!-- top -->
-                    <div class="support-student__top">
-                        <span class="support-student__top-text"><i class="fa fa-question-circle-o"></i> If you have any questions or queries, please contact us</span>
-                        <a class="button button_color_blue button_height_40px" href="/tutor/support/write">Request support</a>                    </div>
+<div class="help-block"></div>
+</div>
+                    <div class="form__row js-order-row field-supportform-orderid" style="display:none">
+<p class="form__label">Order id:</p>
+<select id="supportform-orderid" class="" name="SupportForm[orderId]">
+<option value="">Choose</option>
+</select>
 
-                    <div id="w0" class="grid-view"><table class="my-page__table my-page__table_type_hidden"><thead>
-<tr><th>ID</th><th>Type</th><th>Subject</th><th></th></tr>
-</thead>
-<tbody>
-<tr><td colspan="4"><div class="empty"><div class="my-page__table-empty">No queries have been created yet.</div></div></td></tr>
-</tbody></table></div>
-                    <!-- mobile -->
-                    <ul id="w1" class="my-page__list"><div class="empty"><div style="text-align: center">No queries have been created yet.</div></div></ul>
-                    <div class="pager">
-                                            </div>
+<div class="help-block"></div>
+</div>
+                    <div class="form__row field-supportform-subject required">
+<p class="form__label">Subject:</p>
+<input type="text" id="supportform-subject" class="data-hj-whitelist" name="SupportForm[subject]" data-hj-whitelist>
 
+<div class="help-block"></div>
+</div>
+                    <div class="form__row field-supportform-message required">
+<p class="form__label">Please, enter a brief description of the problem:</p>
+<textarea id="supportform-message" class="form-control data-hj-whitelist" name="SupportForm[message]" rows="10" data-hj-whitelist></textarea>
+
+<div class="help-block"></div>
+</div>
+                    <div class="form__row">
+                        <button type="submit" class="button button_color_blue button_size_medium button_height_40px">SEND</button>                    </div>
+                </form>
                 </div>
-            </div>
         </section>
         
+<div class="right-sidebar">
 
+</div>
     </div>
+</div>
 
     {% include 'partials/main_footer.html' %}
-    
-    
-    <div style="display: none;" id="socket-config" data-socket-url="wss://wss.studydaddy.com:8099" data-user-id="222180"></div>
-    
-    <script src="/static/js/jQuery.js"></script>
-    <script src="/static/tutor/scripts.min.js"></script>
-    
-    <script type="text/javascript"></script>
-    
-    
-    </body>
-    </html>
+
+
+<div style="display: none;" id="socket-config" data-socket-url="wss://wss.studydaddy.com:8099" data-user-id="222180"></div>
+
+<script src="/static/tutor/scripts.min.js"></script>
+
+<script type="text/javascript"></script>
+
+
+</body>
+</html>

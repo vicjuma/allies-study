@@ -372,7 +372,6 @@ function openM()
                                                     </div>
                                                 </div>
                                             </div>
-                                            <small style="color:red" id="usernameError">Hii</small>
                                             <div class="btn p-10-0 siteButton ">
                                                 <button class="w-p-100" id="studentSpinner">Register now</button>
                                             </div>
@@ -432,158 +431,23 @@ function openM()
     
     `;
 
-// Signup modal 
 
-
-    var mosignup =document.querySelector(".mo-signup");
+    const mosignup = document.querySelector(".mo-signup");
     mosignup.innerHTML = htm;
-    var modal = document.getElementById("myModal");
+
+    const modal = document.getElementById("myModal");
     modal.style.display = "block";
-    let emailError = document.getElementById("usernameError")
-    let loginError = document.getElementById("loginError")
-    let errmsg;
 
     autoPages("SignLocal", "login-btn");
 
 
-    var span = document.getElementsByClassName("close")[0];
+    const span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
-    modal.style.display = "none";
+      modal.style.display = "none";
     }
     window.onclick = function(event) {
         if (event.target == modal) {
-        modal.style.display = "none";
+          modal.style.display = "none";
         }
     }
-
-
-    // document.getElementById("studentSignup").addEventListener("submit", function (event) {
-    //     event.preventDefault();
-    //     const studentSpinner = document.getElementById("studentSpinner");
-    //     studentSpinner.classList.add("spinning");
-    //     const loginUrl = 'http://localhost:8000/students/login'
-      
-    //     var studentUsername = document.getElementById("studentUsername").value;
-    //     var studentEmail = document.getElementById("studentEmail").value;
-
-    //     const payload = { 
-    //         name: studentUsername, 
-    //         email: studentEmail, 
-    //         password: "" 
-    //     };
-
-    //     if(studentUsername === "" && studentEmail === ""){
-    //         errmsg = "Email and Username cannot be blank"
-    //         emailError.style.display = "block"
-    //         emailError.innerHTML = errmsg
-    //         studentSpinner.classList.remove("spinning");
-    //         return false;
-    //     }else if(studentUsername === ""){
-    //         errmsg = "Username cannot be blank"
-    //         emailError.style.display = "block"
-    //         emailError.innerHTML = errmsg
-    //         studentSpinner.classList.remove("spinning");
-    //         return false;
-    //     }else if(studentEmail === ""){
-    //         errmsg = "Email cannot be blank"
-    //         emailError.style.display = "block"
-    //         emailError.innerHTML = errmsg
-    //         studentSpinner.classList.remove("spinning")
-    //         return false;
-    //     }else if(!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(studentEmail))){
-    //         errmsg = `${studentEmail} is not a valid email`
-    //         emailError.style.display = "block"
-    //         emailError.innerHTML = errmsg
-    //         studentSpinner.classList.remove("spinning");
-    //         return false;
-    //     }else if(!(/^([a-z0-9]|[-._](?![-._])){4,20}$/.test(studentUsername))){
-    //         errmsg = `${studentUsername} is not a valid username`
-    //         emailError.style.display = "block"
-    //         emailError.innerHTML = errmsg
-    //         studentSpinner.classList.remove("spinning");
-    //         return false;
-    //     }
-    //     const url = 'http://localhost:8000/student';
-    //     const checkUserUrl = `${url}/${studentUsername}`;
-
-        // fetch(checkUserUrl)
-        // .then(response => {
-        //     if (!response.ok) {
-        //     throw new Error('Network response was not ok');
-        //     }
-        //     return response.json();
-        // })
-        // .then(user => {
-        //     if (user){
-        //         errmsg = `${studentUsername} is already in the database`
-        //         emailError.style.display = "block"
-        //         emailError.innerHTML = errmsg
-        //         studentSpinner.classList.remove("spinning");
-        //         return false;
-        //     }
-        // })
-        // .catch(error => {
-        //     console.error('Error fetching user:', error);
-        //     // Handle the error
-        // });
-
-          
-        // // ================ GET REQUEST ===========
-        // const checkExistEmailFunc = () => {
-        //     const url = 'http://localhost:8000/student';
-        //     const checkUserUrl = `${url}/${studentEmail}`;
-            
-        //     // Check if user exists in the database
-        //     fetch(`${checkUserUrl}`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        //     })
-        //     .then(response => response.json())
-        //     .then(user => {
-        //         if (user) {
-        //             if(user.email === studentEmail){
-        //                 errmsg = "A user with that email already exists"
-        //                 emailError.style.display = "block"
-        //                 emailError.innerHTML = errmsg
-        //                 studentSpinner.classList.remove("spinning");
-
-        //             }
-        //             console.log(errmsg)
-        //         // Handle existing user case here
-        //         } else {
-        //         // User does not exist, proceed with creating the user
-        //             fetch(url, {
-        //                 method: 'POST',
-        //                 headers: {
-        //                 'Accept': 'application/json',
-        //                 'Content-Type': 'application/json'
-        //                 },
-        //                 body: JSON.stringify(payload)
-        //             })
-        //             .then(response => response.json())
-        //             .then(data => {
-        //                 const msgInfo = document.getElementById("success");
-        //                 msgInfo.style.color = "green";
-        //                 emailError.style.display = "none"
-        //                 msgInfo.innerHTML = "User created successfully. Check your confirmation email on the inbox/spam"
-        //                 studentSpinner.classList.remove("spinning");
-        //             })
-        //             .catch(error => {
-        //             console.error('Error creating user:', error);
-        //             });
-        //         }
-        //     })
-        //     .catch(error => {
-        //         console.error('Error checking user:', error);
-        //         // Handle error while checking user here
-        //     });
-        // }
-        // checkExistEmailFunc();
-              
-    // })
 }
-
-const accessToken = localStorage.getItem('accessToken');

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./nav.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        header{
+            background: #fff !important;
+
+            margin-bottom:400px;
+        }
+        .question-list ul li a{
+          color:  #2b6dad;
+          font-size: 14px;
+          line-height: 14px;
+        }
+        .question-list ul li {
+          color: #9e9e9e;
+          font-size: 12px;
+          margin-bottom: 20px;
+        }
+        .status
+        {
+          background: #ebebf9;
+          color: #808393;
+          display: inline-block;
+          vertical-align: baseline;
+          border-radius: 12px 12px 12px 12px;
+          font-weight: 500;
+          font-size: 13px;
+          margin-right: 10px;
+          padding: 1px 10px 0;
+          line-height: 1.6;
+      
+        }
+        .question-items p
+        {
+          font-size: 12px;
+          color: #9e9e9e;
+        }
+        .head
+        {
+          position: relative;
+          font-family: Lato,sans-serif;
+          text-transform: uppercase;
+          font-size: 12px;
+          display: flex;
+          justify-content:space-between;
+          font-weight: 500 !important;
+          margin-bottom: 5px;
+          padding: 20px 0 0 0;
+          color: #999;
+        }
+
+        .question-body h1 {
+          margin-bottom: 0;
+          font-weight: 400;
+          font-size: 22px;
+          line-height: normal;
+          color: #333;
+          overflow-wrap: break-word;
+      }
+    </style>
+    <div class="mo-signup"></div>    
+
+    <div class="container">
+        <header class="b">
+            <nav>
+                <input type="checkbox" onclick="setTheme()" name="theme" id="theme">
+                <div class="navigation-bar-wrapper">
+                    <input type="checkbox"  name="openandclose" id="openandclose">
+                    <div class="portfolio-logo logo">
+                        <a href="./index.html">
+                            <h1>Freelance Bay</h1>
+                        </a>
+                    </div>
+                    <ul class="navigation-bar-links">
+                      <li><a href="./how.html">How it Works</a></li>
+                        <li><a href="./homeworks-answers.html">Homework Answers</a></li>
+                        <li><a href="./ask-question.html">Ask a Question</a></li>
+                        <li><a href="./toptutor.html">Top Tutors</a></li>
+                        <li><a href="./FAQ.html">FAQ</a></li>
+                        <li id="signupmodal" onclick="openM()" class="cursor-pointer p-10-20">
+                            <p>Sign In</p>
+                        </li>
+                        <li><i   onclick="toogleSearch()" class="bx bx-search mob"></i></li>
+
+                        <div class="search b-r-10">
+                            <input class="p-l-10" type="text" placeholder="Search...">
+                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                        </div>
+                    </ul>
+                    
+                    
+                    <div class="mobile" style="display: flex;gap:10px;">
+                        <li class="s-icon"><i onclick="toogleSearch()" class="bx bx-search"></i></li>
+                        <label id="open" for="openandclose" class="p-l-10" >
+                            <div class="">
+                                <div class="menu"></div>
+                                <div class="menu mid"></div>
+                                <div class="menu"></div>
+                            </div>
+                        </label>
+
+                        <div class="search-mobile b-r-10 ">
+                            <input class="p-l-10" type="text" placeholder="Search...">
+                            <i onclick="toogleSearch()" class='bx bx-search p-r-10'></i>
+                        </div>
+                    </div>
+                    
+                </div>
+            </nav>
+        </header>  
+    </div>
+    <div class="p-40 b-b"></div>
+
+    <div style="z-index: 1000 !important; margin-bottom:-490px;" class="prr question-list mmm page-div top_text  w-p-96 m-a">
+        <div class="bs p-b-40 col-11 bgwhite m-a p-t-20">
+            <div class="display-flex-normal">
+                <div class="col-9 b-r">
+                    <div class="p-17-20 ">
+                        <div class="">
+                          <a href="" class="inline-link">StudyDaddy</a>/ <a class="inline-link" href="">Business & Finance</a>
+                        </div>
+                        <div class="">
+                          <div class="question-items">
+                            <div class="p-t-6 b-b p-b-10">
+                              <p>
+                                <span class="status">Waiting for answer</span>
+                                This question has not been answered yet. You can hire a professional tutor to get the answer.
+                              </p>
+                            </div>
+                          </div>
+                          
+                        </div>
+
+                        <div class="head">
+                            <div class="">
+                                QUESTION
+                            </div>
+                            <div class="date">
+                              <time datetime="2023-05-25 05:10">May 25, 2023</time>
+                            </div>
+                        </div>
+                        <style>
+                          #showMoreBtn
+                          {
+                           color: #2b6dad;
+                           border: none;
+                           background: none;
+                           cursor: pointer;
+                           padding: 15px 0;
+                           background: linear-gradient(rgba(212, 212, 212, 0.1), rgba(223, 223, 223, 0.2));
+                          }
+                         </style>                       
+                         <div id="content" style="height: 200px ; overflow: hidden;">
+                            
+                            <div class="p-20-0">
+                              <div class="question-body">
+                                <h1>in APA format and no less than 500 words, Discuss the importance of having excellent time management skills in order to deliver safe and efficient care in healthcare.</h1>
+                              </div>
+
+                              <p class="p-10-0">
+                                Write a 2- to 3-page memo to the CEO of the company you’ve been assessing throughout the course - Target Corporation, outlining your plan to create economic, social, and environmental value. In your memo, include the following items:
+                              </p>
+                            </div>
+                         </div>
+                         <button id="showMoreBtn" style="display: none;">Show More</button>
+                         
+                         
+                         <script>
+                           const contentElement = document.getElementById("content");
+                           const showMoreBtn = document.getElementById("showMoreBtn");
+                           const maxHeight = 200; // Set the maximum height threshold
+                           
+                           if (contentElement.scrollHeight > maxHeight) {
+                             showMoreBtn.style.display = "block";
+                           }
+                           showMoreBtn.addEventListener("click", function() {
+                             if (contentElement.style.height === "auto") {
+                               contentElement.style.height = maxHeight + "px";
+                               showMoreBtn.textContent = "Show More";
+                             } else {
+                               contentElement.style.height = "auto";
+                               showMoreBtn.textContent = "Show Less";
+                             }
+                           });
+                         </script>
+                         <div class="files-div">
+                            <div class="list-files">
+                                <div class="question-top__files has_files">
+                                    <span class="question-top__files-label">Files:</span>
+                                    <a href="/attachment/279438/Week+3+Porters+Five+Forces.docx">Week 3 Porters Five Forces.docx</a>, 
+                                
+                                
+                                
+                                    <a href="/attachment/279439/Week+4+Expanding+the+Organization.pptx">Week 4 Expanding the Organization.pptx</a>,
+                                    <a href="/attachment/279440/MGT+Week+5+Learning+Organizations+and+Value+Creation.docx">MGT Week 5 Learning Organizations and Value Creation.docx</a>                                
+                                </div>
+                            </div>
+                         </div>
+
+                         <div class="banner banner_new">
+                            <div class="banner_background">
+                                    <p class="banner_new-title">GET YOUR EXPERT ANSWER ON STUDYDADDY</p>
+                                    <p class="banner_description">Post your own question <br class="mob">and get a custom answer</p>
+                                <a class="js-button-create-account btn btn-blue" href="javascript:void(0);" onclick="ga('send', 'event', 'cta_button', 'cta_click');"><span>GET ANSWER</span><i class="fa fa-angle-right"></i></a>                            <div class="figure">
+                                    <img src="./images/girl_text_banner.png" alt="" class="LET'S ORDER THE BEST ASSIGNMENT SERVICES">
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="">
+                            <div class="">
+                              <div class="">
+                                <div class="related-questions">
+                        
+                                  <div class="title-2">Related Questions:</div>
+                                  <ul class="ul-reset p-20-0" style="font-size: 16px !important">
+                                    <li>
+                                    <span class="q-sign">Q: </span><a href="">InstructionsYou are to write no longer than a 7 page paper in proper APA 7th Edition format. For your paper, you will create a fictional character for a movie. The character should be in a management</a>            <i class="fa fa-angle-right"></i>
+                                </li>
+                                    <li>
+                                    <span class="q-sign">Q: </span><a href="">instructions: reply to each peer in 1 paragraph  peer 1: Nursing is based on evidence-based practice and if we can typically find research through scientific nursing journal articles online. Trying to</a>            <i class="fa fa-angle-right"></i>
+                                </li>
+                                    <li>
+                                    <span class="q-sign">Q: </span><a href="">What are the impact of national differences in political economy between countries with different approaches to the role of government in society?</a>            <i class="fa fa-angle-right"></i>
+                                </li>
+                                    <li>
+                                    <span class="q-sign">Q: </span><a href="">Working with students to examine their own data is common in the form of providing feedback, but the continued collection and assessment of data by students may be foreign to many teachers. Click on t</a>            <i class="fa fa-angle-right"></i>
+                                </li>
+                                    <li>
+                                    <span class="q-sign">Q: </span><a href="">Alta Ltd is a company that manufactures office furniture. The furniture is assembled   in their factory from components purchased from suppliers. Raw materials are   determined from the product specif</a>            <i class="fa fa-angle-right"></i>
+                                </li>
+                                    <li>
+                                    <span class="q-sign">Q: </span><a href="/question/check-the-attached-files">check the attached files</a>            <i class="fa fa-angle-right"></i>
+                                </li>
+                                    <li>
+                                    <span class="q-sign">Q: </span><a href="">Click on the resource link to download and complete the Understanding Types of Data worksheet. Once you have defined the types of data collected, create a document in MS Word format (.doc or .docx) co</a>            <i class="fa fa-angle-right"></i>
+                                </li>
+                            </ul>
+                                  </div>
+                              </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .homeworks
+        {
+            padding-top: 470px;
+            
+            margin-bottom: -700px;
+            background: url(./images/bg-homework-v-2.png) no-repeat center;
+            background-size:cover;
+
+        }
+
+    </style>
+  
+
+    <div class="homeworks ">
+        <div class="display-flex-normal p-t-100  column w-p-92 m-a">
+            <div class="after-center">
+                <h2 class="text-center">HOMEWORK CATEGORIES
+                </h2>
+            </div>
+
+            <div class="display-flex col-9 m-a">
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>A</h2>
+                                <li><a href="#">Accounting</a></li>
+                                <li><a href="#">Algebra</a></li>
+                                <li><a href="#">Applied Sciences</a></li>
+                                <li><a href="#">Architecture and Design</a></li>
+                                <li><a href="#">Art &amp; Design</a></li>
+                                <li><a href="#">Article Writing</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>B</h2>
+                                <li><a href="#">Biology</a></li>
+                                <li><a href="#">Business</a></li>
+
+
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>C</h2>
+                                <li><a href="#">Finance</a></li>
+                                <li><a href="#">Calculus</a></li>
+                                <li><a href="#">Chemistry</a></li>
+                                <li><a href="#">Communications</a></li>
+                                <li><a href="#">Computer Science</a></li>
+                            </ul>
+
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>E</h2>
+                                <li><a href="#">Economics</a></li>
+                                <li><a href="#">Engineering</a></li>
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Environmental Science</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>F</h2>
+                                <li><a href="#">Film</a></li>
+                                <li><a href="#">Foreign Languages</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>G</h2>
+                                <li><a href="#">Geography</a></li>
+                                <li><a href="#">Geology</a></li>
+                                <li><a href="#">Geometry</a></li>
+                            </ul>
+
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>H</h2>
+                                <li><a href="#">Health &amp; Medical</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">HR Management</a></li>  
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>I</h2>
+                                <li><a href="#">Information Systems</a></li>
+                                
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>L</h2>
+                                <li><a href="#">Law</a></li>
+                                <li><a href="#">Literature</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>M</h2>
+                                <li><a href="#">Management</a></li>
+                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">Math</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="homework-alpha">
+                        <div class="alpha">
+                            <ul>
+                                <h2>N</h2>
+                                <li><a href="#">Numerical Analysis</a></li>
+
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>P</h2>
+                                <li><a href="#">Philosophy</a></li>
+                                <li><a href="#">Physics</a></li>
+                                <li><a href="#">Political Science</a></li>
+                                <li><a href="#">Precalculus</a></li>
+                                <li><a href="#">Programming</a></li>
+                                <li><a href="#">Psychology</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="alpha">
+                            <ul>
+                                <h2>S</h2>
+                               
+                                <li><a href="#">Science</a></li>
+                                <li><a href="#">Social Science</a></li>
+                                <li><a href="#">Statistics</a></li>
+                            </ul>
+
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+
+
+    <div class="cta-3 col-10 m-a display-flex-normal mm" style="min-height: 70vh; margin-top:490px; align-items:center; justify-content: center;">
+        <div class="">
+            <div class="">
+                <div class="col-11 m-a text-center">
+                    <div class="p-20-0">
+                        <h1 class="">LEARN MORE EFFECTIVELY AND GET BETTER GRADES!</h1>
+                    </div>
+                    <div class="p-20">
+                        <div class="button siteButton1">
+                            <a href="./ask-question.html">
+                                <button class="p-14-30">ASK A QUESTION</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-t-0">
+        <div class="">
+            <div class="">
+                <div id="footer" class="footer  f-s-12 footer_type_my js-footer" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+                    <div class="" style="display: flex; flex-direction:column">
+                        <div class="col-10 m-a">
+                            <ul class=" p-20 footer__links ul-reset display-flex-normal space-between fwm" style="">
+                                    <li class="footer__link p-0-20 wp50"><a href="./homeworks-answers.html" title="Homework Answers">Homework Answers</a></li>
+                                    <li class="footer__link  p-0-20 wp50"><a href="/ask-a-question" title="Ask a Question" rel="nofollow">Ask a Question</a></li>                    
+                                    <li class="footer__link p-0-20 wp50"><a href="/faq" title="FAQ" itemprop="url">FAQ</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./write.html" title="Contact Us" itemprop="url">Contact Us</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="./privacy-policy.html" title="Privacy Policy" itemprop="url">Privacy Policy</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/dmca-notice" title="DMCA" itemprop="url">DMCA</a></li>
+                                    <li class="footer__link p-0-20 wp50"><a href="/terms-of-use" title="Terms of Use" itemprop="url">Terms of Use</a></li>
+                                </ul>        </div>
+                        <div class="display-flex ">
+                            Copyright © 2023&nbsp;<a  href="./index.html">Freelance</a></div>
+                            <div class="copyright copyright_company display-flex text-center p-10" style="line-height: 20px;">
+                                        Worbert Limited -  All right reserved.<br>
+                            20 Christou Tsiarta Elma 2, 22, 1077, Nicosia, Cyprus
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/freelance.js"></script>
+    <script>
+        function toogleSearch()
+        {
+            $( ".search" ).toggleClass( "searchtransition" )
+            $( ".search-mobile" ).toggleClass( "searchtransition" )
+
+            
+        }
+
+        window.onscroll = ()=>{
+
+            
+            if(document.body.scrollTop > 40 || document.documentElement.scrollTop > 40)
+            {
+                $("header").addClass("headerBg")
+            }
+
+            else
+            {
+                $("header").removeClass("headerBg")
+
+            }
+          }
+          
+
+          setInterval(()=>{
+            if(screen.width > 888)
+            {
+                $(".mobile").addClass("hide-m")
+            }
+            else
+            {
+                $(".mobile").removeClass("hide-m")
+
+            }
+          }, 10)
+          
+    </script>
+</body>
+</html>
