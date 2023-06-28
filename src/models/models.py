@@ -25,7 +25,7 @@ Base = declarative_base()
 
 class Specialities(Base):
     __tablename__ = "specialities"
-    id = Column(String(150), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(100))
     students = relationship("Student", lazy="dynamic", backref=backref("speciality"))
 
@@ -40,7 +40,7 @@ class Specialities(Base):
 
 class TutorSubject(Base):
     __tablename__ = "tutorsubject"
-    id = Column(String(100), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(200), nullable=False)
     tutors = relationship("Tutor", lazy="dynamic")
 
@@ -57,13 +57,13 @@ class TutorSubject(Base):
 
 class Student(Base):
     __tablename__ = 'student'
-    id = Column(String(150), nullable=False, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     username = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
     password = Column(String(250), default='')
     phone = Column(String(250))
     about = Column(Text)
-    speciality_id = Column(String(150), ForeignKey("specialities.id"))
+    speciality_id = Column(Integer, ForeignKey("specialities.id"))
     is_admin = Column(Boolean, default=False)
     time_zone = Column(String(250))
     task_created = relationship('Tasks', lazy='dynamic', backref=backref('creator'), cascade="all, delete-orphan")
@@ -94,7 +94,7 @@ class Student(Base):
 
 class Subject(Base):
     __tablename__ = "subject"
-    id = Column(String(150), primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     suject_name = Column(String(150))
     tasks = relationship("Tasks", back_populates="subject")
 
@@ -107,20 +107,20 @@ class Subject(Base):
 
 class Tasks(Base):
     __tablename__ = 'tasks'
-    id = Column(String(150), nullable=False, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     content = Column(Text)
     topics = Column(String(250), nullable=False)
     amount = Column(Float, nullable=False)
     deposit = Column(Float, default=0)
     feedback = Column(Text)
     title = Column(String(250), default=None)
-    creator_id = Column(String(150), ForeignKey('student.id'), nullable=False)
+    creator_id = Column(Integer, ForeignKey('student.id'), nullable=False)
     attachment = relationship('TaskAttachment', lazy='dynamic', backref='task', cascade="all, delete-orphan")
     payment_status = Column(String(250), default='unpaid')
     progress_status = Column(String(250), default="unclaimed")
-    tutor_id = Column(String(150), ForeignKey('tutor.id'))
+    tutor_id = Column(Integer, ForeignKey('tutor.id'))
     tutor = relationship("Tutor", back_populates="tasks")
-    subject_id = Column(String(150), ForeignKey("subject.id"), default="Anonymous")
+    subject_id = Column(Integer, ForeignKey("subject.id"), default="Anonymous")
     subject = relationship("Subject", back_populates="tasks")
     date_created = Column(DateTime, default=datetime.datetime.utcnow)
     timeline = Column(DateTime, nullable=False)
@@ -161,10 +161,10 @@ class Tasks(Base):
 
 class Solution(Base):
     __tablename__ = "solution"
-    id = Column(String(150), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     description = Column(Text)
-    task_id = Column(String(150), ForeignKey("tasks.id"), nullable=False)
-    tutor_id = Column(String(150), ForeignKey("tutor.id"), nullable=False)
+    task_id = Column(Integer, ForeignKey("tasks.id"), nullable=False)
+    tutor_id = Column(Integer, ForeignKey("tutor.id"), nullable=False)
     attachment = relationship("SolutionAttachment", lazy="dynamic")
 
     def to_json(self):
@@ -180,9 +180,9 @@ class Solution(Base):
     
 class TaskAttachment(Base):
     __tablename__ = 'attachment'
-    id = Column(String(150), primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     attachment_name = Column(String(250), nullable=False)
-    task_id = Column(String(150), ForeignKey('tasks.id'), nullable=False)
+    task_id = Column(Integer, ForeignKey('tasks.id'), nullable=False)
 
     def __repr__(self):
         return f"{self.__class__.__qualname__}(task id = {self.task_id}, name={self.attachment_name})"
@@ -197,9 +197,9 @@ class TaskAttachment(Base):
 
 class TutorialAttachment(Base):
     __tablename__ = 'tutorial_attachment'
-    id = Column(String(150), primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     attachment_name = Column(String(250), nullable=False)
-    tutorial_id = Column(String(150), ForeignKey('tutorial.id'), nullable=False)
+    tutorial_id = Column(Integer, ForeignKey('tutorial.id'), nullable=False)
 
     def __repr__(self):
         return f"{self.__class__.__qualname__}(tutorial id = {self.tutorial_id}, name={self.attachment_name})"
@@ -213,9 +213,9 @@ class TutorialAttachment(Base):
     
 class TutorialAnswerAttachment(Base):
     __tablename__ = 'tutorial_answer_attachment'
-    id = Column(String(150), primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     attachment_name = Column(String(250), nullable=False)
-    tutorial_answer_id = Column(String(150), ForeignKey('tutorial.id'), nullable=False)
+    tutorial_answer_id = Column(Integer, ForeignKey('tutorial.id'), nullable=False)
 
     def __repr__(self):
         return f"{self.__class__.__qualname__}(tutorial_answer id = {self.tutorial_answer_id}, name={self.attachment_name})"
@@ -232,9 +232,9 @@ class TutorialAnswerAttachment(Base):
 
 class SolutionAttachment(Base):
     __tablename__ = "solutionattachment"
-    id = Column(String(150), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     file_name = Column(String(200))
-    solution_id = Column(String(150), ForeignKey("solution.id"))
+    solution_id = Column(Integer, ForeignKey("solution.id"))
 
     def to_json(self):
         return {
@@ -246,7 +246,7 @@ class SolutionAttachment(Base):
 
 class Tutor(Base):
     __tablename__ = 'tutor'
-    id = Column(String(150), nullable=False, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     username = Column(String(250))
     password = Column(String(250))
     about = Column(Text)
@@ -258,7 +258,7 @@ class Tutor(Base):
     tasks = relationship('Tasks', lazy='dynamic')
     solutions = relationship("Solution", lazy="dynamic")
     bids = relationship("Bidders", lazy="dynamic")
-    subject_id = Column(String(150), ForeignKey("tutorsubject.id"))
+    subject_id = Column(Integer, ForeignKey("tutorsubject.id"))
 
     def __repr__(self):
         return f"{self.__class__.__qualname__}(" \
@@ -288,9 +288,9 @@ class Tutor(Base):
 
 class Bidders(Base):
     __tablename__ = "bidders"
-    id = Column(String(150), primary_key=True)
-    task_id = Column(String(150), ForeignKey("tasks.id"))
-    user_id = Column(String(150), ForeignKey("tutor.id"))
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    task_id = Column(Integer, ForeignKey("tasks.id"))
+    user_id = Column(Integer, ForeignKey("tutor.id"))
 
     def to_json(self):
         return {
@@ -301,11 +301,11 @@ class Bidders(Base):
 
 class Invoice(Base):
     __tablename__ = "invoice"
-    id = Column(String(100), primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     invoice_date = Column(DateTime, default=datetime.datetime.utcnow)
-    task_id = Column(String(150), ForeignKey("tasks.id"), nullable=False)
+    task_id = Column(Integer, ForeignKey("tasks.id"), nullable=False)
     amount = Column(Float, nullable=False)
-    user_id = Column(String(150), ForeignKey("student.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("student.id"), nullable=False)
     payment_status = Column(String(150), default="unpaid")
     due_date = Column(DateTime, nullable=False,
             default = datetime.datetime.now() + datetime.timedelta(hours=24)
@@ -329,7 +329,7 @@ class Invoice(Base):
 
 class Transaction(Base):
     __tablename__ = "transaction"
-    id = Column(String(150), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     code = Column(String(250), nullable=False)
     transaction_date = Column(
             DateTime,
@@ -337,7 +337,7 @@ class Transaction(Base):
             default=datetime.datetime.utcnow
         )
     invoice_id = Column(
-            String(150),
+            Integer,
             ForeignKey("invoice.id")
         )
 
@@ -352,13 +352,13 @@ class Transaction(Base):
 
 class Tutorial(Base):
     __tablename__ = "tutorial"
-    id = Column(String(150), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     posted_date = Column(DateTime, default=datetime.datetime.utcnow)
     isPurchased = Column(Boolean, default=False)
     title = Column(Text, nullable=False)
     category_name = Column(String(150), nullable=False)
     price = Column(Integer, nullable=False)
-    tutor_id = Column(String(150), ForeignKey("tutor.id"), nullable=False)
+    tutor_id = Column(Integer, ForeignKey("tutor.id"), nullable=False)
     actions = Column(Text)
     tutorial_content = Column(Text, nullable=False)
     tutorial_answer = Column(Text, nullable=False)
