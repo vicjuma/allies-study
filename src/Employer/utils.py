@@ -75,7 +75,7 @@ class StudentHandler:
                     )
         else:
             # Genereate user id
-            payload['id'] = uuid.uuid4().hex
+            # payload['id'] = uuid.uuid4().hex
             password = generate_password()
             payload['password'] = generate_password_hash(password)
             # Save to db

@@ -45,6 +45,7 @@ class PasswordHandler:
         self.MAIL_SSL=True
 
     def generate_mail_reset_token(self, User: Dict[str, Any]):
+        print(User)
         return create_access_token(
                     subject = User['id']
                 )

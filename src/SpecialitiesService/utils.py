@@ -17,7 +17,7 @@ class SpecialitiesHandler:
         self.specialities_handler = DatabaseTableMixin(Specialities)
 
     def createSpecialities(self, payload: Dict[str, Any]):
-        payload['id'] = uuid.uuid4().hex
+        # payload['id'] = uuid.uuid4().hex
         self.specialities_handler.__create_item__(payload)
         return payload
 

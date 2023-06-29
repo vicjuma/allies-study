@@ -111,17 +111,19 @@ class StudentsRouter:
                     )
         else:
             # Genereate user id
-            payload['id'] = uuid.uuid4().hex
+            # payload['id'] = uuid.uuid4().hex
             password = generate_password()
             payload['password'] = generate_password_hash(password)
             # Save to db
             self.employerHandler.__create_item__(payload)
-            payload['password'] = password
 
             # Send mail to Student to Set his password
             user = self.employerHandler.filterDb(email=payload['email']).first()
             if user:
                 # try:
+                    created_user_id = self.employerHandler.filterDb(email=payload["email"]).first().to_json()["id"]
+                    payload["id"] = created_user_id
+                    payload['password'] = password
                     self.password_handler.set_password(payload)
                     return APIMessage(
                         detail="Password set email successfully sent",

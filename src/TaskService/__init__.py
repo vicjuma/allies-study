@@ -56,7 +56,7 @@ class TaskEndpoint:
         is_checked = True if notification == "on" else False
         subject_is = self.subj_handler.filterDb(suject_name=subject).first()
         payload_data = {
-            "id": uuid.uuid4().hex,
+            # "id": uuid.uuid4().hex,
             "content": content_data, 
             "topics": subject,
             "timeline": timeline,
@@ -69,7 +69,7 @@ class TaskEndpoint:
         self.task_item_handler.__create_item__(payload_data)
         for file in files:
             file_payload = {
-                "id": uuid.uuid4().hex,
+                # "id": uuid.uuid4().hex,
                 "task_id": payload["id"],
                 "attachment_name": file.filename,
             }

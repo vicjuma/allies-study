@@ -48,7 +48,7 @@ class TaskHandler:
     def createTask(self, payload: Dict[str, Any], user):
         # Check for Authentication token in headers        
         # task id
-        payload["id"] = uuid.uuid4().hex
+        # payload["id"] = uuid.uuid4().hex
         payload["creator_id"] = user['id']
         payload['task_deadline'] = datetime.datetime.utcnow() + datetime.timedelta(days=10) 
         
@@ -118,7 +118,7 @@ class TaskHandler:
                     shutil.copyfileobj(file.file, buf)
                 # Create Attachment
                 res_ = {
-                        "id": uuid.uuid4().hex,
+                        # "id": uuid.uuid4().hex,
                         "task_id": task.id,
                         "attachment_name": file.filename 
                     }
@@ -174,7 +174,7 @@ class TaskHandler:
             # Check if the assigned user is the one submitting the file
             if task.tutor_id == user['id']:
                 # create Solution
-                payload['id'] = uuid.uuid4().hex
+                # payload['id'] = uuid.uuid4().hex
                 self.solution_handler.__create_item__(**payload)
                 return payload
             raise HTTPException(
@@ -203,7 +203,7 @@ class TaskHandler:
                 with open(dst, "wb") as buf:
                     shutil.copyfileobj(file.file, buf)
 
-                payload['id'] = uuid.uuid4().hex
+                # payload['id'] = uuid.uuid4().hex
                 payload['file_name'] = file.filename
                 self.solution_attachment_handler.__create_item__(**payload)
                 return payload

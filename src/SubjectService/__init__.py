@@ -67,7 +67,7 @@ class SubjectService:
         "Statistics"
         ]
         for subject in subjects:
-            self.subject_mixin.__create_item__({"suject_name": subject, "id": uuid.uuid4().hex})
+            self.subject_mixin.__create_item__({"suject_name": subject})
         return {"message": "all subjects created successfully"}
     
     @subject_router.patch("/subject")

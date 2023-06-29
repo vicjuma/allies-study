@@ -16,7 +16,7 @@ class SubjectHandler:
 
     def createSubject(self, payload: Dict[str, Any], user: Dict[str, Any]):
         # if user['is_admin'] == True:
-        payload['id'] = uuid.uuid4().hex
+        # payload['id'] = uuid.uuid4().hex
         self.subject_mixin.__create_item(**payload)
         return payload
         # raise HTTPException(

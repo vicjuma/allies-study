@@ -36,7 +36,7 @@ class TutorHandler:
                     detail="User already Exists"
                 )
         else:
-            payload['id'] = uuid.uuid4().hex
+            # payload['id'] = uuid.uuid4().hex
             self.TutorHandler.__createitem__(payload)
             # Send password set form to email
             created_worker = self.TutorHandler.filterDb(

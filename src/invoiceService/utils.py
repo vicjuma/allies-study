@@ -27,7 +27,7 @@ class InvoiceHandler:
         self.task_handler = DatabaseTableMixin(Tasks)
 
     def createInvoice(self, payload, user):
-        payload['id'] = uuid.uuid4().hex
+        # payload['id'] = uuid.uuid4().hex
         payload["user_id"] = user['id']
         self.invoice_handler.__create_item__(payload)
         return payload
@@ -139,7 +139,7 @@ class InvoiceHandler:
 
 
                         transact_dict = {
-                            "id": uuid.uuid4().hex,
+                            # "id": uuid.uuid4().hex,
                             "code": response['id'],
                             "invoice_id": invoice.id
                         }

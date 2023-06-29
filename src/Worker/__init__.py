@@ -108,7 +108,7 @@ class TutorRouter:
                     )
         else:
             # Genereate user id
-            payload['id'] = uuid.uuid4().hex
+            # payload['id'] = uuid.uuid4().hex
             password = generate_password()
             payload['password'] = generate_password_hash(password)
             # Save to db
@@ -119,6 +119,9 @@ class TutorRouter:
             user = self.TutorHandler.filterDb(email=payload['email']).first()
             if user:
                 try:
+                    created_user_id = self.employerHandler.filterDb(email=payload["email"]).first().to_json()["id"]
+                    payload["id"] = created_user_id
+                    payload['password'] = password
                     self.password_handler.set_password(payload)
                     return APIMessage(
                         detail="Password set email successfully sent",
@@ -146,7 +149,7 @@ class TutorRouter:
         category = form_data.get("category")
         tutorial_content = form_data.get("tutorial_content")
         tutorial_answer = form_data.get("tutorial_answer")
-        payload['id'] = uuid.uuid4().hex
+        # payload['id'] = uuid.uuid4().hex
         # Save to db
         self.TutorHandler.__create_item__(payload)
         # Send mail to Student to Set his password
