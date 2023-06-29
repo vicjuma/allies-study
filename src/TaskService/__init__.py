@@ -1,6 +1,8 @@
 from fastapi_restful.inferring_router import InferringRouter
 from fastapi_restful.cbv import cbv
+import os
 import uuid
+import shutil
 import datetime
 from src.TaskService.utils import TaskHandler
 from fastapi import (
@@ -22,7 +24,7 @@ from src.models.schema import (
 from typing import (
     List
 )
-from src.utils import DatabaseTableMixin, DatabaseStudentTableMixin, get_templates
+from src.utils import DatabaseTableMixin, DatabaseStudentTableMixin, get_templates, DatabaseTasksTableMixin
 from src.models.models import (
     Tasks,
     TaskAttachment,
@@ -30,10 +32,25 @@ from src.models.models import (
 )
 from src.Auth.manager import manager as AuthManager
 from src.Worker import tutor_manager as TaskManager
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+
+DB_NAME="studyallies"
+DB_PASSWD="studyuserpassword"
+DB_AUTHOR="study_user"
+
+
+databasefilename: str = f'mysql+pymysql://{DB_AUTHOR}:{DB_PASSWD}@localhost/{DB_NAME}'
+engine = create_engine(databasefilename)
+Session = sessionmaker(bind=engine, expire_on_commit=False)
+
+session = Session()
 
 templates = get_templates()
 
 task_endpoint = InferringRouter()
+
+IMGDIR = 'images/'
 
 @cbv(task_endpoint)
 class TaskEndpoint:
@@ -42,6 +59,7 @@ class TaskEndpoint:
         self.task_item_handler = DatabaseTableMixin(Tasks)
         self.task_attachment_handler = DatabaseTableMixin(TaskAttachment)
         self.subj_handler = DatabaseStudentTableMixin(Subject)
+        self.task_id_handler = DatabaseStudentTableMixin(Tasks)
     
     @task_endpoint.post("/account/student/create/tasks", status_code=status.HTTP_201_CREATED)
     async def createTask(self, request: Request, files: List[UploadFile] = File(...), user=Depends(AuthManager)):
@@ -55,6 +73,7 @@ class TaskEndpoint:
         notification = form_data.get("notification")
         is_checked = True if notification == "on" else False
         subject_is = self.subj_handler.filterDb(suject_name=subject).first()
+        un_id = uuid.uuid4().hex
         payload_data = {
             # "id": uuid.uuid4().hex,
             "content": content_data, 
@@ -63,19 +82,26 @@ class TaskEndpoint:
             "amount": amount,
             "notification": is_checked,
             "creator_id": user["id"],
-            "subject_id": subject_is}
+            "subject_id": subject_is,
+            "unique_id": un_id}
         payload = {**payload, **payload_data}
-        print(payload)
         self.task_item_handler.__create_item__(payload_data)
+        result = session.query(Tasks).filter(Tasks.unique_id==un_id).first()
         for file in files:
             file_payload = {
                 # "id": uuid.uuid4().hex,
-                "task_id": payload["id"],
+                "task_id": result.id,
                 "attachment_name": file.filename,
             }
             # new_file = File(**file_payload)
             self.task_attachment_handler.__create_item__(file_payload)
-        print(payload)
+            static_dir = os.path.join(f"{os.getcwd()}/src", "static/siteImages")
+            destination = os.path.join(static_dir, file.filename)
+            print(static_dir)
+            print(destination)
+            with open(f"{destination}", "wb") as f:
+                shutil.copyfileobj(file.file, f)
+            print(payload)
         return {"Message":"Task Created Successfully"}
 
     @task_endpoint.get("/homework/answers", status_code=status.HTTP_200_OK)

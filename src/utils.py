@@ -81,6 +81,9 @@ class DatabaseTableMixin(MutableMapping):
 
     def __getitem__(self, id):
         return self.filter({'id': id}).first()
+    
+    def __getitem_task__(self, id):
+        return self.filter({'unique_id': id}).first()
 
     def __setitem__(self, key, value) -> Dict[str, str]:
         with ContextManager() as context:
@@ -118,6 +121,7 @@ class DatabaseTableMixin(MutableMapping):
                     )
             context.session.execute(statement)
             context.session.commit()
+            
 
     def filterDb(self, **payload):
         with ContextManager() as context:
@@ -146,6 +150,12 @@ class DatabaseStudentTableMixin(DatabaseTableMixin):
 
         # If not found, assume it's a username
         return self.filter({'username': identifier}).first()
+    
+class DatabaseTasksTableMixin(DatabaseTableMixin):
+    def __getitem__(self, identifier):
+        # If not found, assume it's a username
+        return self.filter({'unique_id': identifier}).first()
+
 
 class DatabaseCombinedTableMixin(DatabaseTableMixin):
     def __init__(self, table1, table2):

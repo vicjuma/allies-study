@@ -130,9 +130,11 @@ class Tasks(Base):
     answer = relationship("Solution", lazy="dynamic")
     bidders = relationship("Bidders", lazy="dynamic")
     notification = Column(Boolean, default=False)
+    unique_id = Column(String(250), nullable=False)
+    
 
     def __repr__(self):
-        return f"{self.__class__.__qualname__}(Amount={self.Amount}, creator id={self.creator_id})"
+        return f"{self.__class__.__qualname__}(amount={self.amount}, creator id={self.creator_id})"
 
     
     def to_json(self):
@@ -150,6 +152,7 @@ class Tasks(Base):
             "date_created": self.date_created,
             "feedback": self.feedback,
             "timeline": self.timeline,
+            "unique_id": self.unique_id,
             "answer": [
                     item.to_json() for item in self.answer
                 ],
@@ -184,7 +187,7 @@ class TaskAttachment(Base):
     __tablename__ = 'attachment'
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     attachment_name = Column(String(250), nullable=False)
-    task_id = Column(Integer, ForeignKey('tasks.id'), nullable=False)
+    task_id = Column(Integer, ForeignKey('tasks.id'))
 
     def __repr__(self):
         return f"{self.__class__.__qualname__}(task id = {self.task_id}, name={self.attachment_name})"

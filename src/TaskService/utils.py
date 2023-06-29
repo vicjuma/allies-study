@@ -49,6 +49,22 @@ class TaskHandler:
         # Check for Authentication token in headers        
         # task id
         # payload["id"] = uuid.uuid4().hex
+        
+         # task = Tasks(
+            #     content=content_data, 
+            #     topics=subject, 
+            #     timeline=timeline, 
+            #     amount=amount, 
+            #     notification=is_checked, 
+            #     creator_id=user["id"], 
+            #     subject_id=subject_is)
+            #   static_dir = os.path.join(f"{os.getcwd()}/src", "static/siteImages")
+            #     destination = os.path.join(static_dir, file.filename)
+            #     print(static_dir)
+            #     print(destination)
+            #     with open(f"{destination}", "wb") as f:
+            #         shutil.copyfileobj(file.file, f)
+            # print(payload)
         payload["creator_id"] = user['id']
         payload['task_deadline'] = datetime.datetime.utcnow() + datetime.timedelta(days=10) 
         

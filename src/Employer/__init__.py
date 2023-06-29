@@ -31,10 +31,18 @@ from src.models.schema import(
         DeletionSchema,
         ResetPasswordSchema,
     )
-from typing import (
-    Dict,
-    Any,
-)
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+
+DB_NAME="studyallies"
+DB_PASSWD="studyuserpassword"
+DB_AUTHOR="study_user"
+
+databasefilename: str = f'mysql+pymysql://{DB_AUTHOR}:{DB_PASSWD}@localhost/{DB_NAME}'
+engine = create_engine(databasefilename)
+Session = sessionmaker(bind=engine, expire_on_commit=False)
+
+session = Session()
 
 students_endpoint = InferringRouter()
 
@@ -196,7 +204,9 @@ class StudentsRouter:
     @students_endpoint.get("/account/student/my/questions", status_code=status.HTTP_200_OK)
     def studentChecksQuestions(self, request: Request, user=Depends(manager)):
         if user:
-            tasks = self.task_handler.filterDb(creator_id=user['id'])
+            tasks = session.query(Tasks).filter(Tasks.creator_id==user["id"])
+            for task in tasks:
+                print(task)
         return templates.TemplateResponse('student_questions.html', {"request": request, "tasks": tasks})
     
     @students_endpoint.get("/account/student/balance", status_code=status.HTTP_200_OK)

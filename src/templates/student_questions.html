@@ -116,8 +116,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-
                                         <div class=" b-r-5">
                                             <table class="b-one w-p-100">
                                                 <thead>
@@ -140,7 +138,7 @@
                                                     <div id="all" class="quizAccor">
                                                         {% for task in tasks %}
                                                         <tr>
-                                                            <td>{{ task.id[:5] }}</td>
+                                                            <td>{{ task.id }}</td>
                                                             <td>{{ task.progress_status}}</td>
                                                             <td>{{ task.content[:29]|safe }}</td>
                                                             <td class="dn">{{ task.topics }}</td>

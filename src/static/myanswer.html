@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./nav.css">
+    <link rel="stylesheet" href="./c/css/style.css">
+    <link rel="stylesheet" href="./c/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+
+
+
+
+    <div class="mo-signup"></div>    
+    <style>
+        header{
+
+            margin-bottom:400px;
+        }
+        
+    </style> 
+    
+            <nav class="bs">
+                <input type="checkbox" onclick="setTheme()" name="theme" id="theme">
+                <div class="navigation-bar-wrapper">
+                    <input type="checkbox"  name="openandclose" id="openandclose">
+                    <div class="portfolio-logo logo">
+                        <a href="./index.html">
+                            <h1>Freelance Bay</h1>
+                        </a>
+                    </div>
+                    <ul class="navigation-bar-links">
+                      <li><a href="./how.html"> FIND A QUESTION </a></li>
+                        <li><a href="./homeworks-answers.html">MY ANSWERS </a></li>
+                        <li><a href="./ask-question.html">MY TUTORIOLS</a></li>
+                        <li><a href="./toptutor.html">PAYMENT</a></li>
+                        <li><a href="./FAQ.html">SUPPORT</a></li>
+                        
+                        <li><i   onclick="toogleSearch()" class="bx bx-search mob"></i></li>
+
+                       
+                    </ul>
+                    
+                    
+                    
+                    
+                </div>
+            </nav>
+        
+
+
+    <div class="col-10 m-a">
+        <div class="p-t-100 p-b-40">
+            <div class="text-center">
+                <p>MY TUTORIALS</p>
+            </div>
+            <div class="p-40-0 b-b">
+                <table class="w-p-100" >
+                    <thead>
+                        <tr>
+                            					
+                            <th>Id</th>
+                            <th>Status</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Deadline</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           <td>
+                            </td> 
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                <p class="text-center">No queries have been created yet.</p>
+
+            </div>
+
+            <div class="">
+                <button onclick="tooglehide('how-it-works-div')">See how it works?</button>
+                <div class="how-it-works-div">
+                    <div class="col-11 m-a ">
+                        <h2 class="text-center">How It Works?
+
+                        </h2>
+                        <button class="accordion">How does this work?</button>
+                        <div class="panel">
+                            <p>Here is the step-by-step process:</p>
+                            <ul>
+                                <li>Student posts the questions.</li>
+                                <li>
+                                    Tutors place their proposals with the price for the full answer.
+
+                                </li>
+                                <li>
+                                    Tutors communicating with the student.
+
+                                </li>
+                                <li>
+
+                                    The student chooses the tutor and reserves money for the order on the StudyDaddy account.
+                                </li>
+                                <li>
+                                    Tutors write the paper according to the student's requirements. A tutor can post the draft or show the part of the text to the student.
+
+                                </li>
+                                <li>
+                                    Once the answer is ready, tutor posts the answer to the student.
+
+                                </li>
+                                <li>
+                                    The student gets the paper and can ask for some revision needed in the chat messages.
+
+                                </li>
+                                <li>
+                                    Satisfied student marks the order as completed and rates the tutor.
+
+                                </li>
+                                <li>
+                                    The money is loaded to the tutor's account.</li>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button class="accordion">How do I apply to answer the question?</button>
+                        <div class="panel">
+                                <p>Look through the list of available questions in your account. Check the question details and uploaded files to decide whether you have the capacity, skills and time to complete the assignment. If you do, you may send your proposal to the student with the full price for the answer. Please, set up the reasonable price and write a cover message to tell the student more about your skills and experience in completing similar tasks.
+                                    <br>
+
+                                    After applying for the order, you can change your proposal if necessary.
+                                    
+                                    <br>
+                                    When the order is in 'Proposal sent' status, you can communicate with the customer directly in chat and ask any questions you have regarding the order.
+                                    <br>
+                                    The student selects the tutor basing on the price and messages and accepts him to answer the question. The accepted tutor is notified by the message.</p>
+                        </div>
+
+                        <button class="accordion">How should I know the student have assigned me to answer the question?How should I know the student have assigned me to answer the question?</button>
+                        <div class="panel">
+                            <p>Once the student accepts your proposal, you'll get a message. All accepted proposals can be found in your account. To find the list go to My answers – In Progress.
+                                <br>
+
+                                You can start working on the paper as the student has accepted your proposal. All the money are reserved on the StudyDaddy balance and would be transferred to your balance after the order is completed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .dsn{
+            display: none;
+        }
+        .accordion
+        {
+            background: rgba(238, 238, 238, 0.671);
+            padding: 20px;
+            outline: none;
+            border: none;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.4s all;
+
+        }
+        ul li {
+            list-style-type: disc !important;
+        }
+
+        .accordion::after{
+            float: right;
+            rotate: -90deg;
+            content: '\02770';
+        }
+        .active
+        {
+            background: green;
+            color: beige;
+        }
+        .active::after
+        {
+            content: '\02770';
+            rotate: 90deg;
+
+        }
+        .panel{
+            transition: 0.4s all;
+            max-height:0 ;
+            padding: 0 18px;
+            overflow: hidden;
+        }
+        .panel p ,.panel ul{
+            overflow: hidden;
+
+        }
+        .panel ul{
+            padding-left: 20px;
+        }
+    </style>
+    <script>
+        function tooglehide(classname)
+        {
+            var div = document.getElementsByClassName(classname);
+            div.style.display = "none"
+        }
+        var btns =document.getElementsByClassName("accordion")
+
+var i 
+
+for(i = 0; i<btns.length; i++)
+{
+    btns[i].addEventListener("click", function()
+    {
+        
+        this.classList.toggle("active")
+        var panel = this.nextElementSibling
+
+        if(panel.style.maxHeight)
+        {
+            panel.style.maxHeight = null
+        }
+        else
+        {
+            panel.style.maxHeight = panel.scrollHeight + "px"
+        }
+    })
+
+}
+    </script>
+</body>
+</html>
