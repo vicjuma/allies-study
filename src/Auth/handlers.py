@@ -76,7 +76,7 @@ class PasswordHandler:
             <p>You've recently registered a new StudyAllies account.</p>
             <p>Before your account is activated, we need you to confirm your email address.</p>
             <p style="margin-bottom: 10px;">Please click this link to complete your registration:</p>
-            <p style="margin-bottom: 10px;"><a href="http://127.0.0.1:8000/account/student/verify/{self.generate_mail_reset_token(user)}">http://127.0.0.1:8000/create/password/{self.generate_mail_reset_token(user)}</a></p><br /><br />
+            <p style="margin-bottom: 10px;"><a href="http://127.0.0.1:8000/account/user/verify/{self.generate_mail_reset_token(user)}">http://127.0.0.1:8000/create/password/{self.generate_mail_reset_token(user)}</a></p><br /><br />
             <p>You can log into your account using your details:</p>
             <p><strong>Username</strong>: {user['username']}</p>
             <p><strong>Password</strong>: {user['password']}</p>

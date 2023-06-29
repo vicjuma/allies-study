@@ -29,7 +29,7 @@ from src.models.models import (
     Subject
 )
 from src.Auth.manager import manager as AuthManager
-from src.Worker import manager as TaskManager
+from src.Worker import tutor_manager as TaskManager
 
 templates = get_templates()
 

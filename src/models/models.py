@@ -62,6 +62,7 @@ class Student(Base):
     email = Column(String(250), nullable=False)
     password = Column(String(250), default='')
     phone = Column(String(250))
+    department = Column(String(250))
     about = Column(Text)
     speciality_id = Column(Integer, ForeignKey("specialities.id"))
     is_admin = Column(Boolean, default=False)
@@ -82,6 +83,7 @@ class Student(Base):
             'email': self.email,
             'phone': self.phone,
             'password': self.password,
+            'department': self.department,
             "is_admin": self.is_admin,
             "about": self.about,
             "speciality_id": self.speciality_id,
@@ -246,13 +248,14 @@ class SolutionAttachment(Base):
 
 class Tutor(Base):
     __tablename__ = 'tutor'
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True, default=10000, nullable=False)
     username = Column(String(250))
     password = Column(String(250))
     about = Column(Text)
     email = Column(String(250))
     account = Column(Float, nullable=False, default=0.00)
     phone = Column(String(250))
+    department = Column(String(250))
     rating = Column(Integer, default=0)
     speciality_id = Column(String(150))
     tasks = relationship('Tasks', lazy='dynamic')
@@ -272,6 +275,7 @@ class Tutor(Base):
             'email': self.email,
             'account': self.account,
             'phone': self.phone,
+            "department": self.department,
             "about": self.about,
             "rating": self.rating,
             "subject_id": self.subject_id,

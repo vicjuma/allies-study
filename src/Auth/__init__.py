@@ -45,7 +45,6 @@ class PasswordHandler:
         self.MAIL_SSL=True
 
     def generate_mail_reset_token(self, User: Dict[str, Any]):
-        print(User)
         return create_access_token(
                     subject = User['id']
                 )
@@ -99,7 +98,7 @@ class PasswordHandler:
             <p>You've recently registered a new StudyAllies account.</p>
             <p>Before your account is activated, we need you to confirm your email address.</p>
             <p style="margin-bottom: 10px;">Please click this link to complete your registration:</p>
-            <p style="margin-bottom: 10px;"><a href="http://127.0.0.1:8000/account/student/verify/{self.generate_mail_reset_token(user)}">http://127.0.0.1:8000/create/password/{self.generate_mail_reset_token(user)}</a></p><br /><br />
+            <p style="margin-bottom: 10px;"><a href="http://127.0.0.1:8000/account/user/verify/{self.generate_mail_reset_token(user)}">http://127.0.0.1:8000/create/password/{self.generate_mail_reset_token(user)}</a></p><br /><br />
             <p>You can log into your account using your details:</p>
             <p><strong>Username</strong>: {user['username']}</p>
             <p><strong>Password</strong>: {user['password']}</p>
@@ -159,12 +158,12 @@ class StudentsRouter:
         return resp
     
     @shared_endpoint.get("/how/it/works")
-    def howItWorks(self, request: Request):
+    def getPrivateendpoint(self, request: Request):
         return templates.TemplateResponse('how_it_works.html', {"request": request})
     
     @shared_endpoint.get("/ask/a/question")
-    def askAQuestion(self, request: Request, user=Depends(manager.optional)):
-        return templates.TemplateResponse('ask_a_question.html', {"request": request, "user": user})
+    def askAQuestion(self, request: Request):
+        return templates.TemplateResponse('ask_a_question.html', {"request": request})
     
     @shared_endpoint.get("/faqs")
     def FAQs(self, request: Request):
@@ -174,6 +173,7 @@ class StudentsRouter:
     def permission_denied(self, request: Request):
         return templates.TemplateResponse('403.html', {"request": request})
     
-    @shared_endpoint.get("/email/exists")
-    def emailExists(self, request: Request):
-        return templates.TemplateResponse('auth.html', {"request": request})
+    
+    # @shared_endpoint.get("/success/email/confirmation/sent", status_code=status.HTTP_200_OK)
+    # def studentAsksQuestion(self, request: Request):
+    #     return templates.TemplateResponse('student_ask_question.html', {"request": request})

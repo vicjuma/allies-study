@@ -193,17 +193,17 @@ class StudentHandler:
     def setPassword(self, payload):
         user = self.employerHandler.filterDb(email=payload['email']).first()
         if user:
-            try:
+            # try:
                 self.password_handler.set_password(payload)
                 return APIMessage(
                     detail="Password set email successfully sent",
                     status_code=status.HTTP_200_OK
                 )
-            except:
-                return APIMessage(
-                       detail="Password email not sent",
-                       status_code=status.HTTP_400_BAD_REQUEST
-                    )
+            # except:
+                # return APIMessage(
+                #        detail="Password email not sent",
+                #        status_code=status.HTTP_400_BAD_REQUEST
+                #     )
         raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="User not found"
@@ -251,7 +251,8 @@ class TokenHandler:
                 "speciality_id": student_data.speciality_id,
                 "is_admin": student_data.is_admin,
                 "time_zone": student_data.time_zone,
-                "task_created": task_created
+                "task_created": task_created,
+                "department": student_data.department
             }
         return payload
     
@@ -270,6 +271,7 @@ class TokenHandler:
             "rating": tutor_data.rating,
             "subject_id": tutor_data.subject_id,
             "tasks": tutor_data.tasks,
-            "bids": tutor_data.bids
+            "bids": tutor_data.bids,
+            "department": tutor_data.department
         }
         return payload

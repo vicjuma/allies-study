@@ -90,6 +90,7 @@ class StudentSchema(BaseModel):
     username: str
     email: str
     phone: Optional[str]
+    department: str
     password: Optional[str]
     about: Optional[str]
     speciality_id: Optional[str]
@@ -184,6 +185,7 @@ class TutorSchema(BaseModel):
     username: str
     email: str
     phone: str
+    department: str
     about:str
     rating: int
     password: Optional[str]

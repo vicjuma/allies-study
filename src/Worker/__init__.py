@@ -28,7 +28,8 @@ from typing import (
 from src.utils import (
         ALGORITHM,
         DatabaseTableMixin,
-        get_templates
+        get_templates,
+        decode_access_token
     )
 
 from src.utils import generate_password_hash, generate_password
@@ -43,10 +44,10 @@ from fastapi_login import LoginManager
 
 SECRET = "studyalliessiteforstudentsandtuitors"
 
-manager = LoginManager(SECRET, "/auth/login",use_cookie=True)
-manager.cookie_name = "studyalliescookie"
+tutor_manager = LoginManager(SECRET, "/auth/login",use_cookie=True)
+tutor_manager.cookie_name = "studyalliescookie"
 
-@manager.user_loader()
+@tutor_manager.user_loader()
 def load_user(username:str):
     sharedInst = TutorHandler()
     user = sharedInst.getTutor(username)
@@ -90,28 +91,22 @@ class TutorRouter:
         user_email = self.TutorHandler.filterDb(email=email).first()
         user_name = self.TutorHandler.filterDb(username=username).first()
         
-        if user_email:
-            # raise HTTPException(
-            #             status_code=status.HTTP_400_BAD_REQUEST,
-            #             detail="Email already exists"
-            #         )
-            return RedirectResponse(url="/email/exists", status_code=status.HTTP_302_FOUND)
+        if user_name and user_email:
+            message = "Username and Email already exist in our database"
+            return templates.TemplateResponse('success/email_and_username_exist.html', {"request": request, "message": message})
         elif user_name:
-            raise HTTPException(
-                        status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Username already exists"
-                    )
-        elif user_name and user_email:
-            raise HTTPException(
-                        status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Username and Email already exist"
-                    )
+            message = "Username already exists in our database"
+            return templates.TemplateResponse('success/username_exists.html', {"request": request, "message": message})
+        elif user_email:
+            message = "Email already exists in our database"
+            return templates.TemplateResponse('success/email_exists.html', {"request": request, "message": message})
         else:
             # Genereate user id
             # payload['id'] = uuid.uuid4().hex
             password = generate_password()
             payload['password'] = generate_password_hash(password)
             # Save to db
+            payload['department'] = "tutor"
             self.TutorHandler.__create_item__(payload)
             payload['password'] = password
 
@@ -119,7 +114,7 @@ class TutorRouter:
             user = self.TutorHandler.filterDb(email=payload['email']).first()
             if user:
                 try:
-                    created_user_id = self.employerHandler.filterDb(email=payload["email"]).first().to_json()["id"]
+                    created_user_id = self.TutorHandler.filterDb(email=payload["email"]).first().to_json()["id"]
                     payload["id"] = created_user_id
                     payload['password'] = password
                     self.password_handler.set_password(payload)
@@ -136,6 +131,21 @@ class TutorRouter:
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="User not found"
                 )
+            
+    @tutor_endpoint.get("/account/tutor/verify/{token}", status_code=status.HTTP_200_OK)
+    def verify_me(self, token: str):
+        decoded_token = decode_access_token(token)
+        tutor_data = self.token_handler.getTutor(decoded_token)
+        print(tutor_data)
+        if not tutor_data:
+            return RedirectResponse("/permission/denied", status_code=status.HTTP_403_FORBIDDEN)
+        load_user(tutor_data["username"])
+        access_token = tutor_manager.create_access_token(
+            data={"sub":tutor_data["username"]}
+            )
+        resp = RedirectResponse("/account/tutor/my/answers", status_code=status.HTTP_302_FOUND)
+        tutor_manager.set_cookie(resp,access_token)
+        return resp
         
 
     # ###############################################################################
@@ -152,7 +162,7 @@ class TutorRouter:
         # payload['id'] = uuid.uuid4().hex
         # Save to db
         self.TutorHandler.__create_item__(payload)
-        # Send mail to Student to Set his password
+        # Send mail to Tutot to Set his password
         user = self.TutorHandler.filterDb(email=payload['email']).first()
         if user:
             try:
@@ -199,7 +209,7 @@ class TutorRouter:
                 )
     
     @tutor_endpoint.get("/account/tutor/my/answers", status_code=status.HTTP_200_OK)
-    def studentAsksQuestion(self, request: Request, _=Depends(manager)):
+    def studentAsksQuestion(self, request: Request, _=Depends(tutor_manager)):
         return templates.TemplateResponse('tutor_answers.html', {"request": request})
     
     @tutor_endpoint.get("/top/tutors")

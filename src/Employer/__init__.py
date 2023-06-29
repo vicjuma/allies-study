@@ -8,6 +8,7 @@ from src.models.models import Student, Tutor, Tasks
 from fastapi_restful.api_model import APIMessage
 import uuid
 from src.Auth import PasswordHandler, manager, load_user
+from src.Worker import tutor_manager, load_user as load_tutor
 from fastapi import (
         Depends,
         status,
@@ -95,45 +96,42 @@ class StudentsRouter:
         print(payload)
         
         if user_name and user_email:
-            raise HTTPException(
-                        status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Username and Email already exist"
-                    )
+            message = "Username and Email already exist in our database"
+            return templates.TemplateResponse('success/email_and_username_exist.html', {"request": request, "message": message})
         elif user_name:
-            raise HTTPException(
-                        status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Username already exists"
-                    )
+            message = "Username already exists in our database"
+            return templates.TemplateResponse('success/username_exists.html', {"request": request, "message": message})
         elif user_email:
-            raise HTTPException(
-                        status_code=status.HTTP_400_BAD_REQUEST,
-                        detail="Email already exists"
-                    )
+            message = "Email already exists in our database"
+            return templates.TemplateResponse('success/email_exists.html', {"request": request, "message": message})
         else:
             # Genereate user id
             # payload['id'] = uuid.uuid4().hex
             password = generate_password()
             payload['password'] = generate_password_hash(password)
             # Save to db
+            payload['department'] = "student"
             self.employerHandler.__create_item__(payload)
 
             # Send mail to Student to Set his password
             user = self.employerHandler.filterDb(email=payload['email']).first()
             if user:
-                # try:
+                try:
                     created_user_id = self.employerHandler.filterDb(email=payload["email"]).first().to_json()["id"]
                     payload["id"] = created_user_id
                     payload['password'] = password
                     self.password_handler.set_password(payload)
+                    message = "Email sent successfully with your password, check your inbox or spam"
+                    return templates.TemplateResponse('success/email_sent.html', {"request": request, "message": message})
+                    # return APIMessage(
+                    #     detail="Password set email successfully sent",
+                    #     status_code=status.HTTP_200_OK
+                    # )
+                except:
                     return APIMessage(
-                        detail="Password set email successfully sent",
-                        status_code=status.HTTP_200_OK
-                    )
-                # except:
-                #     return APIMessage(
-                #            detail="Password email not sent",
-                #            status_code=status.HTTP_400_BAD_REQUEST
-                #         )
+                           detail="Password email not sent",
+                           status_code=status.HTTP_400_BAD_REQUEST
+                        )
             raise HTTPException(
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="User not found"
@@ -163,29 +161,32 @@ class StudentsRouter:
         return self.student_handler.patchStudent(await payload.json())
 
     
-    @students_endpoint.get("/account/student/verify/{token}", status_code=status.HTTP_200_OK)
+    @students_endpoint.get("/account/user/verify/{token}", status_code=status.HTTP_200_OK)
     def verify_me(self, token: str):
         decoded_token = decode_access_token(token)
+        print(decoded_token)
         student_data = self.token_handler.getStudent(decoded_token)
         tutor_data = self.token_handler.getTutor(decoded_token)
+        user = student_data if student_data else tutor_data
+        print(student_data)
         print(tutor_data)
-        if not student_data and not tutor_data:
+        if not user:
             return RedirectResponse("/permission/denied", status_code=status.HTTP_403_FORBIDDEN)
-        
-        if student_data and not tutor_data:
-            load_user(student_data["username"])
-            access_token = manager.create_access_token(
+        else:
+            if user["department"] == "student":
+                access_token = manager.create_access_token(
                         data={"sub":student_data["username"]}
                     )
-            resp = RedirectResponse("/account/student/ask/question", status_code=status.HTTP_302_FOUND)
-            manager.set_cookie(resp,access_token)
-            return resp
-        load_user(tutor_data["username"])
+                load_user(user["username"])
+                resp = RedirectResponse("/account/student/ask/question", status_code=status.HTTP_302_FOUND)
+                manager.set_cookie(resp, access_token)
+                return resp
         access_token = manager.create_access_token(
-            data={"sub":tutor_data["username"]}
+                data={"sub":user["username"]}
             )
+        load_tutor(user["username"])
         resp = RedirectResponse("/account/tutor/my/answers", status_code=status.HTTP_302_FOUND)
-        manager.set_cookie(resp,access_token)
+        tutor_manager.set_cookie(resp, access_token)
         return resp
     
     @students_endpoint.get("/account/student/ask/question", status_code=status.HTTP_200_OK)
