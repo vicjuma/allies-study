@@ -69,6 +69,7 @@ class Student(Base):
     time_zone = Column(String(250))
     task_created = relationship('Tasks', lazy='dynamic', backref=backref('creator'), cascade="all, delete-orphan")
     invoice = relationship("Invoice", lazy="dynamic", cascade="all, delete-orphan")
+    profile_pic = Column(String(200))
 
     def __init__(self, *args, **kwargs) -> None:
         super(Student, self).__init__(*args, **kwargs)
@@ -88,6 +89,7 @@ class Student(Base):
             "about": self.about,
             "speciality_id": self.speciality_id,
             "time_zone": self.time_zone,
+            "profile_pic": self.profile_pic,
             "task_created": [
                     item.to_json() for item in self.task_created
                 ] 

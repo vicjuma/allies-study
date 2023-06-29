@@ -193,17 +193,17 @@ class StudentHandler:
     def setPassword(self, payload):
         user = self.employerHandler.filterDb(email=payload['email']).first()
         if user:
-            # try:
+            try:
                 self.password_handler.set_password(payload)
                 return APIMessage(
                     detail="Password set email successfully sent",
                     status_code=status.HTTP_200_OK
                 )
-            # except:
-                # return APIMessage(
-                #        detail="Password email not sent",
-                #        status_code=status.HTTP_400_BAD_REQUEST
-                #     )
+            except:
+                return APIMessage(
+                       detail="Password email not sent",
+                       status_code=status.HTTP_400_BAD_REQUEST
+                    )
         raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="User not found"

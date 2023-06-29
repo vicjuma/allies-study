@@ -40,10 +40,7 @@
                                 <div class="menu mid"></div>
                                 <div class="menu"></div>
                             </div>
-                        </label>
-
-                       
-                    
+                        </label>    
                 </div>
             </nav>
         </header>  
@@ -73,7 +70,7 @@
                                 Support
                             </p>
                         </a>
-                        <a href="/account/student/profile" class="activeSide prr display-flex-normal ">
+                        <a href="{{ url_for('getProfile', username=student.username) }}?_method=PATCH" class="activeSide prr display-flex-normal ">
                             <i class='bx bx-cog p-l-20'></i> <p class="p-l-20">
                                 Profile
                             </p>
@@ -84,11 +81,11 @@
                     <div class="col-9 m-a">
                         <div class="p-b-40 m-b-20">
                             <div class="p-40-0">
-                                <form action="">
+                                <form action="/account/student/profile/{{ username }}" enctype="multipart/form-data" method="POST">
                                     <div class="p-20">
                                         <div class="b-one m-a w-110 b-r-100 align-center h-110  text-center ">
                                             <div class="p-10">
-                                                <img class="" src="/static/images/icon-default_avatar.svg" alt="">
+                                                <img class="" src="/static/profileImages/{{ student.profile_pic }}" alt="">
                                             </div>
                                         </div>
                                         <div class="p-10-0">
@@ -96,7 +93,7 @@
                                                 <label for="profile">
                                                     <p class="cursor-pointer default-color b-one p-10-20 b-r-3">CHOOSE YOUR PICTURE</p>
                                                 </label>
-                                                <input type="file" name="profile-pic" hidden id="profile">
+                                                <input type="file" name="file" hidden id="profile">
     
                                             </div>
                                         </div>
@@ -107,7 +104,7 @@
                                                     <div class="p-0-20">
                                                         <p class="p-b-10">Username *</p>
                                                         <div class="b-one w-p-100">
-                                                            <input type="text" class="b-n p-10"  name="" id="">
+                                                            <input type="text" class="b-n p-10"  name="username" id="" value="{{ student.username }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -117,7 +114,7 @@
                                                     <div class="p-0-20">
                                                         <p class="p-b-10">Email *</p>
                                                         <div class="b-one w-p-100">
-                                                            <input type="text" class="b-n p-10"  name="" id="">
+                                                            <input type="text" class="b-n p-10"  name="email" id="" value="{{ student.email }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -130,7 +127,7 @@
                                                     <div class="p-0-20">
                                                         <p class="p-b-10">Password</p>
                                                         <div class="b-one w-p-100">
-                                                            <input type="text" class="b-n p-10"  name="" id="">
+                                                            <input type="text" class="b-n p-10"  name="password" id="">
                                                         </div>
                                                     </div>
                                                 </div>

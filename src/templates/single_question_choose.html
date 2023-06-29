@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if task %}
+        <h1>{{ task.content|safe }}</h1>
+        <p>{{ task.content|safe }} </p>
+
+        {% for image in images %}
+            <a href="/static/siteImages/{{image.attachment_name}}" target="_blank">{{image.attachment_name}}</a>
+        {% endfor %}
+    {% else %}
+        <p>Task not found.</p>
+    {% endif %}
+    <p>Proposals from tutors to complete your question</p>
+</body>
+</html>

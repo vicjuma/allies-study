@@ -37,7 +37,7 @@
                                 <li><a href="/account/student/my/questions">My Question</a></li>
                                 <li><a href="/account/student/balance">Balance</a></li>
                                 <li><a href="/account/support">Support</a></li>
-                                <li><a href="/account/student/profile">Profile</a></li>
+                                <li><a href="{{ url_for('getProfile', username=student.username) }}">Profile</a></li>
                             </div>
                         </div>
                         <a href="">Logout<i class='bx bx-log-out'></i></a>
@@ -83,7 +83,7 @@
                                 Support
                             </p>
                         </a>
-                        <a href="/account/student/profile" class=" prr display-flex-normal ">
+                        <a href="{{ url_for('getProfile', username=student.username) }}" class=" prr display-flex-normal ">
                             <i class='bx bx-cog p-l-20'></i> <p class="p-l-20">
                                 Profile
                             </p>
@@ -140,7 +140,7 @@
                                                         <tr>
                                                             <td>{{ task.id }}</td>
                                                             <td>{{ task.progress_status}}</td>
-                                                            <td>{{ task.content[:29]|safe }}</td>
+                                                            <td><a href="{{ url_for('studentCheckSingleQuestion', task_id=task.id) }}">{{ task.content[:29]|safe }}</a></td>
                                                             <td class="dn">{{ task.topics }}</td>
                                                             <td>{{ task.timeline }}</td>
                                                             <td class="dn">{{ task.amount  }}</td>

@@ -112,7 +112,7 @@ class TaskEndpoint:
     @task_endpoint.get("/task/{taskid}", status_code=status.HTTP_200_OK, response_model=TaskSchema)
     def getTask(self, taskid: str, request: Request, _=Depends(AuthManager)):
         task = self.task_handler.getTask(taskid)
-        return templates.TemplateResponse('student_ask_question.html', {"request": request})
+        return templates.TemplateResponse('single_question_choose.html', {"request": request})
 
     @task_endpoint.patch("/task", status_code=status.HTTP_200_OK, response_model=TaskSchema)
     async def updateTask(self, payload: Request):

@@ -1,10 +1,12 @@
 from fastapi_restful.inferring_router import InferringRouter
 from fastapi_restful.cbv import cbv
 from typing import Optional
+import os
+import shutil
 from src.Employer.utils import StudentHandler, TokenHandler
 from starlette.requests import Request
 from fastapi.security import OAuth2PasswordBearer
-from src.models.models import Student, Tutor, Tasks
+from src.models.models import Student, Tutor, Tasks, TaskAttachment
 from fastapi_restful.api_model import APIMessage
 import uuid
 from src.Auth import PasswordHandler, manager, load_user
@@ -13,6 +15,8 @@ from fastapi import (
         Depends,
         status,
         HTTPException,
+        UploadFile,
+        File
     )
 from fastapi.responses import RedirectResponse
 from src.utils import (
@@ -164,9 +168,23 @@ class StudentsRouter:
     async def updateEmployer(self, payload: StudentSchema, request: Request):
         return self.student_handler.updateStudent(payload.dict())
 
-    @students_endpoint.patch("/student")
-    async def patchEmployer(self, payload: Request):
-        return self.student_handler.patchStudent(await payload.json())
+    @students_endpoint.post("/account/student/profile/{username}")
+    async def patchEmployer(self, request: Request, username: str, file: UploadFile = File(...), _=Depends(manager)):
+        student = session.query(Student).filter(Student.username==username).first()
+        if not student:
+            raise HTTPException(status_code=404, detail="User not found")
+        form_data = await request.form()
+        # payload = dict(form_data)
+        student.username = form_data.get("username")
+        student.email = form_data.get("email")
+        student.password = generate_password_hash(form_data.get("password"))
+        student.profile_pic = file.filename
+        static_dir = os.path.join(f"{os.getcwd()}/src", "static/profileImages")
+        destination = os.path.join(static_dir, file.filename)
+        with open(f"{destination}", "wb") as f:
+            shutil.copyfileobj(file.file, f)
+        session.commit()
+        return {"message": "User updated successfully"}
 
     
     @students_endpoint.get("/account/user/verify/{token}", status_code=status.HTTP_200_OK)
@@ -198,27 +216,39 @@ class StudentsRouter:
         return resp
     
     @students_endpoint.get("/account/student/ask/question", status_code=status.HTTP_200_OK)
-    def studentAsksQuestion(self, request: Request, _=Depends(manager)):
-        return templates.TemplateResponse('student_ask_question.html', {"request": request})
+    def studentAsksQuestion(self, request: Request, user=Depends(manager)):
+        student = session.query(Student).filter(Student.username==user["username"]).first()
+        return templates.TemplateResponse('student_ask_question.html', {"request": request, "student": student})
     
     @students_endpoint.get("/account/student/my/questions", status_code=status.HTTP_200_OK)
     def studentChecksQuestions(self, request: Request, user=Depends(manager)):
+        student = session.query(Student).filter(Student.username==user["username"]).first()
         if user:
             tasks = session.query(Tasks).filter(Tasks.creator_id==user["id"])
             for task in tasks:
                 print(task)
-        return templates.TemplateResponse('student_questions.html', {"request": request, "tasks": tasks})
+        return templates.TemplateResponse('student_questions.html', {"request": request, "tasks": tasks, "student": student})
+    
+    @students_endpoint.get("/account/student/my/questions/{task_id}", status_code=status.HTTP_200_OK)
+    def studentCheckSingleQuestion(self, request: Request, task_id: int, user=Depends(manager)):
+        student = session.query(Student).filter(Student.username==user["username"]).first()
+        task = session.query(Tasks).filter(Tasks.id==task_id).first()
+        images = session.query(TaskAttachment).filter(task_id==task_id)
+        return templates.TemplateResponse('single_question_choose.html', {"request": request, "task": task, "images": images, "student": student})
     
     @students_endpoint.get("/account/student/balance", status_code=status.HTTP_200_OK)
-    def studentCheckBalance(self, request: Request, _=Depends(manager)):
-        return templates.TemplateResponse('student_account_balance.html', {"request": request})
+    def studentCheckBalance(self, request: Request, user=Depends(manager)):
+        student = session.query(Student).filter(Student.username==user["username"]).first()
+        return templates.TemplateResponse('student_account_balance.html', {"request": request, "student": student})
     
     @students_endpoint.get("/account/support", status_code=status.HTTP_200_OK)
-    def getSupport(self, request: Request, _=Depends(manager)):
-        return templates.TemplateResponse('support.html', {"request": request})
+    def getSupport(self, request: Request, user=Depends(manager)):
+        student = session.query(Student).filter(Student.username==user["username"]).first()
+        return templates.TemplateResponse('support.html', {"request": request, "student": student})
     
-    @students_endpoint.get("/account/student/profile", status_code=status.HTTP_200_OK)
-    def getProfile(self, request: Request, _=Depends(manager)):
-        return templates.TemplateResponse('student_profile.html', {"request": request})
+    @students_endpoint.get("/account/student/profile/{username}", status_code=status.HTTP_200_OK)
+    def getProfile(self, request: Request, username: str, _=Depends(manager)):
+        student = session.query(Student).filter(Student.username==username).first()
+        return templates.TemplateResponse('student_profile.html', {"request": request, "student": student, "username": username})
     
  
