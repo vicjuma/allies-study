@@ -2,11 +2,12 @@ from fastapi_restful.inferring_router import InferringRouter
 from fastapi_restful.cbv import cbv
 from typing import Optional
 import os
+import asyncio
 import shutil
 from src.Employer.utils import StudentHandler, TokenHandler
 from starlette.requests import Request
 from fastapi.security import OAuth2PasswordBearer
-from src.models.models import Student, Tutor, Tasks, TaskAttachment
+from src.models.models import Student, Tutor, Tasks, TaskAttachment, StudentBalances
 from fastapi_restful.api_model import APIMessage
 import uuid
 from src.Auth import PasswordHandler, manager, load_user
@@ -37,6 +38,11 @@ from src.models.schema import(
     )
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+from intasend import APIService
+
+token = "ISSecretKey_live_683434d0-e26c-4938-8de5-5c03d056e3ad"
+publishable_key = "ISPubKey_live_f1ec1f68-2f77-4cba-a44f-28ca77e4afce"
+service = APIService(token="token",publishable_key=publishable_key)
 
 DB_NAME="studyallies"
 DB_PASSWD="studyuserpassword"
@@ -128,7 +134,7 @@ class StudentsRouter:
             # Send mail to Student to Set his password
             user = self.employerHandler.filterDb(email=payload['email']).first()
             if user:
-                try:
+                # try:
                     created_user_id = self.employerHandler.filterDb(email=payload["email"]).first().to_json()["id"]
                     payload["id"] = created_user_id
                     payload['password'] = password
@@ -139,11 +145,11 @@ class StudentsRouter:
                     #     detail="Password set email successfully sent",
                     #     status_code=status.HTTP_200_OK
                     # )
-                except:
-                    return APIMessage(
-                           detail="Password email not sent",
-                           status_code=status.HTTP_400_BAD_REQUEST
-                        )
+                # except:
+                #     return APIMessage(
+                #            detail="Password email not sent",
+                #            status_code=status.HTTP_400_BAD_REQUEST
+                #         )
             raise HTTPException(
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="User not found"
@@ -239,7 +245,8 @@ class StudentsRouter:
     @students_endpoint.get("/account/student/balance", status_code=status.HTTP_200_OK)
     def studentCheckBalance(self, request: Request, user=Depends(manager)):
         student = session.query(Student).filter(Student.username==user["username"]).first()
-        return templates.TemplateResponse('student_account_balance.html', {"request": request, "student": student})
+        transactions = session.query(StudentBalances).filter(Student.id==user["id"])
+        return templates.TemplateResponse('student_account_balance.html', {"request": request, "student": student, "transactions": transactions})
     
     @students_endpoint.get("/account/support", status_code=status.HTTP_200_OK)
     def getSupport(self, request: Request, user=Depends(manager)):
@@ -250,5 +257,29 @@ class StudentsRouter:
     def getProfile(self, request: Request, username: str, _=Depends(manager)):
         student = session.query(Student).filter(Student.username==username).first()
         return templates.TemplateResponse('student_profile.html', {"request": request, "student": student, "username": username})
+    
+    @students_endpoint.post("/account/student/load-account")
+    async def loadStudentAccount(self, request: Request, user=Depends(manager)):
+        student = session.query(Student).filter(Student.id==user["id"]).first()
+        form_data = await request.form()
+        payload = dict(form_data)
+        amount = form_data.get("load")
+        phone = "254728877619"
+        
+        service = APIService(token="ISSecretKey_live_683434d0-e26c-4938-8de5-5c03d056e3ad",publishable_key="ISPubKey_live_f1ec1f68-2f77-4cba-a44f-28ca77e4afce", test=False)
+        initial_response = service.collect.mpesa_stk_push(
+            phone_number=phone, email=user["email"], amount=amount, narrative="Fees")
+        invoice_id = initial_response["invoice"]["invoice_id"]
+        await asyncio.sleep(20)
+        print(invoice_id)
+        final_response = service.collect.status(invoice_id=invoice_id)
+        
+        if final_response["invoice"]["state"] == "COMPLETE":
+            transaction = StudentBalances(amount=amount, student_id=user["id"], code=final_response["invoice"]["mpesa_reference"])
+            session.add(transaction)
+            session.commit()
+        else:
+            {"message": "payment could not be initialized"}
+        return final_response
     
  

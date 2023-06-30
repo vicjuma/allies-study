@@ -11,7 +11,7 @@
         <p>{{ task.content|safe }} </p>
 
         {% for image in images %}
-            <a href="/static/siteImages/{{image.attachment_name}}" target="_blank">{{image.attachment_name}}</a>
+            <a href="/static/siteImages/{{image.attachment_name}}" target="_blank">{{image.attachment_name}}</a>,&nbsp;
         {% endfor %}
     {% else %}
         <p>Task not found.</p>

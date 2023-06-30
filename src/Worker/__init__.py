@@ -266,7 +266,3 @@ class TutorRouter:
         tutors = self.tutor_handle.getTutors()
         print(tutors)
         return templates.TemplateResponse('tutor_review.html', {"request": request})
-    
-    @tutor_endpoint.get("/tutor/support/write")
-    def requestSupport(self, request: Request):
-        return templates.TemplateResponse('contact_support.html', {"request": request})

@@ -5,6 +5,7 @@ import uuid
 import shutil
 import datetime
 from src.TaskService.utils import TaskHandler
+from fastapi.responses import RedirectResponse
 from fastapi import (
         Depends,
         status,
@@ -28,12 +29,17 @@ from src.utils import DatabaseTableMixin, DatabaseStudentTableMixin, get_templat
 from src.models.models import (
     Tasks,
     TaskAttachment,
-    Subject
+    Subject,
+    Student
 )
 from src.Auth.manager import manager as AuthManager
 from src.Worker import tutor_manager as TaskManager
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 DB_NAME="studyallies"
 DB_PASSWD="studyuserpassword"
@@ -102,7 +108,12 @@ class TaskEndpoint:
             with open(f"{destination}", "wb") as f:
                 shutil.copyfileobj(file.file, f)
             print(payload)
-        return {"Message":"Task Created Successfully"}
+        student = session.query(Student).filter(Student.username==user["username"]).first()
+        if user:
+            tasks = session.query(Tasks).filter(Tasks.creator_id==user["id"])
+            for task in tasks:
+                print(task)
+        return templates.TemplateResponse('student_questions.html', {"request": request, "tasks": tasks, "student": student})
 
     @task_endpoint.get("/homework/answers", status_code=status.HTTP_200_OK)
     def getTasks(self, request: Request):
@@ -153,4 +164,43 @@ class TaskEndpoint:
         for task in tasks:
             print(task)
         return templates.TemplateResponse('tutor_find_questions.html', {"request": request, "tasks": tasks})
+    
+    @task_endpoint.get("/tutor/support/write")
+    def requestSupport(self, request: Request):
+        return templates.TemplateResponse('contact_support.html', {"request": request})
+    
+    @task_endpoint.post("/tutor/support/write")
+    async def contactSupport(self, request: Request, user=Depends(AuthManager)):
+        form_data = await request.form()
+        payload = dict(form_data)
+        suppoty_type = form_data.get("supportType")
+        order_id = form_data.get("orderID")
+        subject = form_data.get("subject")
+        user_message = form_data.get("message")
+        
+        PORT = 465
+        SENDER_MAIL = user["email"]
+        MAIL_SERVER='mail.studyallies.com'
+        MAIL_USERNAME = user["username"]
+        MAIL_PASSWORD = "studyallies@254"
+        RECEIVER_EMAIL = "support@studyallies.com"
+        
+        message = MIMEMultipart("alternative")
+        message["Subject"] = subject
+        message["From"] = SENDER_MAIL
+        message["To"] = RECEIVER_EMAIL
+        
+        text = f"Name: {MAIL_USERNAME}\nEmail: {SENDER_MAIL}\n\n{user_message}"
+        html = f"<p><strong>Name:</strong> {MAIL_USERNAME}</p><p><strong>Email:</strong> {SENDER_MAIL}   </p><p>{user_message}</p>"
+        part1 = MIMEText(text, "plain")
+        part2 = MIMEText(html, "html")
+        
+        message.attach(part1)
+        message.attach(part2)
+        with smtplib.SMTP(MAIL_SERVER, PORT) as server:
+            server.starttls()
+            server.login("support@studyallies.com", "studyallies@254")
+            server.sendmail(SENDER_MAIL, RECEIVER_EMAIL, message.as_string())
+        # return templates.TemplateResponse('contact_support.html', {"request": request})
+        return {"Response": "Email sent successfully"}
 

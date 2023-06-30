@@ -69,6 +69,7 @@ class Student(Base):
     time_zone = Column(String(250))
     task_created = relationship('Tasks', lazy='dynamic', backref=backref('creator'), cascade="all, delete-orphan")
     invoice = relationship("Invoice", lazy="dynamic", cascade="all, delete-orphan")
+    students_balances = relationship('StudentBalances', back_populates='student')
     profile_pic = Column(String(200))
 
     def __init__(self, *args, **kwargs) -> None:
@@ -90,6 +91,7 @@ class Student(Base):
             "speciality_id": self.speciality_id,
             "time_zone": self.time_zone,
             "profile_pic": self.profile_pic,
+            "students_balances": self.students_balances,
             "task_created": [
                     item.to_json() for item in self.task_created
                 ] 
@@ -389,5 +391,25 @@ class Tutorial(Base):
                 "tutorial_content": self.tutorial_content,
                 "tutorial_answer": self.tutorial_answer
             }
+        
+class StudentBalances(Base):
+    __tablename__ = "students_balance"
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    load_date = Column(DateTime, default=datetime.datetime.utcnow)
+    amount = Column(Integer, nullable=False)
+    student_id = Column(Integer, ForeignKey('student.id'), nullable=False)
+    code = Column(String(250), nullable=False)#
+    student = relationship('Student', back_populates='students_balances')
+
+    def to_json(self):
+        return {
+                "id": self.id,
+                "load_date": self.load_date,
+                "amount": self.amount,
+                "student_id": self.student_id,
+                "code": self.code,
+                "student": self.student
+            }
+
 
 

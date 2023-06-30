@@ -95,10 +95,11 @@
                                 <div class="balance b-b p-b-40 fwm m-a display-flex-normal">
                                     <div class="paypal-load ">
                                        <div class="w-200 b-one m-a">
+                                        <form action="/account/student/load-account" method="post">
                                             <div class="p-20-15">
                                                 <p class="p-10-0">Load money</p>
                                                 <div class="">
-                                                    <input type="text" class="p-5-0" name="load-paypal" id="">
+                                                    <input type="text" class="p-5-0" name="load" id="">
                                                 </div>
                                                 <p class="p-10-0 f-s-13">Payment method by default:</p>
                                                 <div class="display-flex-normal p-20-0">
@@ -114,11 +115,10 @@
                                                 </div>
 
                                                 <div class="next-btn m-0-0 siteButton ">
-                                                    <button class="display-flex-normal row items-center space-around">Load </button>
+                                                    <button class="display-flex-normal row items-center space-around" type="submit">Load </button>
                                                </div>
-
                                             </div>
-                                            
+                                        </form> 
                                        </div>
                                     </div>
                                     <div class="details">
@@ -164,12 +164,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {% for transaction in transactions %}
                                                     <tr>
-                                                        <td>EFEJ</td>
-                                                        <td>EFEJ</td>
-                                                        <td>EFEJ</td>
-                                                        <td>EFEJ</td>
+                                                        <td>{{ transaction.id }}</td>
+                                                        <td>{{ transaction.code }}</td>
+                                                        <td>{{ transaction.load_date }}</td>
+                                                        <td>{{ transaction.amount }}</td>
                                                     </tr>
+                                                    {% endfor %}
     
     
                                                 </tbody>
