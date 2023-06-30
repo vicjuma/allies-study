@@ -302,12 +302,16 @@ class Bidders(Base):
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     task_id = Column(Integer, ForeignKey("tasks.id"))
     user_id = Column(Integer, ForeignKey("tutor.id"))
+    message = Column(Text)
+    amount = Column(Integer)
 
     def to_json(self):
         return {
                 "id": self.id,
                 "task_id": self.task_id,
-                "user_id": self.user_id
+                "user_id": self.user_id,
+                "message": self.message,
+                "amount": self.amount
             }
 
 class Invoice(Base):

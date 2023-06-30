@@ -1,4 +1,5 @@
 from fastapi_restful.inferring_router import InferringRouter
+from sqlalchemy.orm import joinedload
 from fastapi_restful.cbv import cbv
 from typing import Optional
 import os
@@ -7,7 +8,7 @@ import shutil
 from src.Employer.utils import StudentHandler, TokenHandler
 from starlette.requests import Request
 from fastapi.security import OAuth2PasswordBearer
-from src.models.models import Student, Tutor, Tasks, TaskAttachment, StudentBalances
+from src.models.models import Student, Tutor, Tasks, TaskAttachment, StudentBalances, Bidders
 from fastapi_restful.api_model import APIMessage
 import uuid
 from src.Auth import PasswordHandler, manager, load_user
@@ -134,7 +135,7 @@ class StudentsRouter:
             # Send mail to Student to Set his password
             user = self.employerHandler.filterDb(email=payload['email']).first()
             if user:
-                # try:
+                try:
                     created_user_id = self.employerHandler.filterDb(email=payload["email"]).first().to_json()["id"]
                     payload["id"] = created_user_id
                     payload['password'] = password
@@ -145,11 +146,11 @@ class StudentsRouter:
                     #     detail="Password set email successfully sent",
                     #     status_code=status.HTTP_200_OK
                     # )
-                # except:
-                #     return APIMessage(
-                #            detail="Password email not sent",
-                #            status_code=status.HTTP_400_BAD_REQUEST
-                #         )
+                except:
+                    return APIMessage(
+                           detail="Password email not sent",
+                           status_code=status.HTTP_400_BAD_REQUEST
+                        )
             raise HTTPException(
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="User not found"
@@ -240,7 +241,8 @@ class StudentsRouter:
         student = session.query(Student).filter(Student.username==user["username"]).first()
         task = session.query(Tasks).filter(Tasks.id==task_id).first()
         images = session.query(TaskAttachment).filter(task_id==task_id)
-        return templates.TemplateResponse('single_question_choose.html', {"request": request, "task": task, "images": images, "student": student})
+        bids = session.query(Bidders, Tutor).join(Tutor).filter(Bidders.task_id==task_id).all()
+        return templates.TemplateResponse('single_question_choose.html', {"request": request, "task": task, "images": images, "student": student, "bids": bids})
     
     @students_endpoint.get("/account/student/balance", status_code=status.HTTP_200_OK)
     def studentCheckBalance(self, request: Request, user=Depends(manager)):

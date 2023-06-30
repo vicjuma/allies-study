@@ -43,7 +43,7 @@
 {% for task in tasks %}
     <li class="accounting-item">
         <p class="accounting-item__info">
-            <a class="accounting-item__link" href="../question.html" style="font-size: 16px;">{{ task.description|safe }}</a>    </p>
+            <a class="accounting-item__link" href="{{ url_for('TutorCheckSingleQuestion', task_id=task.id) }}" style="font-size: 16px;">{{ task.description|safe }}</a>    </p>
         <div class="account-item__price">
             <div>
                 ${{ task.Amount }} </div>

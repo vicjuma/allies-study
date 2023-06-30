@@ -11,7 +11,7 @@ from fastapi import (
         status,
     )
 
-from src.models.models import Tutor, Tutorial
+from src.models.models import Tutor, Tutorial, Tasks, TaskAttachment, Bidders
 from src.models.schema import(
         TutorSchema,
         LoginSchema,
@@ -40,12 +40,25 @@ from fastapi import (
     )
 from src.Auth.handlers import PasswordHandler
 from fastapi_login import LoginManager
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 # from src.Worker.utils import TutorHandler
 
 SECRET = "studyalliessiteforstudentsandtuitors"
 
 tutor_manager = LoginManager(SECRET, "/auth/login",use_cookie=True)
 tutor_manager.cookie_name = "studyalliescookie"
+
+DB_NAME="studyallies"
+DB_PASSWD="studyuserpassword"
+DB_AUTHOR="study_user"
+
+databasefilename: str = f'mysql+pymysql://{DB_AUTHOR}:{DB_PASSWD}@localhost/{DB_NAME}'
+engine = create_engine(databasefilename)
+Session = sessionmaker(bind=engine, expire_on_commit=False)
+
+session = Session()
+
 
 @tutor_manager.user_loader()
 def load_user(username:str):
@@ -266,3 +279,19 @@ class TutorRouter:
         tutors = self.tutor_handle.getTutors()
         print(tutors)
         return templates.TemplateResponse('tutor_review.html', {"request": request})
+    
+    @tutor_endpoint.get("/account/tutor/student/questions/{task_id}", status_code=status.HTTP_200_OK)
+    def TutorCheckSingleQuestion(self, request: Request, task_id: int, user=Depends(tutor_manager)):
+        task = session.query(Tasks).filter(Tasks.id==task_id).first()
+        images = session.query(TaskAttachment).filter(task_id==task_id)
+        return templates.TemplateResponse('tutor_single_question.html', {"request": request, "task": task, "images": images})
+    
+    @tutor_endpoint.post("/account/tutor/student/bid/questions/{task_id}", status_code=status.HTTP_200_OK)
+    async def TutorBidQuestion(self, request: Request, task_id: int, user=Depends(tutor_manager)):
+        form_data = await request.form()
+        message = form_data.get("message")
+        amount = form_data.get("amount")
+        bid = Bidders(task_id=task_id, user_id=user["id"], message=message, amount=amount)
+        session.add(bid)
+        session.commit()
+        return {"message": "bid placed successfully"}

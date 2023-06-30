@@ -13,9 +13,27 @@
         {% for image in images %}
             <a href="/static/siteImages/{{image.attachment_name}}" target="_blank">{{image.attachment_name}}</a>,&nbsp;
         {% endfor %}
+        <p>Proposals from tutors to complete your question</p>
+        <table>
+            <tr>
+                <th>Bid Amount</th>
+                <th>Bid Message</th>
+                <th>Tutor Name</th>
+                <th>Accept</th>
+                <th>Chat</th>
+            </tr>
+            {% for bid in bids %}
+                <tr>
+                    <td>{{ bid[0].amount }}</td>
+                    <td>{{ bid[0].message }}</td>
+                    <td>{{ bid[1].username }}</td>
+                    <td><a href="">Accept Bid</a></td>
+                    <td><a href="">Chat with Tutor</a></td>
+                </tr>
+            {% endfor %}
+        </table>
     {% else %}
         <p>Task not found.</p>
     {% endif %}
-    <p>Proposals from tutors to complete your question</p>
 </body>
 </html>

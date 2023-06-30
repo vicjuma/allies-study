@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if task %}
+        <h1>{{ task.content|safe }}</h1>
+        <p>{{ task.content|safe }} </p>
+        <strong>Files:</strong>
+        {% for image in images %}
+            <a href="/static/siteImages/{{image.attachment_name}}" target="_blank">{{image.attachment_name}}</a>,&nbsp;
+        {% endfor %}
+    {% else %}
+        <p>Task not found.</p>
+    {% endif %}
+    <button type="submit">Send a Proposal</button>
+    <form action="{{ url_for('TutorBidQuestion', task_id=task.id) }}" method="post">
+        <input type="text" name="message" id="">
+        <input type="number" name="amount" id="">
+        <input type="submit" value="Send Proposal">
+    </form>
+</body>
+</html>
